@@ -2,7 +2,6 @@ package com.hds.testmod.items;
 
 import com.hds.testmod.creativetabs.ItemTab;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 
 public class BaseItem extends Item {
 

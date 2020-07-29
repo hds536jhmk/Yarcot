@@ -1,6 +1,8 @@
 {
   "itemGroup.testmoditems": "TestMod Items",
   "itemGroup.testmodblocks": "TestMod Blocks",
+  "itemGroup.testmodtools": "TestMod Tools",
   "item.testmod.sapphire": "Sapphire",
+  "item.testmod.sapphire_pickaxe": "Sapphire Pickaxe",
   "block.testmod.sapphire_block": "Sapphire Block"
 }

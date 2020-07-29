@@ -2,16 +2,19 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "sss",
-    "sss",
-    "sss"
+    " w ",
+    " w "
   ],
   "key": {
     "s": {
       "item": "testmod:sapphire"
+    },
+    "w": {
+      "item": "minecraft:stick"
     }
   },
   "result": {
-    "item": "testmod:sapphire_block",
+    "item": "testmod:sapphire_pickaxe",
     "count": 1
   }
 }

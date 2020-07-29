@@ -3,6 +3,7 @@ package com.hds.testmod.util;
 import com.hds.testmod.items.ModItems;
 import com.hds.testmod.blocks.ModBlocks;
 import com.hds.testmod.TestMod;
+import com.hds.testmod.tools.ModTools;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -17,6 +18,7 @@ public class RegistryHandler {
     public static void init() {
         ModItems.Load();
         ModBlocks.Load();
+        ModTools.Load();
 
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
