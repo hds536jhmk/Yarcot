@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "sss",
+    "sss",
+    "sss"
+  ],
+  "key":
+  {
+    "s":
+    {
+      "item": "testmod:sapphire"
+    }
+  },
+  "result":
+  {
+    "item": "testmod:sapphire_block",
+    "count": 1
+  }
+}
