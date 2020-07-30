@@ -2,7 +2,9 @@
   "itemGroup.testmoditems": "TestMod Items",
   "itemGroup.testmodblocks": "TestMod Blocks",
   "itemGroup.testmodtools": "TestMod Tools",
+  "itemGroup.testmodarmors": "TestMod Armors",
   "item.testmod.sapphire": "Sapphire",
+  "block.testmod.sapphire_block": "Sapphire Block",
   "item.testmod.sapphire_pickaxe": "Sapphire Pickaxe",
-  "block.testmod.sapphire_block": "Sapphire Block"
+  "item.testmod.sapphire_chestplate": "Sapphire Chestplate"
 }

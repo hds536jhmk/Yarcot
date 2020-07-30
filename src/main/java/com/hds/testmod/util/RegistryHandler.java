@@ -1,5 +1,6 @@
 package com.hds.testmod.util;
 
+import com.hds.testmod.armor.ModArmors;
 import com.hds.testmod.items.ModItems;
 import com.hds.testmod.blocks.ModBlocks;
 import com.hds.testmod.TestMod;
@@ -19,6 +20,7 @@ public class RegistryHandler {
         ModItems.Load();
         ModBlocks.Load();
         ModTools.Load();
+        ModArmors.Load();
 
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());

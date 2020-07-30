@@ -4,7 +4,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 
-public class ToolsTab {
+public class ToolTab {
 
     public static final ItemGroup TAB = new ItemGroup("testmodtools") {
         @Override

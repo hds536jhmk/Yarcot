@@ -18,13 +18,13 @@ public enum ModItemTiers implements IItemTier {
     private final int ENCHANTABILITY;
     private final Supplier<Ingredient> REPAIRMATERIAL;
 
-    ModItemTiers(int durability, float efficiency, float attackdamage, int harvestlevel, int enchantability, Supplier<Ingredient> repairmaterial) {
+    ModItemTiers(int durability, float efficiency, float attackDamage, int harvestLevel, int enchantability, Supplier<Ingredient> repairMaterial) {
         DURABILITY = durability;
         EFFICIENCY = efficiency;
-        ATTACKDAMAGE = attackdamage;
-        HARVESTLEVEL = harvestlevel;
+        ATTACKDAMAGE = attackDamage;
+        HARVESTLEVEL = harvestLevel;
         ENCHANTABILITY = enchantability;
-        REPAIRMATERIAL = repairmaterial;
+        REPAIRMATERIAL = repairMaterial;
     }
 
     @Override
