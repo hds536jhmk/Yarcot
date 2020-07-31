@@ -18,11 +18,6 @@ public class RegistryHandler {
     public static final DeferredRegister<Block> BLOCKS = new DeferredRegister<Block>(ForgeRegistries.BLOCKS, TestMod.MODID);
 
     public static void init() {
-        ModItems.Load();
-        ModBlocks.Load();
-        ModTools.Load();
-        ModArmors.Load();
-
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }

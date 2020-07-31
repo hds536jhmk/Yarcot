@@ -1,18 +1,12 @@
 package com.hds.testmod.tools;
 
-import com.hds.testmod.creativetabs.ModItemGroups;
-import com.hds.testmod.util.RegistryHandler;
-import net.minecraft.item.Item;
+import com.hds.testmod.TestMod;
 import net.minecraft.item.PickaxeItem;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.ObjectHolder;
 
+@ObjectHolder(TestMod.MODID)
 public class ModTools {
 
-    public static final RegistryObject<PickaxeItem> SAPPHIRE_PICKAXE = RegistryHandler.ITEMS.register(
-            "sapphire_pickaxe",
-            () -> new PickaxeItem(ModItemTiers.SAPPHIRE, 4, -2.8F, new Item.Properties().group(ModItemGroups.TOOLS))
-    );
-
-    public static void Load() {}
+    public static final PickaxeItem SAPPHIRE_PICKAXE = null;
 
 }

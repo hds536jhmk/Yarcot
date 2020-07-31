@@ -22,7 +22,7 @@ public enum ModArmorMaterial implements IArmorMaterial {
             SoundEvents.ENTITY_HORSE_ARMOR,
             0.5F,
             () -> {
-                return Ingredient.fromItems(ModItems.SAPPHIRE.get());
+                return Ingredient.fromItems(ModItems.SAPPHIRE);
             }
     );
 

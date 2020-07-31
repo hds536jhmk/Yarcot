@@ -12,8 +12,4 @@ public class ModBlocks {
 
     public static final Block SAPPHIRE_BLOCK = null;
 
-    public static final BlockItem SAPPHIRE_BLOCKITEM = null;
-
-    public static void Load() {}
-
 }
