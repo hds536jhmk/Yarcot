@@ -1,6 +1,6 @@
 package com.hds.testmod.items;
 
-import com.hds.testmod.creativetabs.ItemTab;
+import com.hds.testmod.creativetabs.ModItemGroups;
 import net.minecraft.item.Item;
 
 public class BaseItem extends Item {
@@ -9,7 +9,7 @@ public class BaseItem extends Item {
         // Creating a new Item Property and adding the item to a group
         super(
                 new Item.Properties()
-                    .group(ItemTab.TAB)
+                    .group(ModItemGroups.ITEMS)
         );
     }
 

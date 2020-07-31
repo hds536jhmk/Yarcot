@@ -8,7 +8,7 @@ import java.util.function.Supplier;
 
 public enum ModItemTiers implements IItemTier {
     SAPPHIRE(750, 7.0F, -1.0F, 3, 15, () -> {
-        return Ingredient.fromItems(ModItems.SAPPHIRE.get());
+        return Ingredient.fromItems(ModItems.SAPPHIRE);
     });
 
     private final int DURABILITY;

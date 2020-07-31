@@ -1,15 +1,12 @@
 package com.hds.testmod.items;
 
-import com.hds.testmod.util.RegistryHandler;
+import com.hds.testmod.TestMod;
 import net.minecraft.item.Item;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.ObjectHolder;
 
+@ObjectHolder(TestMod.MODID)
 public class ModItems {
 
-    public static final RegistryObject<Item> SAPPHIRE = RegistryHandler.ITEMS.register(
-            "sapphire", /* Pointer to item's constructor */ BaseItem::new
-    );
-
-    public static void Load() {}
+    public static final Item SAPPHIRE = null;
 
 }

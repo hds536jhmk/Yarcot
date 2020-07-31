@@ -7,6 +7,7 @@ import com.hds.testmod.TestMod;
 import com.hds.testmod.tools.ModTools;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
