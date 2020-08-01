@@ -10,7 +10,7 @@ public class ModItems {
     public static final RegistryObject<Item> SAPPHIRE = RegistryHandler.ITEMS.register(
             "sapphire",
             () -> new BaseItem()
-    );;
+    );
 
     public static void registerAll() {
 
