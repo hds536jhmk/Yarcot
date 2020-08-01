@@ -21,9 +21,7 @@ public enum ModArmorMaterial implements IArmorMaterial {
             16,
             SoundEvents.ENTITY_HORSE_ARMOR,
             0.5F,
-            () -> {
-                return Ingredient.fromItems(ModItems.SAPPHIRE);
-            }
+            () -> Ingredient.fromItems(ModItems.SAPPHIRE.get())
     );
 
     public static class MAX_DAMAGE {
@@ -62,48 +60,48 @@ public enum ModArmorMaterial implements IArmorMaterial {
     private final Supplier<Ingredient> REPAIRMATERIAL;
 
     ModArmorMaterial(String name, int maxDamageFactor, int[] damageReduction, int enchantability, SoundEvent soundEvent, float toughness, Supplier<Ingredient> repairMaterial) {
-        NAME = TestMod.MODID + ":" + name;
-        MAXDAMAGEFACTOR = maxDamageFactor;
-        DAMAGEREDUCTION = damageReduction;
-        ENCHANTABILITY = enchantability;
-        SOUNDEVENT = soundEvent;
-        TOUGHNESS = toughness;
-        REPAIRMATERIAL = repairMaterial;
+        this.NAME = TestMod.MODID + ":" + name;
+        this.MAXDAMAGEFACTOR = maxDamageFactor;
+        this.DAMAGEREDUCTION = damageReduction;
+        this.ENCHANTABILITY = enchantability;
+        this.SOUNDEVENT = soundEvent;
+        this.TOUGHNESS = toughness;
+        this.REPAIRMATERIAL = repairMaterial;
     }
 
     @Override
     public int getDurability(EquipmentSlotType slotIn) {
-        return MAX_DAMAGE.getByIndex(slotIn.getIndex()) * MAXDAMAGEFACTOR;
+        return MAX_DAMAGE.getByIndex(slotIn.getIndex()) * this.MAXDAMAGEFACTOR;
     }
 
     @Override
     public int getDamageReductionAmount(EquipmentSlotType slotIn) {
-        return DAMAGEREDUCTION[slotIn.getIndex()];
+        return this.DAMAGEREDUCTION[slotIn.getIndex()];
     }
 
     @Override
     public int getEnchantability() {
-        return ENCHANTABILITY;
+        return this.ENCHANTABILITY;
     }
 
     @Override
     public SoundEvent getSoundEvent() {
-        return SOUNDEVENT;
+        return this.SOUNDEVENT;
     }
 
     @Override
     public Ingredient getRepairMaterial() {
-        return REPAIRMATERIAL.get();
+        return this.REPAIRMATERIAL.get();
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
     public String getName() {
-        return NAME;
+        return this.NAME;
     }
 
     @Override
     public float getToughness() {
-        return TOUGHNESS;
+        return this.TOUGHNESS;
     }
 }

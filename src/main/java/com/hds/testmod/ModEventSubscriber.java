@@ -24,32 +24,4 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 //  If bus is set to MOD it listens to Registry and Mod Loading events
 @Mod.EventBusSubscriber(modid = TestMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEventSubscriber {
-
-    @SubscribeEvent
-    public static void onRegisterItems(RegistryEvent.Register<Item> event) {
-        event.getRegistry().registerAll(
-                setup(new BaseItem(), "sapphire"),
-                setup(new PickaxeItem(ModItemTiers.SAPPHIRE, 4, -2.8F, new Item.Properties().group(ModItemGroups.TOOLS)), "sapphire_pickaxe"),
-                setup(new ArmorItem(ModArmorMaterial.SAPPHIRE, EquipmentSlotType.CHEST, new Item.Properties().group(ModItemGroups.ARMORS)), "sapphire_chestplate")
-        );
-    }
-
-    @SubscribeEvent
-    public static void onRegisterBlocks(RegistryEvent.Register<Block> event) {
-        IForgeRegistry<Block> registry = event.getRegistry();
-        Block block1 = setup(new SapphireBlock(), "sapphire_block");
-        registry.registerAll(
-                block1
-        );
-        new BaseBlockItem(block1).setRegistryName(block1.getRegistryName());
-    }
-
-    public static <T extends IForgeRegistryEntry<T>> T setup(final T entry, final String name) {
-        return setup(entry, new ResourceLocation(TestMod.MODID, name));
-    }
-
-    public static <T extends IForgeRegistryEntry<T>> T setup(final T entry, final ResourceLocation registryName) {
-        entry.setRegistryName(registryName);
-        return entry;
-    }
 }

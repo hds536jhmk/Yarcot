@@ -7,9 +7,14 @@ import net.minecraft.item.crafting.Ingredient;
 import java.util.function.Supplier;
 
 public enum ModItemTiers implements IItemTier {
-    SAPPHIRE(750, 7.0F, -1.0F, 3, 15, () -> {
-        return Ingredient.fromItems(ModItems.SAPPHIRE);
-    });
+    SAPPHIRE(
+            750,
+            7.0F,
+            -1.0F,
+            3,
+            15,
+            () -> Ingredient.fromItems(ModItems.SAPPHIRE.get())
+    );
 
     private final int DURABILITY;
     private final float EFFICIENCY;
@@ -19,41 +24,41 @@ public enum ModItemTiers implements IItemTier {
     private final Supplier<Ingredient> REPAIRMATERIAL;
 
     ModItemTiers(int durability, float efficiency, float attackDamage, int harvestLevel, int enchantability, Supplier<Ingredient> repairMaterial) {
-        DURABILITY = durability;
-        EFFICIENCY = efficiency;
-        ATTACKDAMAGE = attackDamage;
-        HARVESTLEVEL = harvestLevel;
-        ENCHANTABILITY = enchantability;
-        REPAIRMATERIAL = repairMaterial;
+        this.DURABILITY = durability;
+        this.EFFICIENCY = efficiency;
+        this.ATTACKDAMAGE = attackDamage;
+        this.HARVESTLEVEL = harvestLevel;
+        this.ENCHANTABILITY = enchantability;
+        this.REPAIRMATERIAL = repairMaterial;
     }
 
     @Override
     public int getMaxUses() {
-        return DURABILITY;
+        return this.DURABILITY;
     }
 
     @Override
     public float getEfficiency() {
-        return EFFICIENCY;
+        return this.EFFICIENCY;
     }
 
     @Override
     public float getAttackDamage() {
-        return ATTACKDAMAGE;
+        return this.ATTACKDAMAGE;
     }
 
     @Override
     public int getHarvestLevel() {
-        return HARVESTLEVEL;
+        return this.HARVESTLEVEL;
     }
 
     @Override
     public int getEnchantability() {
-        return ENCHANTABILITY;
+        return this.ENCHANTABILITY;
     }
 
     @Override
     public Ingredient getRepairMaterial() {
-        return REPAIRMATERIAL.get();
+        return this.REPAIRMATERIAL.get();
     }
 }
