@@ -1,7 +1,7 @@
 package com.hds.testmod.armor;
 
 import com.hds.testmod.TestMod;
-import com.hds.testmod.creativetabs.ModItemGroups;
+import com.hds.testmod.creativetab.ModItemGroups;
 import com.hds.testmod.util.RegistryHandler;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;

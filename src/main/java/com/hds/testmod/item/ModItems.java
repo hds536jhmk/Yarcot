@@ -1,4 +1,4 @@
-package com.hds.testmod.items;
+package com.hds.testmod.item;
 
 import com.hds.testmod.TestMod;
 import com.hds.testmod.util.RegistryHandler;
@@ -9,7 +9,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> SAPPHIRE = RegistryHandler.ITEMS.register(
             "sapphire",
-            () -> new BaseItem()
+            () -> BaseItem.createDefaultItem()
     );
 
     public static void registerAll() {

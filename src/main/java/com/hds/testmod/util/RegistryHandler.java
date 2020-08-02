@@ -1,10 +1,10 @@
 package com.hds.testmod.util;
 
 import com.hds.testmod.armor.ModArmors;
-import com.hds.testmod.items.ModItems;
-import com.hds.testmod.blocks.ModBlocks;
+import com.hds.testmod.item.ModItems;
+import com.hds.testmod.block.ModBlocks;
 import com.hds.testmod.TestMod;
-import com.hds.testmod.tools.ModTools;
+import com.hds.testmod.tool.ModTools;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;

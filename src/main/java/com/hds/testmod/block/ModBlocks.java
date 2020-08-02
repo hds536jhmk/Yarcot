@@ -1,4 +1,4 @@
-package com.hds.testmod.blocks;
+package com.hds.testmod.block;
 
 import com.hds.testmod.TestMod;
 import com.hds.testmod.util.RegistryHandler;
@@ -28,7 +28,7 @@ public class ModBlocks {
         );
         RegistryHandler.ITEMS.register(
                 name,
-                () -> new BaseBlockItem(block.get())
+                () -> BaseBlock.createDefaultBlockItem(block.get())
         );
 
         return block;

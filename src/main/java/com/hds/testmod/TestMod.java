@@ -1,9 +1,7 @@
 package com.hds.testmod;
 
-import com.hds.testmod.blocks.ModBlocks;
 import com.hds.testmod.util.RegistryHandler;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.loading.ModDirTransformerDiscoverer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -1,7 +1,7 @@
-package com.hds.testmod.tools;
+package com.hds.testmod.tool;
 
 import com.hds.testmod.TestMod;
-import com.hds.testmod.creativetabs.ModItemGroups;
+import com.hds.testmod.creativetab.ModItemGroups;
 import com.hds.testmod.util.RegistryHandler;
 import net.minecraft.item.Item;
 import net.minecraft.item.PickaxeItem;

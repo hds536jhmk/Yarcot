@@ -1,6 +1,6 @@
-package com.hds.testmod.tools;
+package com.hds.testmod.tool;
 
-import com.hds.testmod.items.ModItems;
+import com.hds.testmod.item.ModItems;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.crafting.Ingredient;
 
