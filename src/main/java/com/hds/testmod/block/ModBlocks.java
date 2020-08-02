@@ -14,6 +14,11 @@ public class ModBlocks {
             () -> new SapphireBlock()
     );
 
+    public static final RegistryObject<Block> SAPPHIRE_CHEST = ModBlocks.registerBlockItem(
+            "sapphire_chest",
+            () -> new SapphireChest()
+    );
+
     public static void registerAll() {
 
         TestMod.logInfo("All Blocks were registered!");
