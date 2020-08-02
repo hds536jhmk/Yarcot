@@ -1,7 +1,6 @@
 package com.hds.testmod.block;
 
 import com.hds.testmod.container.SapphireChestContainer;
-import com.hds.testmod.container.SapphireChestScreen;
 import com.hds.testmod.tileentity.SapphireChestTile;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

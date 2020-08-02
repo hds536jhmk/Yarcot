@@ -13,19 +13,18 @@ import javax.annotation.Nullable;
 
 public class SapphireChestTile extends TileEntity {
 
-    private ItemStackHandler itemStackHandler = this.createItemStackHandler(27);
+    public static int COLUMNS = 7;
+    public static int ROWS = 5;
+
+    private ItemStackHandler itemStackHandler = new ItemStackHandler(COLUMNS * ROWS) {
+        @Override
+        protected void onContentsChanged(int slot) {
+            markDirty();
+        }
+    };
 
     public SapphireChestTile() {
         super(ModTileEntities.SAPPHIRE_CHEST_TILE.get());
-    }
-
-    private ItemStackHandler createItemStackHandler(int size) {
-        return new ItemStackHandler(size) {
-            @Override
-            protected void onContentsChanged(int slot) {
-                markDirty();
-            }
-        };
     }
 
     @Override
