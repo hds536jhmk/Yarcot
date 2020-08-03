@@ -8,11 +8,11 @@ import net.minecraftforge.fml.RegistryObject;
 
 public class ModTileEntities {
 
-    public static final RegistryObject<TileEntityType<SapphireChestTile>> SAPPHIRE_CHEST_TILE = RegistryHandler.TILE_ENTITIES.register(
-            "sapphire_chest",
+    public static final RegistryObject<TileEntityType<SapphireBarrelTile>> SAPPHIRE_BARREL_TILE = RegistryHandler.TILE_ENTITIES.register(
+            "sapphire_barrel",
             () -> TileEntityType.Builder.create(
-                    SapphireChestTile::new,
-                    ModBlocks.SAPPHIRE_CHEST.get()
+                    SapphireBarrelTile::new,
+                    ModBlocks.SAPPHIRE_BARREL.get()
             ).build(null)
     );
 

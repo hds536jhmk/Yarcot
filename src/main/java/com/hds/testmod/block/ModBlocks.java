@@ -14,9 +14,9 @@ public class ModBlocks {
             () -> new SapphireBlock()
     );
 
-    public static final RegistryObject<Block> SAPPHIRE_CHEST = ModBlocks.registerBlockItem(
-            "sapphire_chest",
-            () -> new SapphireChest()
+    public static final RegistryObject<Block> SAPPHIRE_BARREL = ModBlocks.registerBlockItem(
+            "sapphire_barrel",
+            () -> new SapphireBarrel()
     );
 
     public static void registerAll() {

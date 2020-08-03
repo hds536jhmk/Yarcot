@@ -33,4 +33,8 @@ public class TestMod
         DebugLogged++;
     }
 
+    public static void logError(String text) {
+        LOGGER.error(LOGINTRO + text);
+    }
+
 }

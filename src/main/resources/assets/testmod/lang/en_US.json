@@ -4,9 +4,9 @@
   "itemGroup.testmodtools": "TestMod Tools",
   "itemGroup.testmodarmors": "TestMod Armors",
   "block.testmod.sapphire_block": "Sapphire Block",
-  "block.testmod.sapphire_chest": "Sapphire Chest",
+  "block.testmod.sapphire_barrel": "Sapphire Barrel",
   "item.testmod.sapphire": "Sapphire",
   "item.testmod.sapphire_pickaxe": "Sapphire Pickaxe",
   "item.testmod.sapphire_chestplate": "Sapphire Chestplate",
-  "screen.testmod.sapphire_chest_title": "Sapphire Chest"
+  "screen.testmod.sapphire_barrel_title": "Sapphire Barrel"
 }

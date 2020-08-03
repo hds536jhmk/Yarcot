@@ -2,7 +2,7 @@ package com.hds.testmod.util;
 
 import com.hds.testmod.TestMod;
 import com.hds.testmod.container.ModContainers;
-import com.hds.testmod.container.SapphireChestScreen;
+import com.hds.testmod.container.SapphireBarrelScreen;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -17,8 +17,8 @@ public class ModEventSubscriber {
     @SubscribeEvent
     public static void clientSetup(FMLClientSetupEvent event) {
         ScreenManager.registerFactory(
-                ModContainers.SAPPHIRE_CHEST_CONTAINER.get(),
-                SapphireChestScreen::new
+                ModContainers.SAPPHIRE_BARREL_CONTAINER.get(),
+                SapphireBarrelScreen::new
         );
 
         TestMod.logInfo("Client was set up!");

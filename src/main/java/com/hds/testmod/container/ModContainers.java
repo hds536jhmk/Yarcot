@@ -8,11 +8,11 @@ import net.minecraftforge.fml.RegistryObject;
 
 public class ModContainers {
 
-    public static RegistryObject<ContainerType<SapphireChestContainer>> SAPPHIRE_CHEST_CONTAINER = RegistryHandler.CONTAINERS.register(
+    public static RegistryObject<ContainerType<SapphireBarrelContainer>> SAPPHIRE_BARREL_CONTAINER = RegistryHandler.CONTAINERS.register(
             "sapphire_chest",
             () -> IForgeContainerType.create(
                     (windowId, inv, data) -> {
-                        return new SapphireChestContainer(
+                        return new SapphireBarrelContainer(
                                 windowId,
                                 inv,
                                 data.readBlockPos()
