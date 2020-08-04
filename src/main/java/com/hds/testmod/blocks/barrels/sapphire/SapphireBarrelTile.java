@@ -34,13 +34,13 @@ public class SapphireBarrelTile extends TileEntity {
     }
 
     @Override
-    public void read(CompoundNBT compound) {
+    public void read(@Nonnull CompoundNBT compound) {
         barrelInventory.deserializeNBT(compound.getCompound("itemStackHandler"));
         super.read(compound);
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT compound) {
+    public CompoundNBT write(@Nonnull CompoundNBT compound) {
         compound.put("itemStackHandler", barrelInventory.serializeNBT());
         return super.write(compound);
     }

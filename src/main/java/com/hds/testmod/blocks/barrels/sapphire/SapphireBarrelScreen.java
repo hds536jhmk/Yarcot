@@ -16,7 +16,6 @@ public class SapphireBarrelScreen extends ContainerScreen<SapphireBarrelContaine
 
     public SapphireBarrelScreen(SapphireBarrelContainer screenContainer, PlayerInventory inv, ITextComponent titleIn) {
         super(screenContainer, inv, titleIn);
-        super.init();
     }
 
     @Override
