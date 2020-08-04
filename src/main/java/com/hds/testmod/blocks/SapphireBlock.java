@@ -1,4 +1,4 @@
-package com.hds.testmod.block;
+package com.hds.testmod.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;

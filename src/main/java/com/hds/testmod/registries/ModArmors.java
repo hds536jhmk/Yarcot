@@ -1,7 +1,8 @@
-package com.hds.testmod.armor;
+package com.hds.testmod.registries;
 
-import com.hds.testmod.TestMod;
-import com.hds.testmod.creativetab.ModItemGroups;
+import com.hds.testmod.materials.ModArmorMaterial;
+import com.hds.testmod.creativetabs.ModItemGroups;
+import com.hds.testmod.util.ModLog;
 import com.hds.testmod.util.RegistryHandler;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
@@ -17,7 +18,7 @@ public class ModArmors {
 
     public static void registerAll() {
 
-        TestMod.logInfo("All Armors were registered!");
+        ModLog.info("All Armors were registered!");
 
     }
 

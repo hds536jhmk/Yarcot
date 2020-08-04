@@ -1,12 +1,12 @@
 package com.hds.testmod.util;
 
-import com.hds.testmod.armor.ModArmors;
-import com.hds.testmod.container.ModContainers;
-import com.hds.testmod.item.ModItems;
-import com.hds.testmod.block.ModBlocks;
+import com.hds.testmod.registries.ModArmors;
+import com.hds.testmod.registries.ModContainers;
+import com.hds.testmod.registries.ModItems;
+import com.hds.testmod.registries.ModBlocks;
 import com.hds.testmod.TestMod;
-import com.hds.testmod.tileentity.ModTileEntities;
-import com.hds.testmod.tool.ModTools;
+import com.hds.testmod.registries.ModTileEntities;
+import com.hds.testmod.registries.ModTools;
 import net.minecraft.block.Block;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.Item;

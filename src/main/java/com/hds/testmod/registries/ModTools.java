@@ -1,7 +1,8 @@
-package com.hds.testmod.tool;
+package com.hds.testmod.registries;
 
-import com.hds.testmod.TestMod;
-import com.hds.testmod.creativetab.ModItemGroups;
+import com.hds.testmod.creativetabs.ModItemGroups;
+import com.hds.testmod.materials.ModItemTiers;
+import com.hds.testmod.util.ModLog;
 import com.hds.testmod.util.RegistryHandler;
 import net.minecraft.item.Item;
 import net.minecraft.item.PickaxeItem;
@@ -16,7 +17,7 @@ public class ModTools {
 
     public static void registerAll() {
 
-        TestMod.logInfo("All Tools were registered!");
+        ModLog.info("All Tools were registered!");
 
     }
 

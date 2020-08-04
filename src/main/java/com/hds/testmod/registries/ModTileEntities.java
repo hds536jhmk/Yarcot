@@ -1,7 +1,7 @@
-package com.hds.testmod.tileentity;
+package com.hds.testmod.registries;
 
-import com.hds.testmod.TestMod;
-import com.hds.testmod.block.ModBlocks;
+import com.hds.testmod.blocks.barrels.sapphire_barrel.SapphireBarrelTile;
+import com.hds.testmod.util.ModLog;
 import com.hds.testmod.util.RegistryHandler;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;
@@ -18,7 +18,7 @@ public class ModTileEntities {
 
     public static void registerAll() {
 
-        TestMod.logInfo("All TileEntities were registered!");
+        ModLog.info("All TileEntities were registered!");
 
     }
 

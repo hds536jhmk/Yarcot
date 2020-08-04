@@ -1,7 +1,5 @@
-package com.hds.testmod.block;
+package com.hds.testmod.blocks.barrels.sapphire_barrel;
 
-import com.hds.testmod.container.SapphireBarrelContainer;
-import com.hds.testmod.tileentity.SapphireBarrelTile;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;

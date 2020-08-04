@@ -1,7 +1,7 @@
-package com.hds.testmod.armor;
+package com.hds.testmod.materials;
 
 import com.hds.testmod.TestMod;
-import com.hds.testmod.item.ModItems;
+import com.hds.testmod.registries.ModItems;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.crafting.Ingredient;

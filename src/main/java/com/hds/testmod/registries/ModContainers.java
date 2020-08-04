@@ -1,6 +1,7 @@
-package com.hds.testmod.container;
+package com.hds.testmod.registries;
 
-import com.hds.testmod.TestMod;
+import com.hds.testmod.blocks.barrels.sapphire_barrel.SapphireBarrelContainer;
+import com.hds.testmod.util.ModLog;
 import com.hds.testmod.util.RegistryHandler;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraftforge.common.extensions.IForgeContainerType;
@@ -23,7 +24,7 @@ public class ModContainers {
 
     public static void registerAll() {
 
-        TestMod.logInfo("All Containers were registered!");
+        ModLog.info("All Containers were registered!");
 
     }
 

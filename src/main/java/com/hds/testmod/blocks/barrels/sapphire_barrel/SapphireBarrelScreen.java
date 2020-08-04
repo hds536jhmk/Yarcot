@@ -1,7 +1,6 @@
-package com.hds.testmod.container;
+package com.hds.testmod.blocks.barrels.sapphire_barrel;
 
 import com.hds.testmod.TestMod;
-import com.hds.testmod.tileentity.SapphireBarrelTile;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;

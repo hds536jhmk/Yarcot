@@ -1,5 +1,6 @@
-package com.hds.testmod.tileentity;
+package com.hds.testmod.blocks.barrels.sapphire_barrel;
 
+import com.hds.testmod.registries.ModTileEntities;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;

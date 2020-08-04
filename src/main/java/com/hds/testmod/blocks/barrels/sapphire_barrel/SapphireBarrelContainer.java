@@ -1,8 +1,8 @@
-package com.hds.testmod.container;
+package com.hds.testmod.blocks.barrels.sapphire_barrel;
 
-import com.hds.testmod.TestMod;
-import com.hds.testmod.block.ModBlocks;
-import com.hds.testmod.tileentity.SapphireBarrelTile;
+import com.hds.testmod.registries.ModBlocks;
+import com.hds.testmod.registries.ModContainers;
+import com.hds.testmod.util.ModLog;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -32,7 +32,7 @@ public class SapphireBarrelContainer extends Container {
         super(ModContainers.SAPPHIRE_BARREL_CONTAINER.get(), windowId);
         TileEntity te = playerInventory.player.world.getTileEntity(pos);
         if (!(te instanceof SapphireBarrelTile))
-            TestMod.logError("INVALID TILEENTITY INSTANCE");
+            ModLog.error("INVALID TILEENTITY INSTANCE");
 
         this.tileEntity = (SapphireBarrelTile) te;
         this.playerEntity = playerInventory.player;

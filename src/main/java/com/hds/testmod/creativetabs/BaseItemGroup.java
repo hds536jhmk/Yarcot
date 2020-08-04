@@ -1,4 +1,4 @@
-package com.hds.testmod.creativetab;
+package com.hds.testmod.creativetabs;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;

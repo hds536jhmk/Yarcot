@@ -1,6 +1,7 @@
-package com.hds.testmod.item;
+package com.hds.testmod.registries;
 
-import com.hds.testmod.TestMod;
+import com.hds.testmod.items.BaseItem;
+import com.hds.testmod.util.ModLog;
 import com.hds.testmod.util.RegistryHandler;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
@@ -14,7 +15,7 @@ public class ModItems {
 
     public static void registerAll() {
 
-        TestMod.logInfo("All Items were registered!");
+        ModLog.info("All Items were registered!");
 
     }
 

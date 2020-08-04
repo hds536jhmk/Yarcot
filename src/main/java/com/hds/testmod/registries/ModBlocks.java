@@ -1,6 +1,9 @@
-package com.hds.testmod.block;
+package com.hds.testmod.registries;
 
-import com.hds.testmod.TestMod;
+import com.hds.testmod.blocks.BaseBlock;
+import com.hds.testmod.blocks.barrels.sapphire_barrel.SapphireBarrel;
+import com.hds.testmod.blocks.SapphireBlock;
+import com.hds.testmod.util.ModLog;
 import com.hds.testmod.util.RegistryHandler;
 import net.minecraft.block.Block;
 import net.minecraftforge.fml.RegistryObject;
@@ -21,7 +24,7 @@ public class ModBlocks {
 
     public static void registerAll() {
 
-        TestMod.logInfo("All Blocks were registered!");
+        ModLog.info("All Blocks were registered!");
 
     }
 

@@ -1,6 +1,6 @@
-package com.hds.testmod.item;
+package com.hds.testmod.items;
 
-import com.hds.testmod.creativetab.ModItemGroups;
+import com.hds.testmod.creativetabs.ModItemGroups;
 import net.minecraft.item.Item;
 
 public class BaseItem {
