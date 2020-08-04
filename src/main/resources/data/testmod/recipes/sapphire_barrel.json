@@ -7,10 +7,10 @@
   ],
   "key": {
     "s": {
-      "item": "testmod:sapphire"
+      "tag": "forge:gems/sapphire"
     },
     "b": {
-      "item": "minecraft:barrel"
+      "tag": "forge:barrels/wooden"
     }
   },
   "result": {

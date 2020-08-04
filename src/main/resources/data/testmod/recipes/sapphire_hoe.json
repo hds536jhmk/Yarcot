@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "sss",
-    " w ",
-    " w "
+    "ss",
+    " w",
+    " w"
   ],
   "key": {
     "s": {
@@ -14,7 +14,7 @@
     }
   },
   "result": {
-    "item": "testmod:sapphire_pickaxe",
+    "item": "testmod:sapphire_hoe",
     "count": 1
   }
 }
