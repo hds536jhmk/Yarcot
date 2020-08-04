@@ -1,6 +1,7 @@
 package com.hds.testmod.registries;
 
 import com.hds.testmod.blocks.barrels.sapphire.SapphireBarrelTile;
+import com.hds.testmod.blocks.batteries.sapphire.SapphireBatteryTile;
 import com.hds.testmod.util.ModLog;
 import com.hds.testmod.util.RegistryHandler;
 import net.minecraft.tileentity.TileEntityType;
@@ -13,6 +14,14 @@ public class ModTileEntities {
             () -> TileEntityType.Builder.create(
                     SapphireBarrelTile::new,
                     ModBlocks.SAPPHIRE_BARREL.get()
+            ).build(null)
+    );
+
+    public static final RegistryObject<TileEntityType<SapphireBatteryTile>> SAPPHIRE_BATTERY_TILE = RegistryHandler.TILE_ENTITIES.register(
+            "sapphire_battery",
+            () -> TileEntityType.Builder.create(
+                    SapphireBatteryTile::new,
+                    ModBlocks.SAPPHIRE_BATTERY.get()
             ).build(null)
     );
 

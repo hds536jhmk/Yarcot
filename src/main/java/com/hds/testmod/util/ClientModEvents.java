@@ -1,6 +1,7 @@
 package com.hds.testmod.util;
 
 import com.hds.testmod.TestMod;
+import com.hds.testmod.blocks.batteries.sapphire.SapphireBatteryScreen;
 import com.hds.testmod.registries.ModContainers;
 import com.hds.testmod.blocks.barrels.sapphire.SapphireBarrelScreen;
 import net.minecraft.client.gui.ScreenManager;
@@ -20,6 +21,11 @@ public class ClientModEvents {
         ScreenManager.registerFactory(
                 ModContainers.SAPPHIRE_BARREL_CONTAINER.get(),
                 SapphireBarrelScreen::new
+        );
+
+        ScreenManager.registerFactory(
+                ModContainers.SAPPHIRE_BATTERY_CONTAINER.get(),
+                SapphireBatteryScreen::new
         );
 
         ModLog.info("Client was set up!");

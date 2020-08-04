@@ -3,6 +3,7 @@ package com.hds.testmod.registries;
 import com.hds.testmod.blocks.BaseBlock;
 import com.hds.testmod.blocks.barrels.sapphire.SapphireBarrel;
 import com.hds.testmod.blocks.SapphireBlock;
+import com.hds.testmod.blocks.batteries.sapphire.SapphireBattery;
 import com.hds.testmod.util.ModLog;
 import com.hds.testmod.util.RegistryHandler;
 import net.minecraft.block.Block;
@@ -20,6 +21,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> SAPPHIRE_BARREL = ModBlocks.registerBlockItem(
             "sapphire_barrel",
             () -> new SapphireBarrel()
+    );
+
+    public static final RegistryObject<Block> SAPPHIRE_BATTERY = ModBlocks.registerBlockItem(
+            "sapphire_battery",
+            () -> new SapphireBattery()
     );
 
     public static void registerAll() {
