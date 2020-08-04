@@ -1,4 +1,4 @@
-package com.hds.testmod.blocks.barrels.sapphire_barrel;
+package com.hds.testmod.blocks.barrels.sapphire;
 
 import com.hds.testmod.registries.ModBlocks;
 import com.hds.testmod.registries.ModContainers;

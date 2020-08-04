@@ -1,7 +1,7 @@
 package com.hds.testmod.registries;
 
 import com.hds.testmod.blocks.BaseBlock;
-import com.hds.testmod.blocks.barrels.sapphire_barrel.SapphireBarrel;
+import com.hds.testmod.blocks.barrels.sapphire.SapphireBarrel;
 import com.hds.testmod.blocks.SapphireBlock;
 import com.hds.testmod.util.ModLog;
 import com.hds.testmod.util.RegistryHandler;

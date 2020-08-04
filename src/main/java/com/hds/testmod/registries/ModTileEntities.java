@@ -1,6 +1,6 @@
 package com.hds.testmod.registries;
 
-import com.hds.testmod.blocks.barrels.sapphire_barrel.SapphireBarrelTile;
+import com.hds.testmod.blocks.barrels.sapphire.SapphireBarrelTile;
 import com.hds.testmod.util.ModLog;
 import com.hds.testmod.util.RegistryHandler;
 import net.minecraft.tileentity.TileEntityType;

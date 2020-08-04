@@ -2,7 +2,7 @@ package com.hds.testmod.util;
 
 import com.hds.testmod.TestMod;
 import com.hds.testmod.registries.ModContainers;
-import com.hds.testmod.blocks.barrels.sapphire_barrel.SapphireBarrelScreen;
+import com.hds.testmod.blocks.barrels.sapphire.SapphireBarrelScreen;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

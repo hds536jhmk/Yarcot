@@ -5,8 +5,16 @@
   "itemGroup.testmodarmors": "TestMod Armors",
   "block.testmod.sapphire_block": "Sapphire Block",
   "block.testmod.sapphire_barrel": "Sapphire Barrel",
+  "block.testmod.sapphire_ore": "Sapphire Ore",
   "item.testmod.sapphire": "Sapphire",
+  "item.testmod.sapphire_sword": "Sapphire Sword",
+  "item.testmod.sapphire_shovel": "Sapphire Shovel",
   "item.testmod.sapphire_pickaxe": "Sapphire Pickaxe",
+  "item.testmod.sapphire_axe": "Sapphire Axe",
+  "item.testmod.sapphire_hoe": "Sapphire Hoe",
+  "item.testmod.sapphire_helmet": "Sapphire Helmet",
   "item.testmod.sapphire_chestplate": "Sapphire Chestplate",
+  "item.testmod.sapphire_leggings": "Sapphire Leggings",
+  "item.testmod.sapphire_boots": "Sapphire Boots",
   "screen.testmod.sapphire_barrel_title": "Sapphire Barrel"
 }

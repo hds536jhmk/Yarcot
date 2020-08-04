@@ -1,4 +1,4 @@
-package com.hds.testmod.blocks.barrels.sapphire_barrel;
+package com.hds.testmod.blocks.barrels.sapphire;
 
 import com.hds.testmod.TestMod;
 import com.mojang.blaze3d.systems.RenderSystem;

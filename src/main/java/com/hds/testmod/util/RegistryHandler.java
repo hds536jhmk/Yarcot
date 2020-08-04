@@ -1,12 +1,7 @@
 package com.hds.testmod.util;
 
-import com.hds.testmod.registries.ModArmors;
-import com.hds.testmod.registries.ModContainers;
-import com.hds.testmod.registries.ModItems;
-import com.hds.testmod.registries.ModBlocks;
+import com.hds.testmod.registries.*;
 import com.hds.testmod.TestMod;
-import com.hds.testmod.registries.ModTileEntities;
-import com.hds.testmod.registries.ModTools;
 import net.minecraft.block.Block;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.Item;
@@ -33,6 +28,7 @@ public class RegistryHandler {
     public static void init() {
         ModArmors.registerAll();
         ModBlocks.registerAll();
+        ModOres.registerAll();
         ModItems.registerAll();
         ModTools.registerAll();
         ModTileEntities.registerAll();

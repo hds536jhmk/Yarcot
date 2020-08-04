@@ -10,7 +10,7 @@ public enum ModItemTiers implements IItemTier {
     SAPPHIRE(
             750,
             7.0F,
-            -1.0F,
+            0.0F,
             3,
             15,
             () -> Ingredient.fromItems(ModItems.SAPPHIRE.get())

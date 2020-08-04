@@ -1,6 +1,6 @@
 package com.hds.testmod.registries;
 
-import com.hds.testmod.blocks.barrels.sapphire_barrel.SapphireBarrelContainer;
+import com.hds.testmod.blocks.barrels.sapphire.SapphireBarrelContainer;
 import com.hds.testmod.util.ModLog;
 import com.hds.testmod.util.RegistryHandler;
 import net.minecraft.inventory.container.ContainerType;

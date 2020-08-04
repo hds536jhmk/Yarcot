@@ -1,4 +1,4 @@
-package com.hds.testmod.blocks.barrels.sapphire_barrel;
+package com.hds.testmod.blocks.barrels.sapphire;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -101,7 +101,7 @@ public class SapphireBarrel extends Block {
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         return this.getDefaultState()
-                .with(BlockStateProperties.FACING, context.getNearestLookingDirection().getOpposite())
+                .with(BlockStateProperties.FACING, context.getFace())
                 .with(BlockStateProperties.OPEN, false);
     }
 

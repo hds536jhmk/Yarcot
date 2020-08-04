@@ -16,5 +16,4 @@ public class SapphireBlock extends Block {
                 .sound(SoundType.METAL)
         );
     }
-
 }

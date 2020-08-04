@@ -11,9 +11,24 @@ import net.minecraftforge.fml.RegistryObject;
 
 public class ModArmors {
 
+    public static final RegistryObject<ArmorItem> SAPPHIRE_HELMET = RegistryHandler.ITEMS.register(
+            "sapphire_helmet",
+            () -> new ArmorItem(ModArmorMaterial.SAPPHIRE, EquipmentSlotType.HEAD, new Item.Properties().group(ModItemGroups.ARMORS))
+    );
+
     public static final RegistryObject<ArmorItem> SAPPHIRE_CHESTPLATE = RegistryHandler.ITEMS.register(
             "sapphire_chestplate",
             () -> new ArmorItem(ModArmorMaterial.SAPPHIRE, EquipmentSlotType.CHEST, new Item.Properties().group(ModItemGroups.ARMORS))
+    );
+
+    public static final RegistryObject<ArmorItem> SAPPHIRE_LEGGINGS = RegistryHandler.ITEMS.register(
+            "sapphire_leggings",
+            () -> new ArmorItem(ModArmorMaterial.SAPPHIRE, EquipmentSlotType.LEGS, new Item.Properties().group(ModItemGroups.ARMORS))
+    );
+
+    public static final RegistryObject<ArmorItem> SAPPHIRE_BOOTS = RegistryHandler.ITEMS.register(
+            "sapphire_boots",
+            () -> new ArmorItem(ModArmorMaterial.SAPPHIRE, EquipmentSlotType.FEET, new Item.Properties().group(ModItemGroups.ARMORS))
     );
 
     public static void registerAll() {

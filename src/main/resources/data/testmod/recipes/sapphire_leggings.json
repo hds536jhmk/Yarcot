@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sss",
+    "s s",
+    "s s"
+  ],
+  "key": {
+    "s": {
+      "item": "testmod:sapphire"
+    }
+  },
+  "result": {
+    "item": "testmod:sapphire_leggings",
+    "count": 1
+  }
+}
