@@ -15,7 +15,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class SapphireBatteryTile extends TileEntity implements ITickableTileEntity {
-    private ModEnergyStorage energyStorage = new ModEnergyStorage(5000) {
+    private ModEnergyStorage energyStorage = new ModEnergyStorage(5000, 10, 50) {
         @Override
         public void onEnergyChanged(int energyAdded) {
             markDirty();
@@ -26,7 +26,7 @@ public class SapphireBatteryTile extends TileEntity implements ITickableTileEnti
     private TickTimer energyGenerationTimer = new TickTimer(2) {
         @Override
         public void onTimeout() {
-            energyStorage.receiveEnergy(10, false);
+            // energyStorage.receiveEnergy(10, false);
         }
     };
 
