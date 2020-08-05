@@ -4,7 +4,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.energy.EnergyStorage;
 
-public class ModEnergyStorage extends EnergyStorage implements INBTSerializable<CompoundNBT> {
+public abstract class ModEnergyStorage extends EnergyStorage implements INBTSerializable<CompoundNBT> {
 
     public ModEnergyStorage(int capacity) {
         this(capacity, 0, 0, 0);
@@ -22,7 +22,7 @@ public class ModEnergyStorage extends EnergyStorage implements INBTSerializable<
         super(capacity, maxReceive, maxExtract, energy);
     }
 
-    public void onEnergyChanged(int energyAdded) {}
+    public abstract void onEnergyChanged(int energyAdded);
 
     public void setEnergy(int energy) {
         int initialEnergy = this.energy;
