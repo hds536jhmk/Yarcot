@@ -13,7 +13,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class SapphireBatteryScreen extends ContainerScreen<SapphireBatteryContainer> {
-    private ResourceLocation GUI_TEXTURE = new ResourceLocation(TestMod.MODID, "textures/gui/container/sapphire_barrel.png");
+    private final ResourceLocation GUI_TEXTURE = new ResourceLocation(TestMod.MOD_ID, "textures/gui/container/sapphire_barrel.png");
 
     public SapphireBatteryScreen(SapphireBatteryContainer screenContainer, PlayerInventory inv, ITextComponent titleIn) {
         super(screenContainer, inv, titleIn);

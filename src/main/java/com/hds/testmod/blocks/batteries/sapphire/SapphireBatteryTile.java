@@ -15,7 +15,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class SapphireBatteryTile extends TileEntity implements ITickableTileEntity {
-    private ModEnergyStorage energyStorage = new ModEnergyStorage(5000, 10, 50) {
+    private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(5000, 10, 50) {
         @Override
         public void onEnergyChanged(int energyAdded) {
             markDirty();
@@ -23,7 +23,7 @@ public class SapphireBatteryTile extends TileEntity implements ITickableTileEnti
     };
 
     // TODO: Make it actually work, it shouldn't generate power
-    private TickTimer energyGenerationTimer = new TickTimer(2) {
+    private final TickTimer ENERGY_GENERATION_TIMER = new TickTimer(2) {
         @Override
         public void onTimeout() {
             // energyStorage.receiveEnergy(10, false);
@@ -38,18 +38,18 @@ public class SapphireBatteryTile extends TileEntity implements ITickableTileEnti
     public void tick() {
         if (world.isRemote)
             return;
-        energyGenerationTimer.tick();
+        ENERGY_GENERATION_TIMER.tick();
     }
 
     @Override
     public void read(CompoundNBT compound) {
         super.read(compound);
-        energyStorage.deserializeNBT(compound.getCompound("energyStorage"));
+        ENERGY_STORAGE.deserializeNBT(compound.getCompound("energyStorage"));
     }
 
     @Override
     public CompoundNBT write(CompoundNBT compound) {
-        compound.put("energyStorage", energyStorage.serializeNBT());
+        compound.put("energyStorage", ENERGY_STORAGE.serializeNBT());
         return super.write(compound);
     }
 
@@ -62,7 +62,7 @@ public class SapphireBatteryTile extends TileEntity implements ITickableTileEnti
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
         if (cap.equals(CapabilityEnergy.ENERGY)) {
-            return LazyOptional.of(() -> energyStorage).cast();
+            return LazyOptional.of(() -> ENERGY_STORAGE).cast();
         }
         return super.getCapability(cap, side);
     }

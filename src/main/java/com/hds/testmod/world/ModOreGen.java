@@ -1,7 +1,6 @@
 package com.hds.testmod.world;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.Feature;
@@ -17,10 +16,10 @@ import java.util.function.Supplier;
 public class ModOreGen {
 
     public static class OreGenConfig {
-        private OreFeatureConfig.FillerBlockType fillerBlock;
-        private Supplier<Block> ore;
-        private int veinSize;
-        private ConfiguredPlacement placementConfig;
+        private final OreFeatureConfig.FillerBlockType fillerBlock;
+        private final Supplier<Block> ore;
+        private final int veinSize;
+        private final ConfiguredPlacement placementConfig;
 
         public OreGenConfig(Supplier<Block> ore, OreFeatureConfig.FillerBlockType fillerBlock, int rarity, int veinSize, int lowestSpawnHeight, int highestSpawnHeight) {
             this.fillerBlock = fillerBlock;
@@ -38,7 +37,7 @@ public class ModOreGen {
         }
     }
 
-    private static final ArrayList<OreGenConfig> oresToRegister = new ArrayList<OreGenConfig>();
+    private static final ArrayList<OreGenConfig> oresToRegister = new ArrayList<>();
 
     public static void addOre(OreGenConfig ore) {
         oresToRegister.add(ore);

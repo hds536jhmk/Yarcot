@@ -17,7 +17,7 @@ public class SapphireBarrelTile extends TileEntity {
     public static int COLUMNS = 11;
     public static int ROWS = 5;
 
-    private ItemStackHandler barrelInventory = new ItemStackHandler(COLUMNS * ROWS) {
+    private final ItemStackHandler BARREL_INVENTORY = new ItemStackHandler(COLUMNS * ROWS) {
         @Override
         protected void onContentsChanged(int slot) {
             markDirty();
@@ -35,25 +35,25 @@ public class SapphireBarrelTile extends TileEntity {
 
     @Override
     public void read(@Nonnull CompoundNBT compound) {
-        barrelInventory.deserializeNBT(compound.getCompound("itemStackHandler"));
+        BARREL_INVENTORY.deserializeNBT(compound.getCompound("itemStackHandler"));
         super.read(compound);
     }
 
     @Override
     public CompoundNBT write(@Nonnull CompoundNBT compound) {
-        compound.put("itemStackHandler", barrelInventory.serializeNBT());
+        compound.put("itemStackHandler", BARREL_INVENTORY.serializeNBT());
         return super.write(compound);
     }
 
     public ItemStackHandler getBarrelInventory() {
-        return barrelInventory;
+        return BARREL_INVENTORY;
     }
 
     @Nonnull
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
         if (cap.equals(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)) {
-            return LazyOptional.of(() -> barrelInventory).cast();
+            return LazyOptional.of(() -> BARREL_INVENTORY).cast();
         }
         return super.getCapability(cap, side);
     }

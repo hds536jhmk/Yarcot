@@ -1,6 +1,5 @@
 package com.hds.testmod.blocks.barrels.sapphire;
 
-import com.hds.testmod.registries.ModBlocks;
 import com.hds.testmod.registries.ModContainers;
 import com.hds.testmod.util.ModLog;
 import net.minecraft.entity.player.PlayerEntity;
@@ -10,7 +9,6 @@ import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -22,8 +20,8 @@ public class SapphireBarrelContainer extends Container {
 
     public static final int CELLSIZE = 18;
 
-    private SapphireBarrelTile tileEntity;
-    private PlayerEntity playerEntity;
+    private final SapphireBarrelTile BARREL_TILE;
+    private final PlayerEntity PLAYER;
 
     public SapphireBarrelContainer(int windowId, PlayerInventory playerInventory, BlockPos pos) {
         super(ModContainers.SAPPHIRE_BARREL_CONTAINER.get(), windowId);
@@ -31,10 +29,10 @@ public class SapphireBarrelContainer extends Container {
         if (!(te instanceof SapphireBarrelTile))
             ModLog.error("INVALID TILEENTITY INSTANCE");
 
-        this.tileEntity = (SapphireBarrelTile) te;
-        this.playerEntity = playerInventory.player;
+        this.BARREL_TILE = (SapphireBarrelTile) te;
+        this.PLAYER = playerInventory.player;
 
-        generateLayout(playerInventory, SapphireBarrelTile.COLUMNS, SapphireBarrelTile.ROWS, this.tileEntity.getBarrelInventory());
+        generateLayout(playerInventory, SapphireBarrelTile.COLUMNS, SapphireBarrelTile.ROWS, this.BARREL_TILE.getBarrelInventory());
     }
 
     private void generateLayout(PlayerInventory playerInventory, int cols, int rows, IItemHandler extraInventory) {
@@ -74,14 +72,14 @@ public class SapphireBarrelContainer extends Container {
 
     @Override
     public boolean canInteractWith(PlayerEntity playerIn) {
-        return isWithinUsableDistance(IWorldPosCallable.of(tileEntity.getWorld(), tileEntity.getPos()), playerEntity, ModBlocks.SAPPHIRE_BARREL.get());
+        return true;
     }
 
     @Override
     public ItemStack transferStackInSlot(PlayerEntity playerIn, int index) {
 
         Slot slotToTransfer = this.getSlot(index);
-        int barrelSlots = tileEntity.getBarrelInventory().getSlots();
+        int barrelSlots = BARREL_TILE.getBarrelInventory().getSlots();
         if (index < barrelSlots) { // FROM BARREL TO INVENTORY
             this.mergeItemStack(slotToTransfer.getStack(), barrelSlots, this.getInventory().size(), true);
         } else { // FROM INVENTORY TO BARREL
@@ -96,9 +94,9 @@ public class SapphireBarrelContainer extends Container {
     public void onContainerClosed(PlayerEntity playerIn) {
         super.onContainerClosed(playerIn);
         playerIn.world.setBlockState(
-                this.tileEntity.getPos(),
-                this.tileEntity.getBlockState().with(BlockStateProperties.OPEN, false)
+                this.BARREL_TILE.getPos(),
+                this.BARREL_TILE.getBlockState().with(BlockStateProperties.OPEN, false)
         );
-        playerIn.world.playSound(null, this.tileEntity.getPos(), SoundEvents.BLOCK_BARREL_CLOSE, SoundCategory.BLOCKS, .5F, 1);
+        playerIn.world.playSound(null, this.BARREL_TILE.getPos(), SoundEvents.BLOCK_BARREL_CLOSE, SoundCategory.BLOCKS, .5F, 1);
     }
 }

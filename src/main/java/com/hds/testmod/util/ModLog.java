@@ -6,21 +6,21 @@ import org.apache.logging.log4j.Logger;
 
 public class ModLog {
     private static final Logger LOGGER = LogManager.getLogger();
-    private static final String LOGPREFIX = TestMod.MODID + ": ";
+    private static final String LOG_PREFIX = TestMod.MOD_ID + ": ";
     private static int InfoLogged = 0;
     private static int DebugLogged = 0;
 
     public static void info(String text) {
-        LOGGER.info(LOGPREFIX + text);
+        LOGGER.info(LOG_PREFIX + text);
         InfoLogged++;
     }
 
     public static void debug(String text) {
-        LOGGER.debug(LOGPREFIX + text);
+        LOGGER.debug(LOG_PREFIX + text);
         DebugLogged++;
     }
 
     public static void error(String text) {
-        LOGGER.error(LOGPREFIX + text);
+        LOGGER.error(LOG_PREFIX + text);
     }
 }

@@ -10,7 +10,7 @@ import net.minecraftforge.fml.RegistryObject;
 public class ModOres {
 
     public static RegistryObject<Block> SAPPHIRE_ORE = ModBlocks.registerBlockItem(
-            "sapphire_ore", () -> new SapphireOre()
+            "sapphire_ore", SapphireOre::new
     );
 
     public static void registerAll() {

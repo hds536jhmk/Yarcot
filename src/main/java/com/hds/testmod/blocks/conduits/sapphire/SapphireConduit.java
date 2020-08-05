@@ -34,7 +34,7 @@ public class SapphireConduit extends Block {
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         VoxelShape conduitShape = Block.makeCuboidShape(6, 6, 6, 10, 10, 10);
 
-        ArrayList<VoxelShape> shapesToAdd = new ArrayList<VoxelShape>();
+        ArrayList<VoxelShape> shapesToAdd = new ArrayList<>();
         for (Direction direction : Direction.values()) {
             boolean hasConnection = state.get(DirectionToBooleanProperty.get(direction));
             if (!hasConnection)
@@ -51,8 +51,8 @@ public class SapphireConduit extends Block {
             ));
         }
 
-        for (int i = 0; i < shapesToAdd.size(); i++) {
-            conduitShape = VoxelShapes.combine(conduitShape, shapesToAdd.get(i), IBooleanFunction.OR);
+        for (VoxelShape voxelShape : shapesToAdd) {
+            conduitShape = VoxelShapes.combine(conduitShape, voxelShape, IBooleanFunction.OR);
         }
 
         return conduitShape.simplify();

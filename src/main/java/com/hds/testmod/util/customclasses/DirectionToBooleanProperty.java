@@ -4,10 +4,10 @@ import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 
-import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
 
 public class DirectionToBooleanProperty {
-    @Nullable
+    @Nonnull
     public static BooleanProperty get(Direction dir) {
         switch (dir) {
             case WEST:
@@ -20,10 +20,8 @@ public class DirectionToBooleanProperty {
                 return BlockStateProperties.NORTH;
             case EAST:
                 return BlockStateProperties.EAST;
-            case DOWN:
-                return BlockStateProperties.DOWN;
             default:
-                return null;
+                return BlockStateProperties.DOWN;
         }
     }
 }

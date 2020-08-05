@@ -19,10 +19,11 @@ import javax.annotation.Nullable;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class SapphireConduitTile extends TileEntity implements ITickableTileEntity {
-    private static final int MAXINPUT = 100;
-    private static final int MAXOUTPUT = 100;
+    private static final int MAX_INPUT = 100;
+    private static final int MAX_OUTPUT = 100;
     private static final int CAPACITY = 200;
-    private ModEnergyStorage conduitEnergyBuffer = new ModEnergyStorage(CAPACITY, MAXINPUT, MAXOUTPUT, 0) {
+
+    private final ModEnergyStorage CONDUIT_ENERGY_BUFFER = new ModEnergyStorage(CAPACITY, MAX_INPUT, MAX_OUTPUT, 0) {
         @Override
         public void onEnergyChanged(int energyAdded) {
             markDirty();
@@ -38,7 +39,7 @@ public class SapphireConduitTile extends TileEntity implements ITickableTileEnti
         if (world.isRemote)
             return;
         BlockPos thisPos = this.getPos();
-        AtomicReference<BlockState> thisBlockState = new AtomicReference<BlockState>(world.getBlockState(thisPos));
+        AtomicReference<BlockState> thisBlockState = new AtomicReference<>(world.getBlockState(thisPos));
         for (Direction direction : Direction.values()) {
             BooleanProperty attachedFace = DirectionToBooleanProperty.get(direction);
             thisBlockState.set(thisBlockState.get().with(attachedFace, false));
@@ -48,14 +49,14 @@ public class SapphireConduitTile extends TileEntity implements ITickableTileEnti
             tileEntity.getCapability(CapabilityEnergy.ENERGY, direction.getOpposite()).ifPresent(
                     energyHandler -> {
                         thisBlockState.set(thisBlockState.get().with(attachedFace, true));
-                        if (energyHandler.canReceive() && (energyHandler.getEnergyStored() < conduitEnergyBuffer.getEnergyStored() || conduitEnergyBuffer.getEnergyStored() >= conduitEnergyBuffer.getMaxEnergyStored())) {
-                            int receivedEnergy = energyHandler.receiveEnergy(MAXOUTPUT, true);
-                            int takenEnergy = conduitEnergyBuffer.extractEnergy(receivedEnergy, false);
+                        if (energyHandler.canReceive() && (energyHandler.getEnergyStored() < CONDUIT_ENERGY_BUFFER.getEnergyStored() || CONDUIT_ENERGY_BUFFER.getEnergyStored() >= CONDUIT_ENERGY_BUFFER.getMaxEnergyStored())) {
+                            int receivedEnergy = energyHandler.receiveEnergy(MAX_OUTPUT, true);
+                            int takenEnergy = CONDUIT_ENERGY_BUFFER.extractEnergy(receivedEnergy, false);
                             energyHandler.receiveEnergy(takenEnergy, false);
 
                         } else if (energyHandler.canExtract()) {
-                            int takenEnergy = energyHandler.extractEnergy(MAXINPUT, true);
-                            int receivedEnergy = conduitEnergyBuffer.receiveEnergy(takenEnergy, false);
+                            int takenEnergy = energyHandler.extractEnergy(MAX_INPUT, true);
+                            int receivedEnergy = CONDUIT_ENERGY_BUFFER.receiveEnergy(takenEnergy, false);
                             energyHandler.extractEnergy(receivedEnergy, false);
 
                         }
@@ -68,12 +69,12 @@ public class SapphireConduitTile extends TileEntity implements ITickableTileEnti
     @Override
     public void read(CompoundNBT compound) {
         super.read(compound);
-        conduitEnergyBuffer.deserializeNBT(compound.getCompound("energyBuffer"));
+        CONDUIT_ENERGY_BUFFER.deserializeNBT(compound.getCompound("energyBuffer"));
     }
 
     @Override
     public CompoundNBT write(CompoundNBT compound) {
-        compound.put("energyBuffer", conduitEnergyBuffer.serializeNBT());
+        compound.put("energyBuffer", CONDUIT_ENERGY_BUFFER.serializeNBT());
         return super.write(compound);
     }
 
@@ -81,7 +82,7 @@ public class SapphireConduitTile extends TileEntity implements ITickableTileEnti
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
         if (cap.equals(CapabilityEnergy.ENERGY)) {
-            return LazyOptional.of(() -> conduitEnergyBuffer).cast();
+            return LazyOptional.of(() -> CONDUIT_ENERGY_BUFFER).cast();
         }
         return super.getCapability(cap, side);
     }

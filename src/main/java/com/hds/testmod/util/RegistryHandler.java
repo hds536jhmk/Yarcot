@@ -13,16 +13,16 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class RegistryHandler {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(
-            ForgeRegistries.ITEMS, TestMod.MODID
+            ForgeRegistries.ITEMS, TestMod.MOD_ID
     );
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(
-            ForgeRegistries.BLOCKS, TestMod.MODID
+            ForgeRegistries.BLOCKS, TestMod.MOD_ID
     );
     public static final DeferredRegister<TileEntityType<?>> TILE_ENTITIES = DeferredRegister.create(
-            ForgeRegistries.TILE_ENTITIES, TestMod.MODID
+            ForgeRegistries.TILE_ENTITIES, TestMod.MOD_ID
     );
     public static final DeferredRegister<ContainerType<?>> CONTAINERS = DeferredRegister.create(
-            ForgeRegistries.CONTAINERS, TestMod.MODID
+            ForgeRegistries.CONTAINERS, TestMod.MOD_ID
     );
 
     public static void init() {

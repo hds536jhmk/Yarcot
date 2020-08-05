@@ -16,22 +16,22 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> SAPPHIRE_BLOCK = registerBlockItem(
             "sapphire_block",
-            () -> new SapphireBlock()
+            SapphireBlock::new
     );
 
     public static final RegistryObject<Block> SAPPHIRE_BARREL = ModBlocks.registerBlockItem(
             "sapphire_barrel",
-            () -> new SapphireBarrel()
+            SapphireBarrel::new
     );
 
     public static final RegistryObject<Block> SAPPHIRE_BATTERY = ModBlocks.registerBlockItem(
             "sapphire_battery",
-            () -> new SapphireBattery()
+            SapphireBattery::new
     );
 
     public static final RegistryObject<Block> SAPPHIRE_CONDUIT = ModBlocks.registerBlockItem(
             "sapphire_conduit",
-            () -> new SapphireConduit()
+            SapphireConduit::new
     );
 
     public static void registerAll() {

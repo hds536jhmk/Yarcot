@@ -14,8 +14,7 @@ public class BaseBlock {
     public static BlockItem createDefaultBlockItem(Block block) {
         return new BlockItem(
                 block,
-                new Item.Properties()
-                        .group(ModItemGroups.BLOCKS)
+                createDefaultProperties()
         );
     }
 

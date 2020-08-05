@@ -52,31 +52,31 @@ public enum ModArmorMaterial implements IArmorMaterial {
     }
 
     private final String NAME;
-    private final int MAXDAMAGEFACTOR;
-    private final int[] DAMAGEREDUCTION;
+    private final int MAX_DAMAGE_FACTOR;
+    private final int[] DAMAGE_REDUCTION;
     private final int ENCHANTABILITY;
-    private final SoundEvent SOUNDEVENT;
+    private final SoundEvent SOUND_EVENT;
     private final float TOUGHNESS;
-    private final Supplier<Ingredient> REPAIRMATERIAL;
+    private final Supplier<Ingredient> REPAIR_MATERIAL;
 
     ModArmorMaterial(String name, int maxDamageFactor, int[] damageReduction, int enchantability, SoundEvent soundEvent, float toughness, Supplier<Ingredient> repairMaterial) {
-        this.NAME = TestMod.MODID + ":" + name;
-        this.MAXDAMAGEFACTOR = maxDamageFactor;
-        this.DAMAGEREDUCTION = damageReduction;
+        this.NAME = TestMod.MOD_ID + ":" + name;
+        this.MAX_DAMAGE_FACTOR = maxDamageFactor;
+        this.DAMAGE_REDUCTION = damageReduction;
         this.ENCHANTABILITY = enchantability;
-        this.SOUNDEVENT = soundEvent;
+        this.SOUND_EVENT = soundEvent;
         this.TOUGHNESS = toughness;
-        this.REPAIRMATERIAL = repairMaterial;
+        this.REPAIR_MATERIAL = repairMaterial;
     }
 
     @Override
     public int getDurability(EquipmentSlotType slotIn) {
-        return MAX_DAMAGE.getByIndex(slotIn.getIndex()) * this.MAXDAMAGEFACTOR;
+        return MAX_DAMAGE.getByIndex(slotIn.getIndex()) * this.MAX_DAMAGE_FACTOR;
     }
 
     @Override
     public int getDamageReductionAmount(EquipmentSlotType slotIn) {
-        return this.DAMAGEREDUCTION[slotIn.getIndex()];
+        return this.DAMAGE_REDUCTION[slotIn.getIndex()];
     }
 
     @Override
@@ -86,12 +86,12 @@ public enum ModArmorMaterial implements IArmorMaterial {
 
     @Override
     public SoundEvent getSoundEvent() {
-        return this.SOUNDEVENT;
+        return this.SOUND_EVENT;
     }
 
     @Override
     public Ingredient getRepairMaterial() {
-        return this.REPAIRMATERIAL.get();
+        return this.REPAIR_MATERIAL.get();
     }
 
     @OnlyIn(Dist.CLIENT)

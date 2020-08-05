@@ -13,22 +13,14 @@ public class ModContainers {
     public static RegistryObject<ContainerType<SapphireBarrelContainer>> SAPPHIRE_BARREL_CONTAINER = RegistryHandler.CONTAINERS.register(
             "sapphire_barrel",
             () -> IForgeContainerType.create(
-                    (windowId, inv, data) -> {
-                        return new SapphireBarrelContainer(
-                                windowId,
-                                inv,
-                                data.readBlockPos()
-                        );
-                    }
+                    (windowId, inv, data) -> new SapphireBarrelContainer(windowId, inv, data.readBlockPos())
             )
     );
 
     public static RegistryObject<ContainerType<SapphireBatteryContainer>> SAPPHIRE_BATTERY_CONTAINER = RegistryHandler.CONTAINERS.register(
             "sapphire_battery",
             () -> IForgeContainerType.create(
-                    (windowId, inv, data) -> {
-                        return new SapphireBatteryContainer(windowId, inv, data.readBlockPos());
-                    }
+                    (windowId, inv, data) -> new SapphireBatteryContainer(windowId, inv, data.readBlockPos())
             )
     );
 

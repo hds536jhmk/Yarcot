@@ -14,15 +14,13 @@ import net.minecraftforge.energy.IEnergyStorage;
 
 public class SapphireBatteryContainer extends Container {
 
-    private BlockPos blockPos;
-    private PlayerEntity player;
-    private TileEntity battery;
+    private final TileEntity BATTERY_TILE;
+    private final PlayerEntity PLAYER;
 
     public SapphireBatteryContainer(int windowId, PlayerInventory playerInventory, BlockPos pos) {
         super(ModContainers.SAPPHIRE_BATTERY_CONTAINER.get(), windowId);
-        this.blockPos = pos;
-        this.player = playerInventory.player;
-        this.battery = this.player.world.getTileEntity(this.blockPos);
+        this.PLAYER = playerInventory.player;
+        this.BATTERY_TILE = this.PLAYER.world.getTileEntity(pos);
         trackEnergy();
     }
 
@@ -39,7 +37,7 @@ public class SapphireBatteryContainer extends Container {
             // This is ran on the client to set values on the tileentity that's stored on the client
             public void set(int serverEnergy) {
                 // Sets battery's energy to be the same as the server's
-                battery.getCapability(CapabilityEnergy.ENERGY).ifPresent(energyStorageHandler -> {
+                BATTERY_TILE.getCapability(CapabilityEnergy.ENERGY).ifPresent(energyStorageHandler -> {
                     int energyStored = energyStorageHandler.getEnergyStored() & 0xffff0000;
                     ((ModEnergyStorage)energyStorageHandler).setEnergy(energyStored + (serverEnergy & 0xffff));
                 });
@@ -53,7 +51,7 @@ public class SapphireBatteryContainer extends Container {
 
             @Override
             public void set(int serverEnergy) {
-                battery.getCapability(CapabilityEnergy.ENERGY).ifPresent(energyStorageHandler -> {
+                BATTERY_TILE.getCapability(CapabilityEnergy.ENERGY).ifPresent(energyStorageHandler -> {
                     int energyStored = energyStorageHandler.getEnergyStored() & 0x0000ffff;
                     ((ModEnergyStorage)energyStorageHandler).setEnergy(energyStored | (serverEnergy << 16));
                 });
@@ -62,7 +60,7 @@ public class SapphireBatteryContainer extends Container {
     }
 
     public int getEnergy() {
-        return battery.getCapability(CapabilityEnergy.ENERGY).map(IEnergyStorage::getEnergyStored).orElse(0);
+        return BATTERY_TILE.getCapability(CapabilityEnergy.ENERGY).map(IEnergyStorage::getEnergyStored).orElse(0);
     }
 
     @Override
