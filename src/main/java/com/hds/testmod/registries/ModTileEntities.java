@@ -2,6 +2,7 @@ package com.hds.testmod.registries;
 
 import com.hds.testmod.blocks.barrels.sapphire.SapphireBarrelTile;
 import com.hds.testmod.blocks.batteries.sapphire.SapphireBatteryTile;
+import com.hds.testmod.blocks.conduits.sapphire.SapphireConduitTile;
 import com.hds.testmod.util.ModLog;
 import com.hds.testmod.util.RegistryHandler;
 import net.minecraft.tileentity.TileEntityType;
@@ -22,6 +23,14 @@ public class ModTileEntities {
             () -> TileEntityType.Builder.create(
                     SapphireBatteryTile::new,
                     ModBlocks.SAPPHIRE_BATTERY.get()
+            ).build(null)
+    );
+
+    public static final RegistryObject<TileEntityType<SapphireConduitTile>> SAPPHIRE_CONDUIT_TILE = RegistryHandler.TILE_ENTITIES.register(
+            "sapphire_conduit",
+            () -> TileEntityType.Builder.create(
+                    SapphireConduitTile::new,
+                    ModBlocks.SAPPHIRE_CONDUIT.get()
             ).build(null)
     );
 
