@@ -5,16 +5,17 @@ import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.energy.EnergyStorage;
 
 public class ModEnergyStorage extends EnergyStorage implements INBTSerializable<CompoundNBT> {
+
     public ModEnergyStorage(int capacity) {
-        super(capacity);
+        this(capacity, 0, 0, 0);
     }
 
     public ModEnergyStorage(int capacity, int maxTransfer) {
-        super(capacity, maxTransfer);
+        this(capacity, maxTransfer, maxTransfer, 0);
     }
 
     public ModEnergyStorage(int capacity, int maxReceive, int maxExtract) {
-        super(capacity, maxReceive, maxExtract);
+        this(capacity, maxReceive, maxExtract, 0);
     }
 
     public ModEnergyStorage(int capacity, int maxReceive, int maxExtract, int energy) {
