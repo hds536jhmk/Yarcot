@@ -1,6 +1,6 @@
 package com.hds.testmod.blocks.conduits;
 
-import com.hds.testmod.util.customclasses.DirectionToBooleanProperty;
+import com.hds.testmod.util.customclasses.DirectionToBlockStateProperty;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.BlockItemUseContext;
@@ -32,7 +32,7 @@ public abstract class ModConduit extends Block {
 
         ArrayList<VoxelShape> shapesToAdd = new ArrayList<>();
         for (Direction direction : Direction.values()) {
-            boolean hasConnection = state.get(DirectionToBooleanProperty.get(direction));
+            boolean hasConnection = state.get(DirectionToBlockStateProperty.getBooleanProperty(direction));
             if (!hasConnection)
                 continue;
 

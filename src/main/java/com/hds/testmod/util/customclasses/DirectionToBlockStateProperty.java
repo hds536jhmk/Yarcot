@@ -6,9 +6,9 @@ import net.minecraft.util.Direction;
 
 import javax.annotation.Nonnull;
 
-public class DirectionToBooleanProperty {
+public class DirectionToBlockStateProperty {
     @Nonnull
-    public static BooleanProperty get(Direction dir) {
+    public static BooleanProperty getBooleanProperty(Direction dir) {
         switch (dir) {
             case WEST:
                 return BlockStateProperties.WEST;

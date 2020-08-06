@@ -1,6 +1,6 @@
 package com.hds.testmod.blocks.conduits;
 
-import com.hds.testmod.util.customclasses.DirectionToBooleanProperty;
+import com.hds.testmod.util.customclasses.DirectionToBlockStateProperty;
 import com.hds.testmod.util.customclasses.ModEnergyStorage;
 import net.minecraft.block.BlockState;
 import net.minecraft.nbt.CompoundNBT;
@@ -45,7 +45,7 @@ public abstract class ModConduitTile extends TileEntity implements ITickableTile
         BlockPos thisPos = this.getPos();
         AtomicReference<BlockState> thisBlockState = new AtomicReference<>(world.getBlockState(thisPos));
         for (Direction direction : Direction.values()) {
-            BooleanProperty attachedFace = DirectionToBooleanProperty.get(direction);
+            BooleanProperty attachedFace = DirectionToBlockStateProperty.getBooleanProperty(direction);
             thisBlockState.set(thisBlockState.get().with(attachedFace, false));
             TileEntity tileEntity = world.getTileEntity(thisPos.offset(direction));
             if (tileEntity == null)
