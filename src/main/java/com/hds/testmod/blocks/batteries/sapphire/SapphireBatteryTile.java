@@ -2,9 +2,7 @@ package com.hds.testmod.blocks.batteries.sapphire;
 
 import com.hds.testmod.registries.ModTileEntities;
 import com.hds.testmod.util.customclasses.ModEnergyStorage;
-import com.hds.testmod.util.customclasses.TickTimer;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
@@ -14,7 +12,7 @@ import net.minecraftforge.energy.CapabilityEnergy;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class SapphireBatteryTile extends TileEntity implements ITickableTileEntity {
+public class SapphireBatteryTile extends TileEntity {
     private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(5000, 10, 50) {
         @Override
         public void onEnergyChanged(int energyAdded) {
@@ -22,23 +20,12 @@ public class SapphireBatteryTile extends TileEntity implements ITickableTileEnti
         }
     };
 
-    // TODO: Make it actually work, it shouldn't generate power
-    private final TickTimer ENERGY_GENERATION_TIMER = new TickTimer(2) {
-        @Override
-        public void onTimeout() {
-            // energyStorage.receiveEnergy(10, false);
-        }
-    };
-
     public SapphireBatteryTile() {
         super(ModTileEntities.SAPPHIRE_BATTERY_TILE.get());
     }
 
-    @Override
-    public void tick() {
-        if (world.isRemote)
-            return;
-        ENERGY_GENERATION_TIMER.tick();
+    public float getChargePercentage() {
+        return (float)ENERGY_STORAGE.getEnergyStored() / (float)ENERGY_STORAGE.getMaxEnergyStored();
     }
 
     @Override
