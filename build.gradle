@@ -121,12 +121,14 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
-    compileOnly fg.deobf("mezz.jei:jei-1.15.2:6.0.0.2:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-1.15.2:6.0.0.2")
+    if (file("./local.flag").exists()) {
+        compileOnly fg.deobf("mezz.jei:jei-1.15.2:6.0.0.2:api")
+        runtimeOnly fg.deobf("mezz.jei:jei-1.15.2:6.0.0.2")
 
-    compile fg.deobf(project.dependencies.create("mcjty.theoneprobe:TheOneProbe-1.15:1.15-2.0.0-3") {
-        transitive = false
-    })
+        compile fg.deobf(project.dependencies.create("mcjty.theoneprobe:TheOneProbe-1.15:1.15-2.0.0-3") {
+            transitive = false
+        })
+    }
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..
