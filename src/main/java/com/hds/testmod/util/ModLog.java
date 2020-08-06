@@ -15,9 +15,25 @@ public class ModLog {
         InfoLogged++;
     }
 
+    public static void info(long number) {
+        info(Long.toString(number));
+    }
+
+    public static void info(double number) {
+        info(Double.toString(number));
+    }
+
     public static void debug(String text) {
         LOGGER.debug(LOG_PREFIX + text);
         DebugLogged++;
+    }
+
+    public static void debug(long number) {
+        debug(Long.toString(number));
+    }
+
+    public static void debug(double number) {
+        debug(Double.toString(number));
     }
 
     public static void error(String text) {
