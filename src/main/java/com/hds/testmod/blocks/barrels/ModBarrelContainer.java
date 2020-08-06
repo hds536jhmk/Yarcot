@@ -25,7 +25,7 @@ public abstract class ModBarrelContainer extends ModInventoryContainer {
 
         TileEntity te = playerInventory.player.world.getTileEntity(pos);
         if (!(te instanceof ModBarrelTile))
-            ModLog.error("INVALID TILEENTITY INSTANCE");
+            ModLog.error("INVALID TILE ENTITY INSTANCE: " + te.toString());
 
         this.BARREL_TILE = (ModBarrelTile) te;
     }
