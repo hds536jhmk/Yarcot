@@ -2,26 +2,26 @@ package com.hds.testmod.blocks.batteries.sapphire;
 
 import com.hds.testmod.registries.ModContainers;
 import com.hds.testmod.util.customclasses.ModEnergyStorage;
+import com.hds.testmod.util.customclasses.ModInventoryContainer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IntReferenceHolder;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 
-public class SapphireBatteryContainer extends Container {
+public class SapphireBatteryContainer extends ModInventoryContainer {
 
-    private final TileEntity BATTERY_TILE;
+    protected final SapphireBatteryTile BATTERY_TILE;
     private final PlayerEntity PLAYER;
 
     public SapphireBatteryContainer(int windowId, PlayerInventory playerInventory, BlockPos pos) {
-        super(ModContainers.SAPPHIRE_BATTERY_CONTAINER.get(), windowId);
+        super(ModContainers.SAPPHIRE_BATTERY_CONTAINER.get(), windowId, playerInventory);
         this.PLAYER = playerInventory.player;
-        this.BATTERY_TILE = this.PLAYER.world.getTileEntity(pos);
+        this.BATTERY_TILE = (SapphireBatteryTile)this.PLAYER.world.getTileEntity(pos);
         trackEnergy();
+        generatePlayerInventory(0, 84);
     }
 
     public void trackEnergy() {
