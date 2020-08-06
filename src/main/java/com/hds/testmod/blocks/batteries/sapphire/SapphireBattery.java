@@ -59,6 +59,22 @@ public class SapphireBattery extends Block {
         return ActionResultType.SUCCESS;
     }
 
+    @SuppressWarnings("deprecation")
+    @Override
+    public boolean hasComparatorInputOverride(BlockState state) {
+        return true;
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public int getComparatorInputOverride(BlockState blockState, World worldIn, BlockPos pos) {
+        TileEntity tileEntity = worldIn.getTileEntity(pos);
+        if (!(tileEntity instanceof SapphireBatteryTile))
+            return 0;
+        SapphireBatteryTile batteryTile = (SapphireBatteryTile)tileEntity;
+        return (int)(batteryTile.getChargePercentage() * 15.0F);
+    }
+
     @Override
     public boolean hasTileEntity(BlockState state) {
         return true;
