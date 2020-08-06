@@ -13,10 +13,10 @@ public class SapphireOre extends Block {
     public SapphireOre() {
         super(
                 Block.Properties.create(Material.IRON)
-                .hardnessAndResistance(5.0F, 6.0F)
-                .harvestTool(ToolType.PICKAXE)
-                .harvestLevel(2)
-                .sound(SoundType.STONE)
+                    .hardnessAndResistance(5.0F, 6.0F)
+                    .harvestTool(ToolType.PICKAXE)
+                    .harvestLevel(2)
+                    .sound(SoundType.STONE)
         );
     }
 

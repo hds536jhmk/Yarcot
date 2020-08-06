@@ -21,10 +21,10 @@ public class SapphireBattery extends ModBattery {
     public SapphireBattery() {
         super(
                 Block.Properties.create(Material.IRON)
-                .hardnessAndResistance(5.0F, 6.0F)
-                .harvestTool(ToolType.PICKAXE)
-                .harvestLevel(2)
-                .sound(SoundType.METAL),
+                    .hardnessAndResistance(5.0F, 6.0F)
+                    .harvestTool(ToolType.PICKAXE)
+                    .harvestLevel(2)
+                    .sound(SoundType.METAL),
                 pos -> new INamedContainerProvider() {
                     @Override
                     public ITextComponent getDisplayName() {
