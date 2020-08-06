@@ -1,0 +1,23 @@
+{
+  "itemGroup.yarcotitems": "YARC of Items",
+  "itemGroup.yarcotblocks": "YARC of Blocks",
+  "itemGroup.yarcottools": "YARC of Tools",
+  "itemGroup.yarcotarmors": "YARC of Armors",
+  "block.yarcot.sapphire_block": "Sapphire Block",
+  "block.yarcot.sapphire_barrel": "Sapphire Barrel",
+  "block.yarcot.sapphire_ore": "Sapphire Ore",
+  "block.yarcot.sapphire_battery": "Sapphire Battery",
+  "block.yarcot.sapphire_conduit": "Sapphire Conduit",
+  "item.yarcot.sapphire": "Sapphire",
+  "item.yarcot.sapphire_sword": "Sapphire Sword",
+  "item.yarcot.sapphire_shovel": "Sapphire Shovel",
+  "item.yarcot.sapphire_pickaxe": "Sapphire Pickaxe",
+  "item.yarcot.sapphire_axe": "Sapphire Axe",
+  "item.yarcot.sapphire_hoe": "Sapphire Hoe",
+  "item.yarcot.sapphire_helmet": "Sapphire Helmet",
+  "item.yarcot.sapphire_chestplate": "Sapphire Chestplate",
+  "item.yarcot.sapphire_leggings": "Sapphire Leggings",
+  "item.yarcot.sapphire_boots": "Sapphire Boots",
+  "screen.yarcot.sapphire_barrel_title": "Sapphire Barrel",
+  "screen.yarcot.sapphire_battery_title": "Sapphire Battery"
+}

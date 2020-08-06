@@ -2,34 +2,34 @@
 modLoader="javafml"
 loaderVersion="[31,)"
 
-# issueTrackerURL="http://my.issue.tracker/"
+issueTrackerURL="https://github.com/hds536jhmk/Yarcot/issues"
 
 [[mods]]
 
-modId="testmod"
-version="1.15.2-1.0.0"
-displayName="Test Mod"
+modId="yarcot"
+version="1.15.2-0.0.1"
+displayName="Yarcot"
 
 # updateJSONURL="http://myurl.me/"
-# displayURL="http://example.com/"
+displayURL="https://github.com/hds536jhmk/Yarcot"
 
-logoFile="examplemod.png" #optional
+logoFile="yarcot.png"
 
-# credits="Thanks for this example mod goes to Java"
+credits="Psyco_Manu"
 authors="hds536jhmk"
 
 description='''
-Testing Minecraft modding.
+Yet Another Random Collection of Things
 '''
 
-[[dependencies.examplemod]]
+[[dependencies.yarcot]]
     modId="forge"
     mandatory=true
     versionRange="[31,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.examplemod]]
+[[dependencies.yarcot]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.15.2]"

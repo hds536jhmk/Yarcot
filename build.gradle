@@ -23,9 +23,9 @@ repositories {
     }
 }
 
-version = '1.0'
-group = 'com.hds.testmod' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'testmod'
+version = '1.15.2-0.0.1'
+group = 'com.hds.yarcot' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'Yarcot'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 //Print out JVM information so that we know what version is running. Extreamly useful for people to know when helping you.
@@ -46,7 +46,7 @@ minecraft {
     // These can be tweaked, removed, or duplicated as needed.
     runs {
         client {
-            workingDirectory project.file('run')
+            workingDirectory project.file('run_client')
 
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
@@ -55,14 +55,14 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                yarcot {
                     source sourceSets.main
                 }
             }
         }
 
         server {
-            workingDirectory project.file('run')
+            workingDirectory project.file('run_server')
 
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
@@ -71,14 +71,14 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                yarcot {
                     source sourceSets.main
                 }
             }
         }
 
         data {
-            workingDirectory project.file('run')
+            workingDirectory project.file('run_data')
 
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
@@ -86,10 +86,10 @@ minecraft {
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/')
+            args '--mod', 'yarcot', '--all', '--output', file('src/generated/resources/')
 
             mods {
-                examplemod {
+                yarcot {
                     source sourceSets.main
                 }
             }
@@ -133,12 +133,12 @@ dependencies {
 jar {
     manifest {
         attributes([
-            "Specification-Title": "examplemod",
-            "Specification-Vendor": "examplemodsareus",
+            "Specification-Title": "yarcot",
+            "Specification-Vendor": "yarcotsareus",
             "Specification-Version": "1", // We are version 1 of ourselves
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
-            "Implementation-Vendor": "examplemodsareus",
+            "Implementation-Vendor": "yarcotsareus",
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }

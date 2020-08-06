@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "s s",
+    "sss",
+    "sss"
+  ],
+  "key": {
+    "s": {
+      "tag": "forge:gems/sapphire"
+    }
+  },
+  "result": {
+    "item": "yarcot:sapphire_chestplate",
+    "count": 1
+  }
+}

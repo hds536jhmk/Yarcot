@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "s",
+    "s",
+    "w"
+  ],
+  "key": {
+    "s": {
+      "tag": "forge:gems/sapphire"
+    },
+    "w": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "yarcot:sapphire_sword",
+    "count": 1
+  }
+}
