@@ -5,6 +5,7 @@ import com.hds.yarcot.blocks.barrels.sapphire.SapphireBarrel;
 import com.hds.yarcot.blocks.SapphireBlock;
 import com.hds.yarcot.blocks.batteries.sapphire.SapphireBattery;
 import com.hds.yarcot.blocks.conduits.sapphire.SapphireConduit;
+import com.hds.yarcot.blocks.miners.sapphire.SapphireMiner;
 import com.hds.yarcot.util.ModLog;
 import com.hds.yarcot.util.RegistryHandler;
 import net.minecraft.block.Block;
@@ -32,6 +33,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> SAPPHIRE_CONDUIT = ModBlocks.registerBlockItem(
             "sapphire_conduit",
             SapphireConduit::new
+    );
+
+    public static final RegistryObject<Block> SAPPHIRE_MINER = ModBlocks.registerBlockItem(
+            "sapphire_miner",
+            SapphireMiner::new
     );
 
     public static void registerAll() {
