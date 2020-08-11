@@ -33,14 +33,16 @@ public abstract class ModEnergyStorage extends EnergyStorage implements INBTSeri
     @Override
     public int receiveEnergy(int maxReceive, boolean simulate) {
         int receivedEnergy = super.receiveEnergy(maxReceive, simulate);
-        onEnergyChanged(receivedEnergy);
+        if (!simulate)
+            onEnergyChanged(receivedEnergy);
         return receivedEnergy;
     }
 
     @Override
     public int extractEnergy(int maxExtract, boolean simulate) {
         int extractedEnergy = super.extractEnergy(maxExtract, simulate);
-        onEnergyChanged(-extractedEnergy);
+        if (!simulate)
+            onEnergyChanged(-extractedEnergy);
         return extractedEnergy;
     }
 
