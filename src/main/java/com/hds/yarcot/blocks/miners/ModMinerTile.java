@@ -145,11 +145,13 @@ public abstract class ModMinerTile extends TileEntity implements ITickableTileEn
     public void read(CompoundNBT compound) {
         super.read(compound);
         ENERGY_STORAGE.deserializeNBT(compound.getCompound("energyStorage"));
+        currentYOffset = compound.getInt("currentYOffset");
     }
 
     @Override
     public CompoundNBT write(CompoundNBT compound) {
         compound.put("energyStorage", ENERGY_STORAGE.serializeNBT());
+        compound.putInt("currentYOffset", currentYOffset);
         return super.write(compound);
     }
 
