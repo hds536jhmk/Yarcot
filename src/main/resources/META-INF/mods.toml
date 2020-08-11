@@ -7,7 +7,7 @@ issueTrackerURL="https://github.com/hds536jhmk/Yarcot/issues"
 [[mods]]
 
 modId="yarcot"
-version="1.15.2-0.0.1"
+version="1.15.2-0.0.2"
 displayName="Yarcot"
 
 # updateJSONURL="http://myurl.me/"
