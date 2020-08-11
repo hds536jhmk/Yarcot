@@ -1,6 +1,6 @@
 package com.hds.yarcot.util.customclasses;
 
-public abstract class TickTimer {
+public class TickTimer {
     public static final int TICKS_PER_SECOND = 20;
     private final int TIMEOUT;
     private int currentTicks;
@@ -9,7 +9,7 @@ public abstract class TickTimer {
         this.TIMEOUT = timeout;
     }
 
-    public abstract void onTimeout();
+    public void onTimeout() {}
 
     public boolean tick() {
         if (++currentTicks / TICKS_PER_SECOND >= TIMEOUT) {
