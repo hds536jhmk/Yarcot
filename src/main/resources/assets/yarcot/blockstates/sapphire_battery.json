@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "yarcot:block/sapphire_battery"
+    }
+  }
+}
