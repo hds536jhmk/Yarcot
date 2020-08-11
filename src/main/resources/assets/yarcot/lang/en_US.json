@@ -8,6 +8,8 @@
   "block.yarcot.sapphire_ore": "Sapphire Ore",
   "block.yarcot.sapphire_battery": "Sapphire Battery",
   "block.yarcot.sapphire_conduit": "Sapphire Conduit",
+  "block.yarcot.sapphire_miner": "Sapphire Miner",
+  "block.yarcot.sapphire_furnace": "Sapphire Furnace",
   "item.yarcot.sapphire": "Sapphire",
   "item.yarcot.sapphire_sword": "Sapphire Sword",
   "item.yarcot.sapphire_shovel": "Sapphire Shovel",
@@ -19,5 +21,6 @@
   "item.yarcot.sapphire_leggings": "Sapphire Leggings",
   "item.yarcot.sapphire_boots": "Sapphire Boots",
   "screen.yarcot.sapphire_barrel_title": "Sapphire Barrel",
-  "screen.yarcot.sapphire_battery_title": "Sapphire Battery"
+  "screen.yarcot.sapphire_battery_title": "Sapphire Battery",
+  "screen.yarcot.sapphire_furnace_title": "Sapphire Furnace"
 }
