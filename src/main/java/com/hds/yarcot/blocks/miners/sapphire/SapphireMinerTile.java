@@ -3,6 +3,7 @@ package com.hds.yarcot.blocks.miners.sapphire;
 import com.hds.yarcot.materials.ModItemTiers;
 import com.hds.yarcot.registries.ModTileEntities;
 import com.hds.yarcot.util.customclasses.ModEnergyStorage;
+import com.hds.yarcot.util.customclasses.TickTimer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
@@ -32,6 +33,8 @@ public class SapphireMinerTile extends TileEntity implements ITickableTileEntity
         }
     };
 
+    private TickTimer actionTimer = new TickTimer(1);
+
     private final int CONSUMPTION_MOVE = 50;
     private final int CONSUMPTION_BLOCK = 50;
 
@@ -40,11 +43,11 @@ public class SapphireMinerTile extends TileEntity implements ITickableTileEntity
         currentYOffset = -1;
     }
 
-    private boolean canMove() {
+    private boolean hasEnergyToMove() {
         return energyStorage.getEnergyStored() >= CONSUMPTION_MOVE;
     }
 
-    private boolean canDig() {
+    private boolean hasEnergyToDig() {
         return energyStorage.getEnergyStored() >= CONSUMPTION_BLOCK;
     }
 
@@ -53,20 +56,23 @@ public class SapphireMinerTile extends TileEntity implements ITickableTileEntity
     }
 
     private boolean putItemInInventory(IItemHandler inventory, ItemStack item, boolean simulate) {
-        boolean wasInserted = false;
+        ItemStack remainder;
         for (int i = 0; i < inventory.getSlots(); i++) {
-            ItemStack remainder = inventory.insertItem(i, item, simulate);
+            remainder = inventory.insertItem(i, item, simulate);
             if (remainder.isEmpty()) {
-                wasInserted = true;
+                return true;
             }
         }
 
-        return wasInserted;
+        return false;
     }
 
     @Override
     public void tick() {
         if (world.isRemote)
+            return;
+
+        if (!actionTimer.tick())
             return;
 
         BlockPos currentBlockPos = this.getPos().add(0, currentYOffset, 0);
@@ -81,11 +87,11 @@ public class SapphireMinerTile extends TileEntity implements ITickableTileEntity
             return;
         }
 
-        if (this.canMove() && world.isAirBlock(currentBlockPos)) {
+        if (this.hasEnergyToMove() && world.isAirBlock(currentBlockPos)) {
             this.setPowered(true);
             energyStorage.extractEnergy(CONSUMPTION_MOVE, false);
             currentYOffset--;
-        } else if (this.canDig()) {
+        } else if (this.hasEnergyToDig()) {
             BlockState currentBlockState = world.getBlockState(currentBlockPos);
             Block currentBlock = currentBlockState.getBlock();
             if (currentBlockState.getBlockHardness(this.world, currentBlockPos) >= 0 && currentBlock.getHarvestLevel(currentBlockState) <= ModItemTiers.SAPPHIRE.getHarvestLevel()) {
@@ -113,7 +119,7 @@ public class SapphireMinerTile extends TileEntity implements ITickableTileEntity
                             energyStorage.extractEnergy(CONSUMPTION_BLOCK, false);
                             world.removeBlock(currentBlockPos, false);
                             // If you can move then do it
-                            if (this.canMove()) {
+                            if (this.hasEnergyToMove()) {
                                 energyStorage.extractEnergy(CONSUMPTION_MOVE, false);
                                 currentYOffset--;
                             }
