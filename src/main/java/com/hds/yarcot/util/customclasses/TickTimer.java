@@ -11,10 +11,12 @@ public abstract class TickTimer {
 
     public abstract void onTimeout();
 
-    public void tick() {
+    public boolean tick() {
         if (++currentTicks / TICKS_PER_SECOND >= TIMEOUT) {
             onTimeout();
             currentTicks = 0;
+            return true;
         }
+        return false;
     }
 }
