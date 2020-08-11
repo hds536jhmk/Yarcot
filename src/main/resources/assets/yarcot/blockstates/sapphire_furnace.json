@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "yarcot:block/sapphire_furnace"
+    },
+    "powered=true": {
+      "model": "yarcot:block/sapphire_furnace_powered"
+    }
+  }
+}
