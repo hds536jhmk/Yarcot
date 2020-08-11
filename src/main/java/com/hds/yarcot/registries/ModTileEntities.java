@@ -3,6 +3,7 @@ package com.hds.yarcot.registries;
 import com.hds.yarcot.blocks.barrels.sapphire.SapphireBarrelTile;
 import com.hds.yarcot.blocks.batteries.sapphire.SapphireBatteryTile;
 import com.hds.yarcot.blocks.conduits.sapphire.SapphireConduitTile;
+import com.hds.yarcot.blocks.furnaces.sapphire.SapphireFurnaceTile;
 import com.hds.yarcot.blocks.miners.sapphire.SapphireMinerTile;
 import com.hds.yarcot.util.ModLog;
 import com.hds.yarcot.util.RegistryHandler;
@@ -36,10 +37,18 @@ public class ModTileEntities {
     );
 
     public static final RegistryObject<TileEntityType<SapphireMinerTile>> SAPPHIRE_MINER_TILE = RegistryHandler.TILE_ENTITIES.register(
-            "sapphire_furnace",
+            "sapphire_miner",
             () -> TileEntityType.Builder.create(
                     SapphireMinerTile::new,
                     ModBlocks.SAPPHIRE_MINER.get()
+            ).build(null)
+    );
+
+    public static final RegistryObject<TileEntityType<SapphireFurnaceTile>> SAPPHIRE_FURNACE_TILE = RegistryHandler.TILE_ENTITIES.register(
+            "sapphire_furnace",
+            () -> TileEntityType.Builder.create(
+                    SapphireFurnaceTile::new,
+                    ModBlocks.SAPPHIRE_FURNACE.get()
             ).build(null)
     );
 

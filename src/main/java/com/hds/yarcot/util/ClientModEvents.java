@@ -2,6 +2,7 @@ package com.hds.yarcot.util;
 
 import com.hds.yarcot.Yarcot;
 import com.hds.yarcot.blocks.batteries.sapphire.SapphireBatteryScreen;
+import com.hds.yarcot.blocks.furnaces.sapphire.SapphireFurnaceScreen;
 import com.hds.yarcot.registries.ModContainers;
 import com.hds.yarcot.blocks.barrels.sapphire.SapphireBarrelScreen;
 import net.minecraft.client.gui.ScreenManager;
@@ -26,6 +27,11 @@ public class ClientModEvents {
         ScreenManager.registerFactory(
                 ModContainers.SAPPHIRE_BATTERY_CONTAINER.get(),
                 SapphireBatteryScreen::new
+        );
+
+        ScreenManager.registerFactory(
+                ModContainers.SAPPHIRE_FURNACE_CONTAINER.get(),
+                SapphireFurnaceScreen::new
         );
 
         ModLog.info("Client was set up!");
