@@ -2,10 +2,10 @@ package com.hds.yarcot.util.customclasses;
 
 public class TickTimer {
     public static final int TICKS_PER_SECOND = 20;
-    private final int TIMEOUT;
+    private final float TIMEOUT;
     private int currentTicks;
 
-    public TickTimer(int timeout) {
+    public TickTimer(float timeout) {
         this.TIMEOUT = timeout;
     }
 
