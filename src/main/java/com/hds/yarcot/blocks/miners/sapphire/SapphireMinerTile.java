@@ -96,9 +96,8 @@ public class SapphireMinerTile extends TileEntity implements ITickableTileEntity
                 storage.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, Direction.DOWN).ifPresent(
                         storageHandler -> {
                             // Making sure that there's space in the chest for all the drops
-                            boolean enoughSpace = true;
                             for (ItemStack item : itemsToStore) {
-                                enoughSpace = putItemInInventory(storageHandler, item, true);
+                                boolean enoughSpace = putItemInInventory(storageHandler, item, true);
                                 if (!enoughSpace) {
                                     this.setPowered(false);
                                     return;
