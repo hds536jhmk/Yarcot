@@ -5,9 +5,12 @@ import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.text.DecimalFormat;
 
+@OnlyIn(Dist.CLIENT)
 public abstract class ModBatteryScreen extends ContainerScreen<ModBatteryContainer> {
     private final int TIER;
 
