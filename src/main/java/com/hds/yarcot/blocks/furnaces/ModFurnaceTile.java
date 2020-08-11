@@ -59,6 +59,8 @@ public abstract class ModFurnaceTile extends TileEntity implements ITickableTile
     }
 
     public float getSmeltProgressPercentage() {
+        if (smeltTime <= 0)
+            return 0;
         return (float) smeltProgress / (float) smeltTime;
     }
 
@@ -86,6 +88,8 @@ public abstract class ModFurnaceTile extends TileEntity implements ITickableTile
             return;
         }
 
+        smeltTime = (int) (recipe.getCookTime() * SPEED_FACTOR);
+
         ItemStack craftingResult = recipe.getCraftingResult(this.INVENTORY);
         ItemStack outputStack = INVENTORY.getStackInSlot(1);
         if ((craftingResult.getItem() != outputStack.getItem() && !outputStack.isEmpty()) || craftingResult.getCount() + outputStack.getCount() >= outputStack.getMaxStackSize()) {
@@ -98,8 +102,6 @@ public abstract class ModFurnaceTile extends TileEntity implements ITickableTile
             this.setPowered(true);
             this.ENERGY_STORAGE.setEnergy(this.ENERGY_STORAGE.getEnergyStored() - ENERGY_CONSUMPTION);
             smeltProgress++;
-
-            smeltTime = (int) (recipe.getCookTime() * SPEED_FACTOR);
 
             if (smeltProgress >= smeltTime) {
                 smeltProgress = 0;
