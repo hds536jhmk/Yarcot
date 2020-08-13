@@ -40,21 +40,22 @@ class NamedImage:
 
 
 class Direction:
-    def __init__(self, prettyName: str, direction: str, xRot: int, yRot: int, zRot: int):
+    def __init__(self, prettyName: str, direction: str, xRot: int, yRot: int, zRot: int, UVRotation: int):
         self.prettyName = prettyName
         self.direction = direction
         self.xRot = xRot
         self.yRot = yRot
         self.zRot = zRot
+        self.UVRotation = UVRotation
 
 
 facingDirections : List[Direction] = [
-    Direction("FRONT" , "north",   0,   0, 0),
-    Direction("BACK"  , "south",   0, 180, 0),
-    Direction("RIGHT" , "east" ,   0,  90, 0),
-    Direction("LEFT"  , "west" ,   0, 270, 0),
-    Direction("TOP"   , "up"   , 270,   0, 0),
-    Direction("BOTTOM", "down" ,  90,   0, 0)
+    Direction("FRONT" , "north",   0,   0, 0,   0),
+    Direction("BACK"  , "south",   0, 180, 0,   0),
+    Direction("RIGHT" , "east" ,   0,  90, 0,   0),
+    Direction("LEFT"  , "west" ,   0, 270, 0,   0),
+    Direction("TOP"   , "up"   , 270,   0, 0, 180),
+    Direction("BOTTOM", "down" ,  90,   0, 0,   0)
 ]
 
 booleanPropertyStates : List[str] = ["false", "true"]
@@ -233,9 +234,12 @@ class Block:
 
                     faces = model["elements"][0]["faces"]
                     faces[direction.direction] = {
-                        "uv": [UVX, 0, UVX + faceWidth, 16],
-                        "texture": "#0"
+                        "texture": "#0",
+                        "uv": [UVX, 0, UVX + faceWidth, 16]
                     }
+
+                    if (direction.UVRotation != 0):
+                        faces[direction.direction]["rotation"] = direction.UVRotation
                 
             else:
                 model = {
