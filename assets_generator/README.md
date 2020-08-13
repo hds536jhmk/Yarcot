@@ -35,3 +35,4 @@
   - **hasBooleanProperty** *\<boolean>* : Whether or not this block has a *\<BooleanProperty>* (e.g. *Powered* in Furnaces, *Open* in Barrels)
   - **booleanProperty** *\<string>* : The name of the *\<BooleanProperty>* (e.g. *Powered*, *Open*)
   - **booleanPropertyColor** *\<string>* : The color of the text on the block that shows when the specified *\<BooleanProperty>* is true
+- If the block doesn't have a *\<BooleanProperty>* then all related fields should be set to an empty *\<string>*
