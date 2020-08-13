@@ -23,7 +23,7 @@ repositories {
     }
 }
 
-version = '1.15.2-0.0.2'
+version = '1.15.2-0.0.3'
 group = 'com.hds.yarcot' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'Yarcot'
 
