@@ -29,7 +29,7 @@
 
 ## Block
 
-- A *\<Block>* objects has 5 required fields:
+- A *\<Block>* object has 5 required fields:
   - **blockID** *\<string>* : The ID of the block (e.g. "namespace:block_name")
   - **hasFacing** *\<boolean>* : Whether or not this block has a facing (e.g. Furnaces, Chests, Barrels)
   - **hasBooleanProperty** *\<boolean>* : Whether or not this block has a *\<BooleanProperty>* (e.g. *Powered* in Furnaces, *Open* in Barrels)
