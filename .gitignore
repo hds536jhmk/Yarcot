@@ -24,7 +24,7 @@ build
 eclipse
 run*
 local.flag
-assets_generator/output
+assets_builders/*/output
 
 # Files from Forge MDK
 forge*changelog.txt
