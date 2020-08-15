@@ -19,9 +19,10 @@ class Settings:
 
 
 class Ore:
-    def __init__(self, oreID: str, type: int, color: str):
-        self.id = oreID
+    def __init__(self, type: str, oreID: str, texture: int, color: str):
         self.type = type
+        self.id = oreID
+        self.texture = texture
         self.color = color
 
     @staticmethod
@@ -35,19 +36,19 @@ class Ore:
         return self.id.split(":")[0]
     
     def getTexture(self) -> str:
-        return self.getNamespace() + ":blocks/" + self.getFileName()
+        return self.getNamespace() + ":" + self.type + "s/" + self.getFileName()
     
     def getModel(self) -> str:
-        return self.getNamespace() + ":block/" + self.getFileName()
+        return self.getNamespace() + ":" + self.type + "/" + self.getFileName()
     
     def getPath(self, savePath: str, fileFormat: str) -> str:
         return path.join(savePath, self.getFileName() + path.extsep + fileFormat)
     
     def generateTexture(self, settings: Settings) -> Image:
-        typePath = path.join(settings.texturesPath, str(self.type))
+        texturePath = path.join(settings.texturesPath, str(self.texture))
 
-        source = Image.open(typePath + path.extsep + "png", "r")
-        features = Image.open(typePath + "_features" + path.extsep + "png", "r")
+        source = Image.open(texturePath + path.extsep + "png", "r")
+        features = Image.open(texturePath + "_features" + path.extsep + "png", "r")
 
         _, _, _, featuresAlpha = features.split()
         colorizedFeatures = ImageOps.colorize(features.convert("L"), "#000000", self.color)
@@ -58,27 +59,44 @@ class Ore:
     
     def generateModel(self) -> dict:
         texturePath = self.getTexture()
-        return {
-            "parent": "block/cube_all",
-            "textures": {
-                "all": texturePath,
-                "particle": texturePath
-            }
-        }
-    
-    def generateBlockState(self) -> dict:
-        return {
-            "variants": {
-                "": {
-                    "model": self.getModel()
+        if (self.type == "block"):
+            return {
+                "parent": "block/cube_all",
+                "textures": {
+                    "all": texturePath,
+                    "particle": texturePath
                 }
             }
-        }
+        elif (self.type == "item"):
+            return {
+                "parent": "item/generated",
+                "textures": {
+                    "layer0": texturePath
+                }
+            }
+    
+    def generateBlockState(self) -> dict:
+        if (self.type == "block"):
+            return {
+                "variants": {
+                    "": {
+                        "model": self.getModel()
+                    }
+                }
+            }
     
     def generateItem(self) -> dict:
-        return {
-            "parent": self.getModel()
-        }
+        if (self.type == "block"):
+            return {
+                "parent": self.getModel()
+            }
+        elif (self.type == "item"):
+            return {
+                "parent": "item/generated",
+                "textures": {
+                    "layer0": self.getTexture()
+                }
+            }
 
 
 def saveToJSON(dictionary: dict, path: str):
@@ -96,32 +114,36 @@ def main():
             ores.append(Ore.parse(ore))
     
     for ore in ores:
-        oreStatesPath   = path.join(path.join(settings.outputPath, ore.getNamespace()), "blockstates")
-        oreModelsPath   = path.join(path.join(settings.outputPath, ore.getNamespace()), "models/block")
-        oreTexturesPath = path.join(path.join(settings.outputPath, ore.getNamespace()), "textures/blocks")
-        oreItemsPath    = path.join(path.join(settings.outputPath, ore.getNamespace()), "models/item")
-
-        if (not path.exists(oreStatesPath)):
-            makedirs(oreStatesPath)
-        if (not path.exists(oreModelsPath)):
-            makedirs(oreModelsPath)
-        if (not path.exists(oreTexturesPath)):
-            makedirs(oreTexturesPath)
+        oreItemsPath = path.join(path.join(settings.outputPath, ore.getNamespace()), "models/item")
         if (not path.exists(oreItemsPath)):
             makedirs(oreItemsPath)
         
+        oreTexturesPath = path.join(path.join(settings.outputPath, ore.getNamespace()), "textures/" + ore.type + "s")
+        if (not path.exists(oreTexturesPath)):
+            makedirs(oreTexturesPath)
+        
         oreTexture = ore.generateTexture(settings)
         oreTexture.save(ore.getPath(oreTexturesPath, settings.fileFormat))
-
-        oreModel = ore.generateModel()
-        saveToJSON(oreModel, ore.getPath(oreModelsPath, "json"))
-
-        oreBlockState = ore.generateBlockState()
-        saveToJSON(oreBlockState, ore.getPath(oreStatesPath, "json"))
         
         oreItem = ore.generateItem()
         saveToJSON(oreItem, ore.getPath(oreItemsPath, "json"))
         
+
+        if (ore.type == "block"):
+            oreStatesPath   = path.join(path.join(settings.outputPath, ore.getNamespace()), "blockstates")
+            oreModelsPath   = path.join(path.join(settings.outputPath, ore.getNamespace()), "models/block")
+
+            if (not path.exists(oreStatesPath)):
+                makedirs(oreStatesPath)
+            if (not path.exists(oreModelsPath)):
+                makedirs(oreModelsPath)
+            
+
+            oreModel = ore.generateModel()
+            saveToJSON(oreModel, ore.getPath(oreModelsPath, "json"))
+
+            oreBlockState = ore.generateBlockState()
+            saveToJSON(oreBlockState, ore.getPath(oreStatesPath, "json"))
 
 
 if __name__ == "__main__":

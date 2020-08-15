@@ -7,24 +7,52 @@
     },
     "ores": [
         {
+            "type": "block",
+            "oreID": "yarcot:sapphire_ore",
+            "texture": 1,
+            "color": "#3D62E5"
+        },
+        {
+            "type": "block",
+            "oreID": "yarcot:sapphire_block",
+            "texture": 4,
+            "color": "#3D62E5"
+        },
+        {
+            "type": "block",
             "oreID": "yarcot:ruby_ore",
-            "type": 0,
-            "color": "#ff0000"
+            "texture": 1,
+            "color": "#B91723"
         },
         {
+            "type": "block",
+            "oreID": "yarcot:ruby_block",
+            "texture": 4,
+            "color": "#B91723"
+        },
+        {
+            "type": "block",
             "oreID": "yarcot:sulfur_ore",
-            "type": 1,
-            "color": "#ffff00"
+            "texture": 2,
+            "color": "#FFFF1F"
         },
         {
-            "oreID": "yarcot:unknown_ore",
-            "type": 2,
-            "color": "#ff00ff"
+            "type": "item",
+            "oreID": "yarcot:sulfur",
+            "texture": 5,
+            "color": "#FFFF1F"
         },
         {
-            "oreID": "yarcot:sapphire_nether_ore",
-            "type": 3,
-            "color": "#00ffff"
+            "type": "block",
+            "oreID": "yarcot:lithium_ore",
+            "texture": 2,
+            "color": "#B1AEAE"
+        },
+        {
+            "type": "item",
+            "oreID": "yarcot:lithium",
+            "texture": 5,
+            "color": "#B1AEAE"
         }
     ]
 }
