@@ -12,7 +12,7 @@ import net.minecraftforge.common.ToolType;
 public class SapphireOre extends Block {
     public SapphireOre() {
         super(
-                Block.Properties.create(Material.IRON)
+                Block.Properties.create(Material.ROCK)
                     .hardnessAndResistance(5.0F, 6.0F)
                     .harvestTool(ToolType.PICKAXE)
                     .harvestLevel(2)
