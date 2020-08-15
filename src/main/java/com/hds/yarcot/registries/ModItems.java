@@ -13,6 +13,21 @@ public class ModItems {
             BaseItem::createDefaultItem
     );
 
+    public static final RegistryObject<Item> RUBY = RegistryHandler.ITEMS.register(
+            "ruby",
+            BaseItem::createDefaultItem
+    );
+
+    public static final RegistryObject<Item> SULFUR = RegistryHandler.ITEMS.register(
+            "sulfur",
+            BaseItem::createDefaultItem
+    );
+
+    public static final RegistryObject<Item> LITHIUM = RegistryHandler.ITEMS.register(
+            "lithium",
+            BaseItem::createDefaultItem
+    );
+
     public static void registerAll() {
 
         ModLog.info("All Items were registered!");

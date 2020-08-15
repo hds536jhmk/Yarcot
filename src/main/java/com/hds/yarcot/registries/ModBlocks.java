@@ -1,6 +1,7 @@
 package com.hds.yarcot.registries;
 
 import com.hds.yarcot.blocks.BaseBlock;
+import com.hds.yarcot.blocks.RubyBlock;
 import com.hds.yarcot.blocks.barrels.sapphire.SapphireBarrel;
 import com.hds.yarcot.blocks.SapphireBlock;
 import com.hds.yarcot.blocks.batteries.sapphire.SapphireBattery;
@@ -19,6 +20,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> SAPPHIRE_BLOCK = registerBlockItem(
             "sapphire_block",
             SapphireBlock::new
+    );
+
+    public static final RegistryObject<Block> RUBY_BLOCK = registerBlockItem(
+            "ruby_block",
+            RubyBlock::new
     );
 
     public static final RegistryObject<Block> SAPPHIRE_BARREL = ModBlocks.registerBlockItem(

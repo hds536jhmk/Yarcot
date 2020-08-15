@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "yarcot:blocks/ruby_block",
+    "particle": "yarcot:blocks/ruby_block"
+  }
+}
