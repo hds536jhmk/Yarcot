@@ -11,7 +11,5 @@ public class ModEvents {
     @SubscribeEvent
     public static void onLoadComplete(FMLLoadCompleteEvent event) {
         ModOreGen.registerOres();
-
-        ModLog.info("All Ores were registered into world gen!");
     }
 }
