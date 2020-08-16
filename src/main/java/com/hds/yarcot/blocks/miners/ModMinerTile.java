@@ -97,7 +97,7 @@ public abstract class ModMinerTile extends TileEntity implements ITickableTileEn
 
         if (this.hasEnergyToMove() && world.isAirBlock(currentBlockPos)) {
             this.setPowered(true);
-            ENERGY_STORAGE.setEnergy(ENERGY_STORAGE.getEnergyStored() - MOVE_CONSUMPTION);
+            ENERGY_STORAGE.consumeEnergy(MOVE_CONSUMPTION, false);
             currentYOffset--;
         } else if (this.hasEnergyToDig()) {
             BlockState currentBlockState = world.getBlockState(currentBlockPos);
@@ -124,11 +124,11 @@ public abstract class ModMinerTile extends TileEntity implements ITickableTileEn
                             }
 
                             // Consume digging energy
-                            ENERGY_STORAGE.setEnergy(ENERGY_STORAGE.getEnergyStored() - DIG_CONSUMPTION);
+                            ENERGY_STORAGE.consumeEnergy(DIG_CONSUMPTION, false);
                             world.removeBlock(currentBlockPos, false);
                             // If you can move then do it
                             if (this.hasEnergyToMove()) {;
-                                ENERGY_STORAGE.setEnergy(ENERGY_STORAGE.getEnergyStored() - MOVE_CONSUMPTION);
+                                ENERGY_STORAGE.consumeEnergy(MOVE_CONSUMPTION, false);
                                 currentYOffset--;
                             }
                         }

@@ -46,6 +46,15 @@ public abstract class ModEnergyStorage extends EnergyStorage implements INBTSeri
         return extractedEnergy;
     }
 
+    public int consumeEnergy(int maxExtract, boolean simulate) {
+        int extractedEnergy = Math.max(0, Math.min(maxExtract, this.energy));
+        if (!simulate) {
+            this.energy -= extractedEnergy;
+            onEnergyChanged(-extractedEnergy);
+        }
+        return extractedEnergy;
+    }
+
     @Override
     public CompoundNBT serializeNBT() {
         CompoundNBT nbt = new CompoundNBT();
