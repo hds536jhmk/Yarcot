@@ -5,6 +5,10 @@ import com.hds.yarcot.config.blocks.batteries.SapphireBatteryConfig;
 import com.hds.yarcot.config.blocks.conduits.SapphireConduitConfig;
 import com.hds.yarcot.config.blocks.furnaces.SapphireFurnaceConfig;
 import com.hds.yarcot.config.blocks.miners.SapphireMinerConfig;
+import com.hds.yarcot.config.world.ores.LithiumOreConfig;
+import com.hds.yarcot.config.world.ores.RubyOreConfig;
+import com.hds.yarcot.config.world.ores.SapphireOreConfig;
+import com.hds.yarcot.config.world.ores.SulfurOreConfig;
 import com.hds.yarcot.util.StringUtilities;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -27,6 +31,19 @@ public class ModConfigHolder {
         SapphireConduitConfig.pushConfig(builder);
         SapphireFurnaceConfig.pushConfig(builder);
         SapphireMinerConfig.pushConfig(builder);
+
+        builder.pop();
+
+        builder.comment("World's Configuration")
+                .push("world");
+
+        builder.comment("Ores' Configuration")
+                .push("ores");
+
+        SapphireOreConfig.pushConfig(builder);
+        RubyOreConfig.pushConfig(builder);
+        SulfurOreConfig.pushConfig(builder);
+        LithiumOreConfig.pushConfig(builder);
 
         builder.pop(2);
 

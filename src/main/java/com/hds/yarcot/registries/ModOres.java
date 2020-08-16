@@ -4,6 +4,10 @@ import com.hds.yarcot.blocks.LithiumOre;
 import com.hds.yarcot.blocks.RubyOre;
 import com.hds.yarcot.blocks.SapphireOre;
 import com.hds.yarcot.blocks.SulfurOre;
+import com.hds.yarcot.config.world.ores.LithiumOreConfig;
+import com.hds.yarcot.config.world.ores.RubyOreConfig;
+import com.hds.yarcot.config.world.ores.SapphireOreConfig;
+import com.hds.yarcot.config.world.ores.SulfurOreConfig;
 import com.hds.yarcot.util.ModLog;
 import com.hds.yarcot.world.ModOreGen;
 import com.hds.yarcot.world.ModOreGenConfig;
@@ -40,10 +44,10 @@ public class ModOres {
             null,
             OVERWORLD_ONLY,
             OreFeatureConfig.FillerBlockType.NATURAL_STONE,
-            3,
-            5,
-            5,
-            20
+            SapphireOreConfig.rarity.get(),
+            SapphireOreConfig.veinSize.get(),
+            SapphireOreConfig.lowestSpawnHeight.get(),
+            SapphireOreConfig.highestSpawnHeight.get()
     );
 
     public static ModOreGenConfig RUBY_ORE_GEN = new ModOreGenConfig(
@@ -52,10 +56,10 @@ public class ModOres {
             null,
             OVERWORLD_ONLY,
             OreFeatureConfig.FillerBlockType.NATURAL_STONE,
-            3,
-            5,
-            5,
-            20
+            RubyOreConfig.rarity.get(),
+            RubyOreConfig.veinSize.get(),
+            RubyOreConfig.lowestSpawnHeight.get(),
+            RubyOreConfig.highestSpawnHeight.get()
     );
 
     public static ModOreGenConfig SULFUR_ORE_GEN = new ModOreGenConfig(
@@ -64,10 +68,10 @@ public class ModOres {
             null,
             OVERWORLD_ONLY,
             OreFeatureConfig.FillerBlockType.NATURAL_STONE,
-            25,
-            3,
-            10,
-            40
+            SulfurOreConfig.rarity.get(),
+            SulfurOreConfig.veinSize.get(),
+            SulfurOreConfig.lowestSpawnHeight.get(),
+            SulfurOreConfig.highestSpawnHeight.get()
     );
 
     public static ModOreGenConfig LITHIUM_ORE_GEN = new ModOreGenConfig(
@@ -76,10 +80,10 @@ public class ModOres {
             null,
             OVERWORLD_ONLY,
             OreFeatureConfig.FillerBlockType.NATURAL_STONE,
-            20,
-            3,
-            10,
-            30
+            LithiumOreConfig.rarity.get(),
+            LithiumOreConfig.veinSize.get(),
+            LithiumOreConfig.lowestSpawnHeight.get(),
+            LithiumOreConfig.highestSpawnHeight.get()
     );
 
     public static void registerAll() {
