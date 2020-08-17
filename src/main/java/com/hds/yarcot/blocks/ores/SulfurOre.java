@@ -1,5 +1,6 @@
-package com.hds.yarcot.blocks;
+package com.hds.yarcot.blocks.ores;
 
+import com.hds.yarcot.config.world.ModOreConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
@@ -10,6 +11,8 @@ import net.minecraft.world.IWorldReader;
 import net.minecraftforge.common.ToolType;
 
 public class SulfurOre extends Block {
+    public static ModOreConfig config;
+
     public SulfurOre() {
         super(
                 Block.Properties.create(Material.ROCK)

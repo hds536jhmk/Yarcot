@@ -2,6 +2,7 @@ package com.hds.yarcot.blocks.batteries.sapphire;
 
 import com.hds.yarcot.Yarcot;
 import com.hds.yarcot.blocks.batteries.ModBattery;
+import com.hds.yarcot.config.blocks.ModBatteryConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
@@ -19,6 +20,8 @@ import net.minecraftforge.common.ToolType;
 import javax.annotation.Nullable;
 
 public class SapphireBattery extends ModBattery {
+    public static ModBatteryConfig config;
+
     public SapphireBattery() {
         super(
                 Block.Properties.create(Material.IRON)

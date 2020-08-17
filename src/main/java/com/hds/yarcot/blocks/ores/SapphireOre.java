@@ -1,5 +1,6 @@
-package com.hds.yarcot.blocks;
+package com.hds.yarcot.blocks.ores;
 
+import com.hds.yarcot.config.world.ModOreConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
@@ -9,14 +10,16 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IWorldReader;
 import net.minecraftforge.common.ToolType;
 
-public class RubyOre extends Block {
-    public RubyOre() {
+public class SapphireOre extends Block {
+    public static ModOreConfig config;
+
+    public SapphireOre() {
         super(
                 Block.Properties.create(Material.ROCK)
-                        .hardnessAndResistance(5.0F, 6.0F)
-                        .harvestTool(ToolType.PICKAXE)
-                        .harvestLevel(2)
-                        .sound(SoundType.STONE)
+                    .hardnessAndResistance(5.0F, 6.0F)
+                    .harvestTool(ToolType.PICKAXE)
+                    .harvestLevel(2)
+                    .sound(SoundType.STONE)
         );
     }
 

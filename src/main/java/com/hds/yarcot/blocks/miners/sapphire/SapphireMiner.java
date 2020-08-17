@@ -1,6 +1,7 @@
 package com.hds.yarcot.blocks.miners.sapphire;
 
 import com.hds.yarcot.blocks.miners.ModMiner;
+import com.hds.yarcot.config.blocks.ModMinerConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
@@ -12,6 +13,8 @@ import net.minecraftforge.common.ToolType;
 import javax.annotation.Nullable;
 
 public class SapphireMiner extends ModMiner {
+    public static ModMinerConfig config;
+
     public SapphireMiner() {
         super(
                 Block.Properties.create(Material.IRON)

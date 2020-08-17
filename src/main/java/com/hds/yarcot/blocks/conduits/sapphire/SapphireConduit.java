@@ -1,6 +1,7 @@
 package com.hds.yarcot.blocks.conduits.sapphire;
 
 import com.hds.yarcot.blocks.conduits.ModConduit;
+import com.hds.yarcot.config.blocks.ModConduitConfig;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
@@ -10,6 +11,8 @@ import net.minecraftforge.common.ToolType;
 import javax.annotation.Nullable;
 
 public class SapphireConduit extends ModConduit {
+
+    public static ModConduitConfig config;
 
     public SapphireConduit() {
         super(

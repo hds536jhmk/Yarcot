@@ -2,6 +2,7 @@ package com.hds.yarcot.blocks.furnaces.sapphire;
 
 import com.hds.yarcot.Yarcot;
 import com.hds.yarcot.blocks.furnaces.ModFurnace;
+import com.hds.yarcot.config.blocks.ModFurnaceConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
@@ -19,6 +20,8 @@ import net.minecraftforge.common.ToolType;
 import javax.annotation.Nullable;
 
 public class SapphireFurnace extends ModFurnace {
+    public static ModFurnaceConfig config;
+
     public SapphireFurnace() {
         super(
                 Block.Properties.create(Material.IRON)

@@ -1,6 +1,6 @@
 package com.hds.yarcot;
 
-import com.hds.yarcot.config.ModConfigHolder;
+import com.hds.yarcot.config.ModConfigRegistry;
 import com.hds.yarcot.util.ModLog;
 import com.hds.yarcot.util.RegistryHandler;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -12,7 +12,7 @@ public class Yarcot
     public static final String MOD_ID = "yarcot";
 
     public Yarcot() {
-        ModConfigHolder.registerConfigs(ModLoadingContext.get());
+        ModConfigRegistry.registerConfigs(ModLoadingContext.get());
 
         RegistryHandler.init();
 
