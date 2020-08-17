@@ -19,11 +19,10 @@ public abstract class ModFurnaceInventory implements ISidedInventory, INBTSerial
 
     @Override
     public int[] getSlotsForFace(Direction side) {
-        switch (side) {
-            case DOWN:
-                return new int[] { 1 };
-            default:
-                return new int[] { 0 };
+        if (side == Direction.DOWN) {
+            return new int[]{1};
+        } else {
+            return new int[]{0};
         }
     }
 

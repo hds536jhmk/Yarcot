@@ -7,9 +7,9 @@ public class SapphireBatteryTile extends ModBatteryTile {
     public SapphireBatteryTile() {
         super(
                 ModTileEntities.SAPPHIRE_BATTERY_TILE.get(),
-                SapphireBattery.config.energyInput.get(),
-                SapphireBattery.config.energyOutput.get(),
-                SapphireBattery.config.capacity.get()
+                SapphireBattery.config.ENERGY_INPUT.get(),
+                SapphireBattery.config.ENERGY_OUTPUT.get(),
+                SapphireBattery.config.CAPACITY.get()
         );
     }
 }

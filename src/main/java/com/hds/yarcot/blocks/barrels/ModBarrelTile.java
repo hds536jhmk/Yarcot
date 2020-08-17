@@ -17,7 +17,7 @@ public abstract class ModBarrelTile extends TileEntity {
     public final int COLUMNS;
     public final int ROWS;
 
-    private ItemStackHandler BARREL_INVENTORY;
+    private final ItemStackHandler BARREL_INVENTORY;
 
     public ModBarrelTile(TileEntityType<?> tileEntityTypeIn, int columns, int rows) {
         super(tileEntityTypeIn);

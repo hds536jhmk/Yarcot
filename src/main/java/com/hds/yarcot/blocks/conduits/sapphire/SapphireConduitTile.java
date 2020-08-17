@@ -7,9 +7,9 @@ public class SapphireConduitTile extends ModConduitTile {
     public SapphireConduitTile() {
         super(
                 ModTileEntities.SAPPHIRE_CONDUIT_TILE.get(),
-                SapphireConduit.config.energyInput.get(),
-                SapphireConduit.config.energyOutput.get(),
-                SapphireConduit.config.energyBuffer.get()
+                SapphireConduit.config.ENERGY_INPUT.get(),
+                SapphireConduit.config.ENERGY_OUTPUT.get(),
+                SapphireConduit.config.ENERGY_BUFFER.get()
         );
     }
 }

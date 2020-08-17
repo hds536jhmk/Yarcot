@@ -127,7 +127,7 @@ public abstract class ModMinerTile extends TileEntity implements ITickableTileEn
                             ENERGY_STORAGE.consumeEnergy(DIG_CONSUMPTION, false);
                             world.removeBlock(currentBlockPos, false);
                             // If you can move then do it
-                            if (this.hasEnergyToMove()) {;
+                            if (this.hasEnergyToMove()) {
                                 ENERGY_STORAGE.consumeEnergy(MOVE_CONSUMPTION, false);
                                 currentYOffset--;
                             }

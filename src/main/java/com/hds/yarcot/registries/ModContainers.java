@@ -11,21 +11,21 @@ import net.minecraftforge.fml.RegistryObject;
 
 public class ModContainers {
 
-    public static RegistryObject<ContainerType<SapphireBarrelContainer>> SAPPHIRE_BARREL_CONTAINER = RegistryHandler.CONTAINERS.register(
+    public static final RegistryObject<ContainerType<SapphireBarrelContainer>> SAPPHIRE_BARREL_CONTAINER = RegistryHandler.CONTAINERS.register(
             "sapphire_barrel",
             () -> IForgeContainerType.create(
                     (windowId, inv, data) -> new SapphireBarrelContainer(windowId, inv, data.readBlockPos())
             )
     );
 
-    public static RegistryObject<ContainerType<SapphireBatteryContainer>> SAPPHIRE_BATTERY_CONTAINER = RegistryHandler.CONTAINERS.register(
+    public static final RegistryObject<ContainerType<SapphireBatteryContainer>> SAPPHIRE_BATTERY_CONTAINER = RegistryHandler.CONTAINERS.register(
             "sapphire_battery",
             () -> IForgeContainerType.create(
                     (windowId, inv, data) -> new SapphireBatteryContainer(windowId, inv, data.readBlockPos())
             )
     );
 
-    public static RegistryObject<ContainerType<SapphireFurnaceContainer>> SAPPHIRE_FURNACE_CONTAINER = RegistryHandler.CONTAINERS.register(
+    public static final RegistryObject<ContainerType<SapphireFurnaceContainer>> SAPPHIRE_FURNACE_CONTAINER = RegistryHandler.CONTAINERS.register(
             "sapphire_furnace",
             () -> IForgeContainerType.create(
                     (windowId, inv, data) -> new SapphireFurnaceContainer(windowId, inv, data.readBlockPos())

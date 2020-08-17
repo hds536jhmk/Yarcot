@@ -8,12 +8,12 @@ public class SapphireMinerTile extends ModMinerTile {
     public SapphireMinerTile() {
         super(
                 ModTileEntities.SAPPHIRE_MINER_TILE.get(),
-                SapphireMiner.config.energyInput.get(),
-                SapphireMiner.config.moveConsumption.get(),
-                SapphireMiner.config.digConsumption.get(),
-                SapphireMiner.config.capacity.get(),
+                SapphireMiner.config.ENERGY_INPUT.get(),
+                SapphireMiner.config.MOVE_CONSUMPTION.get(),
+                SapphireMiner.config.DIG_CONSUMPTION.get(),
+                SapphireMiner.config.CAPACITY.get(),
                 ModItemTiers.SAPPHIRE,
-                new Float(SapphireMiner.config.actionTime.get())
+                new Float(SapphireMiner.config.ACTION_TIME.get())
         );
     }
 }

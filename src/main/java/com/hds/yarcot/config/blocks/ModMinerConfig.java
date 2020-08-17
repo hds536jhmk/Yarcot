@@ -5,32 +5,32 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 public class ModMinerConfig extends ModConfigBuilder {
 
-    public ForgeConfigSpec.IntValue energyInput;
-    public ForgeConfigSpec.IntValue moveConsumption;
-    public ForgeConfigSpec.IntValue digConsumption;
-    public ForgeConfigSpec.IntValue capacity;
-    public ForgeConfigSpec.DoubleValue actionTime;
+    public final ForgeConfigSpec.IntValue ENERGY_INPUT;
+    public final ForgeConfigSpec.IntValue MOVE_CONSUMPTION;
+    public final ForgeConfigSpec.IntValue DIG_CONSUMPTION;
+    public final ForgeConfigSpec.IntValue CAPACITY;
+    public final ForgeConfigSpec.DoubleValue ACTION_TIME;
 
     public ModMinerConfig(ForgeConfigSpec.Builder builder, String blockName, int defaultEnergyInput, int defaultMoveConsumption, int defaultDigConsumption, int defaultCapacity, float defaultActionTime) {
         super(builder, blockName);
 
-        energyInput = builder
+        ENERGY_INPUT = builder
                 .comment("How much energy the miner accepts as an input. (FE)")
                 .worldRestart()
                 .defineInRange("energyInput", defaultEnergyInput, 0, Integer.MAX_VALUE);
-        moveConsumption = builder
+        MOVE_CONSUMPTION = builder
                 .comment("How much energy the miner uses when moving. (FE)")
                 .worldRestart()
                 .defineInRange("moveConsumption", defaultMoveConsumption, 0, Integer.MAX_VALUE);
-        digConsumption = builder
+        DIG_CONSUMPTION = builder
                 .comment("How much energy the miner uses to dig a block. (FE)")
                 .worldRestart()
                 .defineInRange("digConsumption", defaultDigConsumption, 0, Integer.MAX_VALUE);
-        capacity = builder
+        CAPACITY = builder
                 .comment("How much energy the miner can store. (FE)")
                 .worldRestart()
                 .defineInRange("capacity", defaultCapacity, 0, Integer.MAX_VALUE);
-        actionTime = builder
+        ACTION_TIME = builder
                 .comment("How much time the miner takes to make a move/action. (seconds)")
                 .worldRestart()
                 .defineInRange("actionTime", defaultActionTime, 0, Float.MAX_VALUE);
