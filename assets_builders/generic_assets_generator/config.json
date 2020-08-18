@@ -70,6 +70,51 @@
             "id": "yarcot:sapphire_hoe",
             "texture": "hoe",
             "color": "#3D62E5"
+        },
+        {
+            "id": "yarcot:ruby_helmet",
+            "texture": "helmet",
+            "color": "#B91723"
+        },
+        {
+            "id": "yarcot:ruby_chestplate",
+            "texture": "chestplate",
+            "color": "#B91723"
+        },
+        {
+            "id": "yarcot:ruby_leggings",
+            "texture": "leggings",
+            "color": "#B91723"
+        },
+        {
+            "id": "yarcot:ruby_boots",
+            "texture": "boots",
+            "color": "#B91723"
+        },
+        {
+            "id": "yarcot:ruby_sword",
+            "texture": "sword",
+            "color": "#B91723"
+        },
+        {
+            "id": "yarcot:ruby_shovel",
+            "texture": "shovel",
+            "color": "#B91723"
+        },
+        {
+            "id": "yarcot:ruby_pickaxe",
+            "texture": "pickaxe",
+            "color": "#B91723"
+        },
+        {
+            "id": "yarcot:ruby_axe",
+            "texture": "axe",
+            "color": "#B91723"
+        },
+        {
+            "id": "yarcot:ruby_hoe",
+            "texture": "hoe",
+            "color": "#B91723"
         }
     ],
     "blocks": [

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "r",
+    "w",
+    "w"
+  ],
+  "key": {
+    "r": {
+      "tag": "forge:gems/ruby"
+    },
+    "w": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "yarcot:ruby_shovel",
+    "count": 1
+  }
+}

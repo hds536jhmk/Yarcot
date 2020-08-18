@@ -22,6 +22,15 @@ public enum ModArmorMaterial implements IArmorMaterial {
             SoundEvents.ENTITY_HORSE_ARMOR,
             0.5F,
             () -> Ingredient.fromItems(ModItems.SAPPHIRE.get())
+    ),
+    RUBY(
+            "ruby",
+            20,
+            createDamageReductionArray(2, 6, 5, 2),
+            16,
+            SoundEvents.ENTITY_HORSE_ARMOR,
+            0.5F,
+            () -> Ingredient.fromItems(ModItems.RUBY.get())
     );
 
     public static class MAX_DAMAGE {

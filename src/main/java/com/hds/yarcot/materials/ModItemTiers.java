@@ -14,6 +14,14 @@ public enum ModItemTiers implements IItemTier {
             3,
             15,
             () -> Ingredient.fromItems(ModItems.SAPPHIRE.get())
+    ),
+    RUBY(
+            750,
+            7.0F,
+            0.0F,
+            3,
+            15,
+            () -> Ingredient.fromItems(ModItems.RUBY.get())
     );
 
     private final int DURABILITY;
