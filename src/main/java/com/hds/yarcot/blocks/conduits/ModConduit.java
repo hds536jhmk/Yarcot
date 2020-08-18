@@ -55,6 +55,11 @@ public abstract class ModConduit extends Block {
     }
 
     @Override
+    public boolean propagatesSkylightDown(BlockState state, IBlockReader reader, BlockPos pos) {
+        return true;
+    }
+
+    @Override
     public abstract boolean hasTileEntity(BlockState state);
 
     @Nullable
