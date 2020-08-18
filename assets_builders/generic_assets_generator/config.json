@@ -7,6 +7,16 @@
     },
     "items": [
         {
+            "id": "yarcot:sapphire",
+            "texture": "gem",
+            "color": "#3D62E5"
+        },
+        {
+            "id": "yarcot:ruby",
+            "texture": "gem",
+            "color": "#B91723"
+        },
+        {
             "id": "yarcot:sulfur",
             "texture": "dust",
             "color": "#FFFF1F"
@@ -15,6 +25,51 @@
             "id": "yarcot:lithium",
             "texture": "dust",
             "color": "#B1AEAE"
+        },
+        {
+            "id": "yarcot:sapphire_helmet",
+            "texture": "helmet",
+            "color": "#3D62E5"
+        },
+        {
+            "id": "yarcot:sapphire_chestplate",
+            "texture": "chestplate",
+            "color": "#3D62E5"
+        },
+        {
+            "id": "yarcot:sapphire_leggings",
+            "texture": "leggings",
+            "color": "#3D62E5"
+        },
+        {
+            "id": "yarcot:sapphire_boots",
+            "texture": "boots",
+            "color": "#3D62E5"
+        },
+        {
+            "id": "yarcot:sapphire_sword",
+            "texture": "sword",
+            "color": "#3D62E5"
+        },
+        {
+            "id": "yarcot:sapphire_shovel",
+            "texture": "shovel",
+            "color": "#3D62E5"
+        },
+        {
+            "id": "yarcot:sapphire_pickaxe",
+            "texture": "pickaxe",
+            "color": "#3D62E5"
+        },
+        {
+            "id": "yarcot:sapphire_axe",
+            "texture": "axe",
+            "color": "#3D62E5"
+        },
+        {
+            "id": "yarcot:sapphire_hoe",
+            "texture": "hoe",
+            "color": "#3D62E5"
         }
     ],
     "blocks": [

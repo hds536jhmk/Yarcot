@@ -195,7 +195,7 @@ def main():
         
         itemModel = item.generateItem()
         cprint("Saving item's model", "blue")
-        saveToJSON(itemModel, block.getPath(itemsPath, "json"))
+        saveToJSON(itemModel, item.getPath(itemsPath, "json"))
     
     cprint("Terminating script", "green")
     
