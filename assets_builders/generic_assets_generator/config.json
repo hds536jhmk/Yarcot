@@ -1,0 +1,52 @@
+{
+    "settings": {
+        "outputPath": "output",
+        "texturesPath": "templates",
+        "colorMode": "RGBA",
+        "fileFormat": "png"
+    },
+    "items": [
+        {
+            "id": "yarcot:sulfur",
+            "texture": "dust",
+            "color": "#FFFF1F"
+        },
+        {
+            "id": "yarcot:lithium",
+            "texture": "dust",
+            "color": "#B1AEAE"
+        }
+    ],
+    "blocks": [
+        {
+            "id": "yarcot:sapphire_ore",
+            "texture": "gem_ore",
+            "color": "#3D62E5"
+        },
+        {
+            "id": "yarcot:sapphire_block",
+            "texture": "metal_block",
+            "color": "#3D62E5"
+        },
+        {
+            "id": "yarcot:ruby_ore",
+            "texture": "gem_ore",
+            "color": "#B91723"
+        },
+        {
+            "id": "yarcot:ruby_block",
+            "texture": "metal_block",
+            "color": "#B91723"
+        },
+        {
+            "id": "yarcot:sulfur_ore",
+            "texture": "dust_ore",
+            "color": "#FFFF1F"
+        },
+        {
+            "id": "yarcot:lithium_ore",
+            "texture": "dust_ore",
+            "color": "#B1AEAE"
+        }
+    ]
+}
