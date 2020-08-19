@@ -8,7 +8,7 @@ public class SapphireFurnaceTile extends ModFurnaceTile {
         super(
                 ModTileEntities.SAPPHIRE_FURNACE_TILE.get(),
                 SapphireFurnace.config.ENERGY_INPUT.get(),
-                SapphireFurnace.config.ENERGY_OUTPUT.get(),
+                SapphireFurnace.config.ENERGY_CONSUMPTION.get(),
                 SapphireFurnace.config.CAPACITY.get(),
                 new Float(SapphireFurnace.config.SPEED_FACTOR.get())
         );

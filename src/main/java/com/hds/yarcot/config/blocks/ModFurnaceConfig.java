@@ -6,21 +6,21 @@ import net.minecraftforge.common.ForgeConfigSpec;
 public class ModFurnaceConfig extends ModConfigBuilder {
 
     public final ForgeConfigSpec.IntValue ENERGY_INPUT;
-    public final ForgeConfigSpec.IntValue ENERGY_OUTPUT;
+    public final ForgeConfigSpec.IntValue ENERGY_CONSUMPTION;
     public final ForgeConfigSpec.IntValue CAPACITY;
     public final ForgeConfigSpec.DoubleValue SPEED_FACTOR;
 
-    public ModFurnaceConfig(ForgeConfigSpec.Builder builder, String blockName, int defaultEnergyInput, int defaultEnergyOutput, int defaultCapacity, float defaultSpeedFactor) {
+    public ModFurnaceConfig(ForgeConfigSpec.Builder builder, String blockName, int defaultEnergyInput, int defaultEnergyConsumption, int defaultCapacity, float defaultSpeedFactor) {
         super(builder, blockName);
 
         ENERGY_INPUT = builder
                 .comment("How much energy the furnace accepts as an input. (FE)")
                 .worldRestart()
                 .defineInRange("energyInput", defaultEnergyInput, 0, Integer.MAX_VALUE);
-        ENERGY_OUTPUT = builder
+        ENERGY_CONSUMPTION = builder
                 .comment("How much energy the furnace uses every tick. (FE)")
                 .worldRestart()
-                .defineInRange("energyConsumption", defaultEnergyOutput, 0, Integer.MAX_VALUE);
+                .defineInRange("energyConsumption", defaultEnergyConsumption, 0, Integer.MAX_VALUE);
         CAPACITY = builder
                 .comment("How much energy the furnace can store. (FE)")
                 .worldRestart()
