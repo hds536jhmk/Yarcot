@@ -32,10 +32,10 @@ public class ModConfigRegistry {
         builder.comment("Blocks' Configuration")
                 .push("blocks");
 
-        SapphireBattery.config = new ModBatteryConfig(builder, "sapphire_battery", 10, 50, 1000);
-        SapphireConduit.config = new ModConduitConfig(builder, "sapphire_conduit", 100, 100, 200);
-        SapphireFurnace.config = new ModFurnaceConfig(builder, "sapphire_furnace", 200, 2, 1000, 0.5F);
-        SapphireMiner.config = new ModMinerConfig(builder, "sapphire_miner", 100, 50, 100, 1000, 1.0F);
+        SapphireBattery.config = new ModBatteryConfig(builder, "sapphire_battery", 1_000, 400, 40_000);
+        SapphireConduit.config = new ModConduitConfig(builder, "sapphire_conduit", 400, 400, 600);
+        SapphireFurnace.config = new ModFurnaceConfig(builder, "sapphire_furnace", 500, 2, 20_000, 0.5F);
+        SapphireMiner.config = new ModMinerConfig(builder, "sapphire_miner", 500, 800, 1_600, 20_000, 2.0F);
 
         builder.pop();
 
@@ -45,8 +45,8 @@ public class ModConfigRegistry {
         builder.comment("Ores' Configuration")
                 .push("ores");
 
-        SapphireOre.config = new ModOreConfig(builder, "sapphire_ore", 3, 5, 5, 20);
-        RubyOre.config = new ModOreConfig(builder, "ruby_ore", 3, 5, 5, 20);
+        SapphireOre.config = new ModOreConfig(builder, "sapphire_ore", 2, 4, 5, 20);
+        RubyOre.config = new ModOreConfig(builder, "ruby_ore", 2, 4, 5, 20);
         SulfurOre.config = new ModOreConfig(builder, "sulfur_ore", 25, 3, 10, 40);
         LithiumOre.config = new ModOreConfig(builder, "lithium_ore", 20, 3, 10, 30);
 
