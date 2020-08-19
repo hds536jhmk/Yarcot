@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "isi",
+    "igi",
+    "ili"
+  ],
+  "key": {
+    "i": {
+      "tag": "forge:ingots/iron"
+    },
+    "s": {
+      "tag": "forge:dusts/sulfur"
+    },
+    "l": {
+      "tag": "forge:dusts/lithium"
+    },
+    "g": {
+      "tag": "forge:glass_panes"
+    }
+  },
+  "result": {
+    "item": "yarcot:battery_frame",
+    "count": 1
+  }
+}

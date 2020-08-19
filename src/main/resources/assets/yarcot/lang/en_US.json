@@ -42,6 +42,8 @@
   "item.yarcot.ruby_chestplate": "Ruby Chestplate",
   "item.yarcot.ruby_leggings": "Ruby Leggings",
   "item.yarcot.ruby_boots": "Ruby Boots",
+  "item.yarcot.battery_frame": "Battery Frame",
+  "item.yarcot.battery_core": "Battery Core",
   "item.yarcot.generic_battery.tooltip.energy": "Energy: %d/%d",
   "comment.yarcot.6": "Screens",
   "screen.yarcot.sapphire_barrel_title": "Sapphire Barrel",

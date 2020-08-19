@@ -28,6 +28,16 @@ public class ModItems {
             BaseItem::createDefaultItem
     );
 
+    public static final RegistryObject<Item> BATTERY_FRAME = RegistryHandler.ITEMS.register(
+            "battery_frame",
+            BaseItem::createDefaultItem
+    );
+
+    public static final RegistryObject<Item> BATTERY_CORE = RegistryHandler.ITEMS.register(
+            "battery_core",
+            BaseItem::createDefaultItem
+    );
+
     public static void registerAll() {
 
         ModLog.info("All Items were registered!");

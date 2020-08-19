@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "rrr",
+    "rfr",
+    "rrr"
+  ],
+  "key": {
+    "f": {
+      "item": "yarcot:battery_frame"
+    },
+    "r": {
+      "tag": "forge:dusts/redstone"
+    }
+  },
+  "result": {
+    "item": "yarcot:battery_core",
+    "count": 1
+  }
+}
