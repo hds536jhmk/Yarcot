@@ -45,8 +45,8 @@ public class ModConfigRegistry {
         builder.comment("Ores' Configuration")
                 .push("ores");
 
-        SapphireOre.config = new ModOreConfig(builder, "sapphire_ore", 2, 4, 5, 20);
-        RubyOre.config = new ModOreConfig(builder, "ruby_ore", 2, 4, 5, 20);
+        SapphireOre.config = new ModOreConfig(builder, "sapphire_ore", 3, 4, 5, 20);
+        RubyOre.config = new ModOreConfig(builder, "ruby_ore", 3, 4, 5, 20);
         SulfurOre.config = new ModOreConfig(builder, "sulfur_ore", 25, 3, 10, 40);
         LithiumOre.config = new ModOreConfig(builder, "lithium_ore", 20, 3, 10, 30);
 
