@@ -5,6 +5,19 @@
       "rolls": 1,
       "entries": [
         {
+          "functions": [
+            {
+              "function": "minecraft:copy_nbt",
+              "source": "block_entity",
+              "ops": [
+                {
+                  "source": "energyStorage",
+                  "target": "BlockEntityTag.energyStorage",
+                  "op": "replace"
+                }
+              ]
+            }
+          ],
           "type": "minecraft:item",
           "name": "yarcot:sapphire_battery"
         }

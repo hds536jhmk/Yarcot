@@ -13,6 +13,7 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.function.Function;
 
@@ -40,6 +41,22 @@ public abstract class ModBattery extends Block {
             }
         }
         return ActionResultType.SUCCESS;
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (state.hasTileEntity() && (state.getBlock() != newState.getBlock() || !newState.hasTileEntity())) {
+            TileEntity te = worldIn.getTileEntity(pos);
+            if (te instanceof ModBatteryTile) {
+                ModBatteryTile batteryTile = (ModBatteryTile) te;
+                ItemStackHandler batteryInventory = batteryTile.getItemStorage();
+                for (int i = 0; i < batteryInventory.getSlots(); i++) {
+                    spawnAsEntity(worldIn, pos, batteryInventory.getStackInSlot(i));
+                }
+            }
+        }
+        super.onReplaced(state, worldIn, pos, newState, isMoving);
     }
 
     @SuppressWarnings("deprecation")

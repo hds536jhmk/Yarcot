@@ -5,12 +5,14 @@ import com.hds.yarcot.blocks.RubyBlock;
 import com.hds.yarcot.blocks.barrels.sapphire.SapphireBarrel;
 import com.hds.yarcot.blocks.SapphireBlock;
 import com.hds.yarcot.blocks.batteries.sapphire.SapphireBattery;
+import com.hds.yarcot.blocks.batteries.sapphire.SapphireBatteryItem;
 import com.hds.yarcot.blocks.conduits.sapphire.SapphireConduit;
 import com.hds.yarcot.blocks.furnaces.sapphire.SapphireFurnace;
 import com.hds.yarcot.blocks.miners.sapphire.SapphireMiner;
 import com.hds.yarcot.util.ModLog;
 import com.hds.yarcot.util.RegistryHandler;
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
 
 import java.util.function.Supplier;
@@ -32,9 +34,15 @@ public class ModBlocks {
             SapphireBarrel::new
     );
 
-    public static final RegistryObject<Block> SAPPHIRE_BATTERY = ModBlocks.registerBlockItem(
+    public static final RegistryObject<Block> SAPPHIRE_BATTERY = RegistryHandler.BLOCKS.register(
             "sapphire_battery",
             SapphireBattery::new
+    );
+
+    public static final RegistryObject<Item> SAPPHIRE_BATTERY_ITEM = RegistryHandler.ITEMS.register(
+            "sapphire_battery",
+            () -> new SapphireBatteryItem(SAPPHIRE_BATTERY.get())
+
     );
 
     public static final RegistryObject<Block> SAPPHIRE_CONDUIT = ModBlocks.registerBlockItem(
