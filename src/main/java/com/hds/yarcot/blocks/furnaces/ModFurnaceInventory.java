@@ -11,7 +11,12 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nullable;
 
 public abstract class ModFurnaceInventory implements ISidedInventory, INBTSerializable<CompoundNBT> {
-    private final ItemStackHandler ITEM_STACK_HANDLER = new ItemStackHandler(2);
+    private final ItemStackHandler ITEM_STACK_HANDLER = new ItemStackHandler(2) {
+        @Override
+        protected void onContentsChanged(int slot) {
+            markDirty();
+        }
+    };
 
     public ItemStackHandler getItemStackHandler() {
         return ITEM_STACK_HANDLER;
