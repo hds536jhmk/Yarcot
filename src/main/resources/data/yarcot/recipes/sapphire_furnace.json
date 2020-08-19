@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sss",
+    "cfs",
+    "sss"
+  ],
+  "key": {
+    "c": {
+      "item": "yarcot:battery_core"
+    },
+    "f": {
+      "item": "minecraft:furnace"
+    },
+    "s": {
+      "tag": "forge:gems/sapphire"
+    }
+  },
+  "result": {
+    "item": "yarcot:sapphire_furnace",
+    "count": 1
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "shs",
+    "scs",
+    "sps"
+  ],
+  "key": {
+    "h": {
+      "item": "minecraft:hopper"
+    },
+    "c": {
+      "item": "yarcot:battery_core"
+    },
+    "p": {
+      "item": "yarcot:sapphire_pickaxe"
+    },
+    "s": {
+      "tag": "forge:gems/sapphire"
+    }
+  },
+  "result": {
+    "item": "yarcot:sapphire_miner",
+    "count": 1
+  }
+}

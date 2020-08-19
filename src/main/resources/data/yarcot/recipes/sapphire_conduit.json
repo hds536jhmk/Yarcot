@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sss",
+    "rfr",
+    "sss"
+  ],
+  "key": {
+    "f": {
+      "item": "yarcot:battery_frame"
+    },
+    "r": {
+      "tag": "forge:dusts/redstone"
+    },
+    "s": {
+      "tag": "forge:gems/sapphire"
+    }
+  },
+  "result": {
+    "item": "yarcot:sapphire_conduit",
+    "count": 6
+  }
+}
