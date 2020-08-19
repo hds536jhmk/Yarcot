@@ -53,15 +53,12 @@ public abstract class ModConduitTile extends TileEntity implements ITickableTile
             tileEntity.getCapability(CapabilityEnergy.ENERGY, direction.getOpposite()).ifPresent(
                     energyHandler -> {
                         thisBlockState.set(thisBlockState.get().with(attachedFace, true));
-                        if (energyHandler.canReceive() && (energyHandler.getEnergyStored() < CONDUIT_ENERGY_BUFFER.getEnergyStored() || CONDUIT_ENERGY_BUFFER.getEnergyStored() >= CONDUIT_ENERGY_BUFFER.getMaxEnergyStored())) {
-                            int receivedEnergy = energyHandler.receiveEnergy(MAX_OUTPUT, true);
-                            int takenEnergy = CONDUIT_ENERGY_BUFFER.extractEnergy(receivedEnergy, false);
-                            energyHandler.receiveEnergy(takenEnergy, false);
+
+                        if (energyHandler.canReceive() && (energyHandler.getEnergyStored() < CONDUIT_ENERGY_BUFFER.getEnergyStored() || !energyHandler.canExtract())) {
+                            ModEnergyStorage.transferEnergy(this.CONDUIT_ENERGY_BUFFER, energyHandler, this.MAX_OUTPUT);
 
                         } else if (energyHandler.canExtract()) {
-                            int takenEnergy = energyHandler.extractEnergy(MAX_INPUT, true);
-                            int receivedEnergy = CONDUIT_ENERGY_BUFFER.receiveEnergy(takenEnergy, false);
-                            energyHandler.extractEnergy(receivedEnergy, false);
+                            ModEnergyStorage.transferEnergy(energyHandler, this.CONDUIT_ENERGY_BUFFER, this.MAX_INPUT);
 
                         }
                     }
