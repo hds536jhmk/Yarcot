@@ -37,7 +37,7 @@ public interface IBatteryItem extends IForgeItem {
 
     @Override
     default boolean showDurabilityBar(ItemStack stack) {
-        return true;
+        return this.getEnergyStored(stack) > 0;
     }
 
     @Override
