@@ -1,9 +1,11 @@
 package com.hds.yarcot.blocks.barrels;
 
+import com.hds.yarcot.util.customclasses.ItemHandlerInventory;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.StateContainer;
@@ -21,6 +23,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 import net.minecraftforge.items.CapabilityItemHandler;
 
 import javax.annotation.Nullable;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 
 public abstract class ModBarrel extends Block {
@@ -68,6 +71,29 @@ public abstract class ModBarrel extends Block {
             }
         }
         return ActionResultType.SUCCESS;
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public boolean hasComparatorInputOverride(BlockState state) {
+        return true;
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public int getComparatorInputOverride(BlockState blockState, World worldIn, BlockPos pos) {
+        TileEntity te = worldIn.getTileEntity(pos);
+        if (te == null)
+            return 0;
+
+        AtomicInteger returnValue = new AtomicInteger();
+        te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(
+                handler -> {
+                    returnValue.set(Container.calcRedstoneFromInventory(new ItemHandlerInventory(handler)));
+                }
+        );
+
+        return returnValue.get();
     }
 
     @Nullable
