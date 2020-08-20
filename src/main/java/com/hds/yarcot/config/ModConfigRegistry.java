@@ -14,6 +14,7 @@ import com.hds.yarcot.config.blocks.ModConduitConfig;
 import com.hds.yarcot.config.blocks.ModFurnaceConfig;
 import com.hds.yarcot.config.blocks.ModMinerConfig;
 import com.hds.yarcot.config.world.ModOreConfig;
+import com.hds.yarcot.util.ModLog;
 import com.hds.yarcot.util.StringUtilities;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -57,6 +58,8 @@ public class ModConfigRegistry {
 
     public static void registerConfigs(ModLoadingContext context) {
         context.registerConfig(ModConfig.Type.SERVER, SERVER_CONFIG);
+
+        ModLog.info("Configs were registered");
     }
 
 }
