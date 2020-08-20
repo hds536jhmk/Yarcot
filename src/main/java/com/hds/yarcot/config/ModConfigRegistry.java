@@ -34,7 +34,7 @@ public class ModConfigRegistry {
                 .push("blocks");
 
         SapphireBattery.config = new ModBatteryConfig(builder, "sapphire_battery", 1_000, 400, 40_000);
-        SapphireConduit.config = new ModConduitConfig(builder, "sapphire_conduit", 400, 400, 600);
+        SapphireConduit.config = new ModConduitConfig(builder, "sapphire_conduit", 150, 150, 300);
         SapphireFurnace.config = new ModFurnaceConfig(builder, "sapphire_furnace", 500, 2, 20_000, 0.5F);
         SapphireMiner.config = new ModMinerConfig(builder, "sapphire_miner", 500, 800, 1_600, 20_000, 2.0F);
 
