@@ -10,7 +10,9 @@ import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -20,19 +22,21 @@ public abstract class ModBatteryTile extends TileEntity implements ITickableTile
     private final int MAX_OUTPUT;
     private final int CAPACITY;
 
-    private final ItemStackHandler ITEM_STORAGE;
-
+    private final ModBatteryInventory BATTERY_INVENTORY;
     private final ModEnergyStorage ENERGY_STORAGE;
+
+    private final LazyOptional<ModEnergyStorage> LAZY_ENERGY_STORAGE;
 
     public ModBatteryTile(TileEntityType<?> tileEntityTypeIn, int input, int output, int capacity) {
         super(tileEntityTypeIn);
         this.MAX_INPUT = input;
         this.MAX_OUTPUT = output;
         this.CAPACITY = capacity;
-        this.ITEM_STORAGE = new ItemStackHandler(2) {
+
+        this.BATTERY_INVENTORY = new ModBatteryInventory() {
             @Override
-            protected void onContentsChanged(int slot) {
-                markDirty();
+            public void markDirty() {
+                ModBatteryTile.this.markDirty();
             }
         };
         this.ENERGY_STORAGE = new ModEnergyStorage(this.CAPACITY, this.MAX_INPUT, this.MAX_OUTPUT) {
@@ -41,6 +45,8 @@ public abstract class ModBatteryTile extends TileEntity implements ITickableTile
                 markDirty();
             }
         };
+
+        this.LAZY_ENERGY_STORAGE = LazyOptional.of(() -> ENERGY_STORAGE);
     }
 
     @Override
@@ -48,7 +54,7 @@ public abstract class ModBatteryTile extends TileEntity implements ITickableTile
         if (world.isRemote)
             return;
 
-        ItemStack inputSlot = ITEM_STORAGE.getStackInSlot(0);
+        ItemStack inputSlot = BATTERY_INVENTORY.getStackInSlot(0);
         if (!inputSlot.isEmpty())
             inputSlot.getCapability(CapabilityEnergy.ENERGY).ifPresent(
                     handler -> {
@@ -56,7 +62,7 @@ public abstract class ModBatteryTile extends TileEntity implements ITickableTile
                     }
             );
 
-        ItemStack outputSlot = ITEM_STORAGE.getStackInSlot(1);
+        ItemStack outputSlot = BATTERY_INVENTORY.getStackInSlot(1);
         if (!outputSlot.isEmpty())
             outputSlot.getCapability(CapabilityEnergy.ENERGY).ifPresent(
                     handler -> {
@@ -66,7 +72,7 @@ public abstract class ModBatteryTile extends TileEntity implements ITickableTile
     }
 
     public ItemStackHandler getItemStorage() {
-        return this.ITEM_STORAGE;
+        return this.BATTERY_INVENTORY.getItemStackHandler();
     }
 
     public float getChargePercentage() {
@@ -85,22 +91,23 @@ public abstract class ModBatteryTile extends TileEntity implements ITickableTile
     public void read(CompoundNBT compound) {
         super.read(compound);
         ENERGY_STORAGE.deserializeNBT(compound.getCompound("energyStorage"));
-        ITEM_STORAGE.deserializeNBT(compound.getCompound("itemStackHandler"));
+        BATTERY_INVENTORY.deserializeNBT(compound.getCompound("batteryInventory"));
     }
 
     @Override
     public CompoundNBT write(CompoundNBT compound) {
         compound.put("energyStorage", ENERGY_STORAGE.serializeNBT());
-        compound.put("itemStackHandler", ITEM_STORAGE.serializeNBT());
+        compound.put("batteryInventory", BATTERY_INVENTORY.serializeNBT());
         return super.write(compound);
     }
 
     @Nonnull
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-        if (cap.equals(CapabilityEnergy.ENERGY)) {
-            return LazyOptional.of(() -> ENERGY_STORAGE).cast();
-        }
+        if (cap.equals(CapabilityEnergy.ENERGY))
+            return LAZY_ENERGY_STORAGE.cast();
+        else if (cap.equals(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY))
+            return LazyOptional.of(() -> new SidedInvWrapper(BATTERY_INVENTORY, side)).cast();
         return super.getCapability(cap, side);
     }
 }
