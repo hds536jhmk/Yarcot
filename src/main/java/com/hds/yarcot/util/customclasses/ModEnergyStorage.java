@@ -1,10 +1,9 @@
 package com.hds.yarcot.util.customclasses;
 
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.energy.IEnergyStorage;
 
-public class ModEnergyStorage implements IEnergyStorage, INBTSerializable<CompoundNBT> {
+public class ModEnergyStorage implements IModEnergyStorage {
 
     private int energy;
     private int capacity;
