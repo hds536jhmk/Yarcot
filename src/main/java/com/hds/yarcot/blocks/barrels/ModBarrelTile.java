@@ -18,17 +18,21 @@ public abstract class ModBarrelTile extends TileEntity {
     public final int ROWS;
 
     private final ItemStackHandler BARREL_INVENTORY;
+    private final LazyOptional<ItemStackHandler> LAZY_BARREL_INVENTORY;
 
     public ModBarrelTile(TileEntityType<?> tileEntityTypeIn, int columns, int rows) {
         super(tileEntityTypeIn);
         this.COLUMNS = columns;
         this.ROWS = rows;
+
         this.BARREL_INVENTORY = new ItemStackHandler(this.COLUMNS * this.ROWS) {
             @Override
             protected void onContentsChanged(int slot) {
                 markDirty();
             }
         };
+
+        this.LAZY_BARREL_INVENTORY = LazyOptional.of(() -> BARREL_INVENTORY);
     }
 
     @Override
@@ -50,9 +54,8 @@ public abstract class ModBarrelTile extends TileEntity {
     @Nonnull
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-        if (cap.equals(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)) {
-            return LazyOptional.of(() -> BARREL_INVENTORY).cast();
-        }
+        if (cap.equals(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY))
+            return LAZY_BARREL_INVENTORY.cast();
         return super.getCapability(cap, side);
     }
 }

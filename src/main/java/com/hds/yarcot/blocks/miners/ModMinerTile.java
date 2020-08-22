@@ -26,6 +26,7 @@ import java.util.List;
 
 public abstract class ModMinerTile extends TileEntity implements ITickableTileEntity {
     private final ModEnergyStorage ENERGY_STORAGE;
+    private final LazyOptional<ModEnergyStorage> LAZY_ENERGY_STORAGE;
     private final TickTimer ACTION_TIMER;
 
     private final IItemTier MINER_TIER;
@@ -43,6 +44,7 @@ public abstract class ModMinerTile extends TileEntity implements ITickableTileEn
                 ModMinerTile.this.markDirty();
             }
         };
+        this.LAZY_ENERGY_STORAGE = LazyOptional.of(() -> ENERGY_STORAGE);
         this.ACTION_TIMER = new TickTimer(actionTime);
 
         this.MINER_TIER = minerTier;
@@ -159,7 +161,7 @@ public abstract class ModMinerTile extends TileEntity implements ITickableTileEn
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
         if (cap.equals(CapabilityEnergy.ENERGY))
-            return LazyOptional.of(() -> ENERGY_STORAGE).cast();
+            return LAZY_ENERGY_STORAGE.cast();
         return super.getCapability(cap, side);
     }
 }

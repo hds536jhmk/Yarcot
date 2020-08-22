@@ -23,6 +23,8 @@ public abstract class ModFurnaceTile extends TileEntity implements ITickableTile
     private final ModFurnaceInventory INVENTORY;
     private final ModEnergyStorage ENERGY_STORAGE;
 
+    private final LazyOptional<ModEnergyStorage> LAZY_ENERGY_STORAGE;
+
     private final int ENERGY_CONSUMPTION;
     private final float SPEED_FACTOR;
 
@@ -40,13 +42,14 @@ public abstract class ModFurnaceTile extends TileEntity implements ITickableTile
                 ModFurnaceTile.this.markDirty();
             }
         };
-
         this.ENERGY_STORAGE = new ModEnergyStorage(capacity, input, 0) {
             @Override
             public void onEnergyChanged(int energyAdded) {
                 markDirty();
             }
         };
+
+        this.LAZY_ENERGY_STORAGE = LazyOptional.of(() -> ENERGY_STORAGE);
     }
 
     public ModFurnaceInventory getFurnaceInventory() {
@@ -138,10 +141,10 @@ public abstract class ModFurnaceTile extends TileEntity implements ITickableTile
     @Nonnull
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-        if (cap.equals(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)) {
+        if (cap.equals(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY))
             return LazyOptional.of(() -> new SidedInvWrapper(this.INVENTORY, side)).cast();
-        } else if (cap.equals(CapabilityEnergy.ENERGY))
-            return LazyOptional.of(() -> ENERGY_STORAGE).cast();
+        else if (cap.equals(CapabilityEnergy.ENERGY))
+            return LAZY_ENERGY_STORAGE.cast();
         return super.getCapability(cap, side);
     }
 }

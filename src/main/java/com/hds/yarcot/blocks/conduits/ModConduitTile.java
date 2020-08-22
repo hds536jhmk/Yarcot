@@ -24,18 +24,22 @@ public abstract class ModConduitTile extends TileEntity implements ITickableTile
     private final int BUFFER_CAPACITY;
 
     private final ModEnergyStorage CONDUIT_ENERGY_BUFFER;
+    private final LazyOptional<ModEnergyStorage> LAZY_ENERGY_BUFFER;
 
     public ModConduitTile(TileEntityType<?> type, int input, int output, int bufferCapacity) {
         super(type);
         this.MAX_INPUT = input;
         this.MAX_OUTPUT = output;
         this.BUFFER_CAPACITY = bufferCapacity;
+
         this.CONDUIT_ENERGY_BUFFER = new ModEnergyStorage(this.BUFFER_CAPACITY, this.MAX_INPUT, this.MAX_OUTPUT, 0) {
             @Override
             public void onEnergyChanged(int energyAdded) {
                 markDirty();
             }
         };
+
+        this.LAZY_ENERGY_BUFFER = LazyOptional.of(() -> CONDUIT_ENERGY_BUFFER);
     }
 
     @Override
@@ -82,9 +86,8 @@ public abstract class ModConduitTile extends TileEntity implements ITickableTile
     @Nonnull
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-        if (cap.equals(CapabilityEnergy.ENERGY)) {
-            return LazyOptional.of(() -> CONDUIT_ENERGY_BUFFER).cast();
-        }
+        if (cap.equals(CapabilityEnergy.ENERGY))
+            return LAZY_ENERGY_BUFFER.cast();
         return super.getCapability(cap, side);
     }
 }
