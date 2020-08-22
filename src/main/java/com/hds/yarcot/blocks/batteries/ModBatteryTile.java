@@ -11,6 +11,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
@@ -25,6 +26,7 @@ public abstract class ModBatteryTile extends TileEntity implements ITickableTile
     private final ModBatteryInventory BATTERY_INVENTORY;
     private final ModEnergyStorage ENERGY_STORAGE;
 
+    private final LazyOptional<IItemHandlerModifiable>[] LAZY_INVENTORY;
     private final LazyOptional<ModEnergyStorage> LAZY_ENERGY_STORAGE;
 
     public ModBatteryTile(TileEntityType<?> tileEntityTypeIn, int input, int output, int capacity) {
@@ -46,6 +48,7 @@ public abstract class ModBatteryTile extends TileEntity implements ITickableTile
             }
         };
 
+        this.LAZY_INVENTORY = SidedInvWrapper.create(BATTERY_INVENTORY, Direction.UP, Direction.SOUTH, Direction.DOWN);
         this.LAZY_ENERGY_STORAGE = LazyOptional.of(() -> ENERGY_STORAGE);
     }
 
@@ -104,10 +107,15 @@ public abstract class ModBatteryTile extends TileEntity implements ITickableTile
     @Nonnull
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-        if (cap.equals(CapabilityEnergy.ENERGY))
+        if (cap.equals(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY))
+            if (side == Direction.UP)
+                return LAZY_INVENTORY[0].cast();
+            else if (side == Direction.DOWN)
+                return LAZY_INVENTORY[2].cast();
+            else
+                return LAZY_INVENTORY[1].cast();
+        else if (cap.equals(CapabilityEnergy.ENERGY))
             return LAZY_ENERGY_STORAGE.cast();
-        else if (cap.equals(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY))
-            return LazyOptional.of(() -> new SidedInvWrapper(BATTERY_INVENTORY, side)).cast();
         return super.getCapability(cap, side);
     }
 }

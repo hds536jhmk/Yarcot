@@ -14,6 +14,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
 import javax.annotation.Nonnull;
@@ -23,6 +24,7 @@ public abstract class ModFurnaceTile extends TileEntity implements ITickableTile
     private final ModFurnaceInventory INVENTORY;
     private final ModEnergyStorage ENERGY_STORAGE;
 
+    private final LazyOptional<IItemHandlerModifiable>[] LAZY_INVENTORY;
     private final LazyOptional<ModEnergyStorage> LAZY_ENERGY_STORAGE;
 
     private final int ENERGY_CONSUMPTION;
@@ -49,6 +51,7 @@ public abstract class ModFurnaceTile extends TileEntity implements ITickableTile
             }
         };
 
+        this.LAZY_INVENTORY = SidedInvWrapper.create(INVENTORY, Direction.UP, Direction.DOWN);
         this.LAZY_ENERGY_STORAGE = LazyOptional.of(() -> ENERGY_STORAGE);
     }
 
@@ -142,7 +145,10 @@ public abstract class ModFurnaceTile extends TileEntity implements ITickableTile
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
         if (cap.equals(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY))
-            return LazyOptional.of(() -> new SidedInvWrapper(this.INVENTORY, side)).cast();
+            if (side == Direction.DOWN)
+                return LAZY_INVENTORY[1].cast();
+            else
+                return LAZY_INVENTORY[0].cast();
         else if (cap.equals(CapabilityEnergy.ENERGY))
             return LAZY_ENERGY_STORAGE.cast();
         return super.getCapability(cap, side);
