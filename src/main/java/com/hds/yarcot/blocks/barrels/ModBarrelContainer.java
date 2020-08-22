@@ -1,7 +1,7 @@
 package com.hds.yarcot.blocks.barrels;
 
 import com.hds.yarcot.util.ModLog;
-import com.hds.yarcot.util.customclasses.ModInventoryContainer;
+import com.hds.yarcot.apis.ModInventoryContainer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.ContainerType;

@@ -1,6 +1,6 @@
 package com.hds.yarcot.blocks.batteries;
 
-import com.hds.yarcot.util.customclasses.ModEnergyStorage;
+import com.hds.yarcot.apis.ModEnergyStorage;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;

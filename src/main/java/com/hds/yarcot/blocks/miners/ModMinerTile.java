@@ -1,7 +1,7 @@
 package com.hds.yarcot.blocks.miners;
 
-import com.hds.yarcot.util.customclasses.ModEnergyStorage;
-import com.hds.yarcot.util.customclasses.TickTimer;
+import com.hds.yarcot.apis.ModEnergyStorage;
+import com.hds.yarcot.apis.TickTimer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.IItemTier;

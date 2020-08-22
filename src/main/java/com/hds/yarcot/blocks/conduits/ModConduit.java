@@ -1,6 +1,6 @@
 package com.hds.yarcot.blocks.conduits;
 
-import com.hds.yarcot.util.customclasses.DirectionToBlockStateProperty;
+import com.hds.yarcot.apis.DirectionToBlockStateProperty;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.BlockItemUseContext;

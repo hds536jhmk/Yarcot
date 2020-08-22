@@ -1,6 +1,6 @@
 package com.hds.yarcot.blocks.barrels;
 
-import com.hds.yarcot.util.customclasses.ItemHandlerInventory;
+import com.hds.yarcot.apis.ItemHandlerInventory;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;

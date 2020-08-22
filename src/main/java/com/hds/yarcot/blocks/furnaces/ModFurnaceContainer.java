@@ -1,7 +1,7 @@
 package com.hds.yarcot.blocks.furnaces;
 
 import com.hds.yarcot.util.ModLog;
-import com.hds.yarcot.util.customclasses.ModEnergyContainer;
+import com.hds.yarcot.apis.ModEnergyContainer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.ContainerType;

@@ -1,7 +1,7 @@
 package com.hds.yarcot.items.batteries;
 
-import com.hds.yarcot.util.customclasses.ModEnergyStorage;
-import com.hds.yarcot.util.customclasses.ModItemEnergyStorage;
+import com.hds.yarcot.apis.ModEnergyStorage;
+import com.hds.yarcot.apis.ModItemEnergyStorage;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;

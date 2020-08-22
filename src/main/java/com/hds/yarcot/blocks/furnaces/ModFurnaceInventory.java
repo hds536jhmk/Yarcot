@@ -1,6 +1,6 @@
 package com.hds.yarcot.blocks.furnaces;
 
-import com.hds.yarcot.util.customclasses.ItemHandlerInventory;
+import com.hds.yarcot.apis.ItemHandlerInventory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;

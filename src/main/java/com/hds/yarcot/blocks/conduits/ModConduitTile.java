@@ -1,7 +1,7 @@
 package com.hds.yarcot.blocks.conduits;
 
-import com.hds.yarcot.util.customclasses.DirectionToBlockStateProperty;
-import com.hds.yarcot.util.customclasses.ModEnergyStorage;
+import com.hds.yarcot.apis.DirectionToBlockStateProperty;
+import com.hds.yarcot.apis.ModEnergyStorage;
 import net.minecraft.block.BlockState;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.BooleanProperty;

@@ -1,4 +1,4 @@
-package com.hds.yarcot.util.customclasses;
+package com.hds.yarcot.apis;
 
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.properties.BlockStateProperties;

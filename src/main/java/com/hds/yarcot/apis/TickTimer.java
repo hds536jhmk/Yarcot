@@ -1,4 +1,4 @@
-package com.hds.yarcot.util.customclasses;
+package com.hds.yarcot.apis;
 
 public class TickTimer {
     public static final int TICKS_PER_SECOND = 20;
