@@ -53,7 +53,7 @@ public abstract class ModBatteryTile extends TileEntity implements ITickableTile
 
         this.LAZY_INVENTORY = SidedInvWrapper.create(BATTERY_INVENTORY, Direction.UP, Direction.SOUTH, Direction.DOWN);
         this.LAZY_ENERGY_STORAGE = ModSidedEnergyWrapper.create(
-                ENERGY_STORAGE,
+                ENERGY_STORAGE, null,
                 Direction.UP, Direction.DOWN,
                 Direction.NORTH, Direction.SOUTH,
                 Direction.EAST, Direction.WEST
@@ -62,21 +62,21 @@ public abstract class ModBatteryTile extends TileEntity implements ITickableTile
 
     private LazyOptional<IModEnergyStorage> getLazyEnergyFromDirection(Direction direction) {
         if (direction == null)
-            return LazyOptional.of(() -> ENERGY_STORAGE);
+            return this.LAZY_ENERGY_STORAGE[0];
 
         switch (direction) {
             case UP:
-                return this.LAZY_ENERGY_STORAGE[0];
-            case DOWN:
                 return this.LAZY_ENERGY_STORAGE[1];
-            case NORTH:
+            case DOWN:
                 return this.LAZY_ENERGY_STORAGE[2];
-            case SOUTH:
+            case NORTH:
                 return this.LAZY_ENERGY_STORAGE[3];
-            case EAST:
+            case SOUTH:
                 return this.LAZY_ENERGY_STORAGE[4];
-            default:
+            case EAST:
                 return this.LAZY_ENERGY_STORAGE[5];
+            default:
+                return this.LAZY_ENERGY_STORAGE[6];
         }
     }
 
