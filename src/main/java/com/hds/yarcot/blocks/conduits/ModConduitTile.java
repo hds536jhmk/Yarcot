@@ -1,6 +1,7 @@
 package com.hds.yarcot.blocks.conduits;
 
-import com.hds.yarcot.apis.DirectionToBlockStateProperty;
+import com.hds.yarcot.apis.IEnergeticTileEntity;
+import com.hds.yarcot.apis.ModBlockStateProperties;
 import com.hds.yarcot.apis.ModEnergyStorage;
 import net.minecraft.block.BlockState;
 import net.minecraft.nbt.CompoundNBT;
@@ -18,7 +19,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.concurrent.atomic.AtomicReference;
 
-public abstract class ModConduitTile extends TileEntity implements ITickableTileEntity {
+public abstract class ModConduitTile extends TileEntity implements ITickableTileEntity, IEnergeticTileEntity {
     private final int MAX_INPUT;
     private final int MAX_OUTPUT;
     private final int BUFFER_CAPACITY;
@@ -49,7 +50,7 @@ public abstract class ModConduitTile extends TileEntity implements ITickableTile
         BlockPos thisPos = this.getPos();
         AtomicReference<BlockState> thisBlockState = new AtomicReference<>(world.getBlockState(thisPos));
         for (Direction direction : Direction.values()) {
-            BooleanProperty attachedFace = DirectionToBlockStateProperty.getBooleanProperty(direction);
+            BooleanProperty attachedFace = ModBlockStateProperties.BOOLEAN_DIRECTION.getFromDirection(direction);
             thisBlockState.set(thisBlockState.get().with(attachedFace, false));
             TileEntity tileEntity = world.getTileEntity(thisPos.offset(direction));
             if (tileEntity == null)
@@ -69,6 +70,11 @@ public abstract class ModConduitTile extends TileEntity implements ITickableTile
             );
         }
         world.setBlockState(thisPos, thisBlockState.get());
+    }
+
+    @Override
+    public ModEnergyStorage getEnergyStorage() {
+        return CONDUIT_ENERGY_BUFFER;
     }
 
     @Override

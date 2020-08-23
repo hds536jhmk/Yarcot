@@ -1,5 +1,6 @@
 package com.hds.yarcot.blocks.furnaces;
 
+import com.hds.yarcot.apis.IEnergeticTileEntity;
 import com.hds.yarcot.apis.ModEnergyStorage;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.AbstractCookingRecipe;
@@ -20,7 +21,7 @@ import net.minecraftforge.items.wrapper.SidedInvWrapper;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public abstract class ModFurnaceTile extends TileEntity implements ITickableTileEntity {
+public abstract class ModFurnaceTile extends TileEntity implements ITickableTileEntity, IEnergeticTileEntity {
     private final ModFurnaceInventory INVENTORY;
     private final ModEnergyStorage ENERGY_STORAGE;
 
@@ -70,8 +71,9 @@ public abstract class ModFurnaceTile extends TileEntity implements ITickableTile
         return (float) smeltProgress / (float) smeltTime;
     }
 
-    public float getChargePercentage() {
-        return (float) ENERGY_STORAGE.getEnergyStored() / (float) ENERGY_STORAGE.getMaxEnergyStored();
+    @Override
+    public ModEnergyStorage getEnergyStorage() {
+        return this.ENERGY_STORAGE;
     }
 
     private void setPowered(boolean state) {

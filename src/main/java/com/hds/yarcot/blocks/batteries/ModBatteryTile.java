@@ -1,6 +1,9 @@
 package com.hds.yarcot.blocks.batteries;
 
+import com.hds.yarcot.apis.IEnergeticTileEntity;
+import com.hds.yarcot.apis.IModEnergyStorage;
 import com.hds.yarcot.apis.ModEnergyStorage;
+import com.hds.yarcot.apis.ModSidedEnergyWrapper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -18,16 +21,16 @@ import net.minecraftforge.items.wrapper.SidedInvWrapper;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public abstract class ModBatteryTile extends TileEntity implements ITickableTileEntity {
+public abstract class ModBatteryTile extends TileEntity implements ITickableTileEntity, IEnergeticTileEntity {
     private final int MAX_INPUT;
     private final int MAX_OUTPUT;
     private final int CAPACITY;
 
     private final ModBatteryInventory BATTERY_INVENTORY;
-    private final ModEnergyStorage ENERGY_STORAGE;
+    private final ModBatteryEnergy ENERGY_STORAGE;
 
     private final LazyOptional<IItemHandlerModifiable>[] LAZY_INVENTORY;
-    private final LazyOptional<ModEnergyStorage> LAZY_ENERGY_STORAGE;
+    private final LazyOptional<IModEnergyStorage>[] LAZY_ENERGY_STORAGE;
 
     public ModBatteryTile(TileEntityType<?> tileEntityTypeIn, int input, int output, int capacity) {
         super(tileEntityTypeIn);
@@ -41,7 +44,7 @@ public abstract class ModBatteryTile extends TileEntity implements ITickableTile
                 ModBatteryTile.this.markDirty();
             }
         };
-        this.ENERGY_STORAGE = new ModEnergyStorage(this.CAPACITY, this.MAX_INPUT, this.MAX_OUTPUT) {
+        this.ENERGY_STORAGE = new ModBatteryEnergy(this, this.CAPACITY, this.MAX_INPUT, this.MAX_OUTPUT, 0) {
             @Override
             public void onEnergyChanged(int energyAdded) {
                 markDirty();
@@ -49,7 +52,32 @@ public abstract class ModBatteryTile extends TileEntity implements ITickableTile
         };
 
         this.LAZY_INVENTORY = SidedInvWrapper.create(BATTERY_INVENTORY, Direction.UP, Direction.SOUTH, Direction.DOWN);
-        this.LAZY_ENERGY_STORAGE = LazyOptional.of(() -> ENERGY_STORAGE);
+        this.LAZY_ENERGY_STORAGE = ModSidedEnergyWrapper.create(
+                ENERGY_STORAGE,
+                Direction.UP, Direction.DOWN,
+                Direction.NORTH, Direction.SOUTH,
+                Direction.EAST, Direction.WEST
+        );
+    }
+
+    private LazyOptional<IModEnergyStorage> getLazyEnergyFromDirection(Direction direction) {
+        if (direction == null)
+            return LazyOptional.of(() -> ENERGY_STORAGE);
+
+        switch (direction) {
+            case UP:
+                return this.LAZY_ENERGY_STORAGE[0];
+            case DOWN:
+                return this.LAZY_ENERGY_STORAGE[1];
+            case NORTH:
+                return this.LAZY_ENERGY_STORAGE[2];
+            case SOUTH:
+                return this.LAZY_ENERGY_STORAGE[3];
+            case EAST:
+                return this.LAZY_ENERGY_STORAGE[4];
+            default:
+                return this.LAZY_ENERGY_STORAGE[5];
+        }
     }
 
     @Override
@@ -78,16 +106,9 @@ public abstract class ModBatteryTile extends TileEntity implements ITickableTile
         return this.BATTERY_INVENTORY.getItemStackHandler();
     }
 
-    public float getChargePercentage() {
-        return (float)ENERGY_STORAGE.getEnergyStored() / (float)this.CAPACITY;
-    }
-
-    public int getCharge() {
-        return ENERGY_STORAGE.getEnergyStored();
-    }
-
-    public int getCapacity() {
-        return this.CAPACITY;
+    @Override
+    public ModEnergyStorage getEnergyStorage() {
+        return this.ENERGY_STORAGE;
     }
 
     @Override
@@ -115,7 +136,7 @@ public abstract class ModBatteryTile extends TileEntity implements ITickableTile
             else
                 return LAZY_INVENTORY[1].cast();
         else if (cap.equals(CapabilityEnergy.ENERGY))
-            return LAZY_ENERGY_STORAGE.cast();
+            return this.getLazyEnergyFromDirection(side).cast();
         return super.getCapability(cap, side);
     }
 }

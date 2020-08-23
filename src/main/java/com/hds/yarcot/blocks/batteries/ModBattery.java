@@ -1,10 +1,14 @@
 package com.hds.yarcot.blocks.batteries;
 
+import com.hds.yarcot.apis.ModBlockStateProperties;
+import com.hds.yarcot.util.ModLog;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.INamedContainerProvider;
+import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -15,6 +19,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 import net.minecraftforge.items.ItemStackHandler;
 
+import javax.annotation.Nullable;
 import java.util.function.Function;
 
 public abstract class ModBattery extends Block {
@@ -35,9 +40,26 @@ public abstract class ModBattery extends Block {
     @Override
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         if (!worldIn.isRemote) {
-            TileEntity tileEntity = worldIn.getTileEntity(pos);
-            if (tileEntity instanceof ModBatteryTile) {
-                NetworkHooks.openGui((ServerPlayerEntity) player, this.CONTAINER_PROVIDER.apply(pos), pos);
+            if (player.isSneaking()) {
+                BlockState newState = ModBlockStateProperties.incrementIntegerProperty(
+                        state, ModBlockStateProperties.CONNECTION.getFromDirection(hit.getFace()), 0, 3
+                );
+                worldIn.setBlockState(pos, newState);
+                ModLog.debug(
+                        String.format(
+                                "Battery (@%d,%d,%d)'s Connection on the '%s' side was changed to: %d",
+                                pos.getX(),
+                                pos.getY(),
+                                pos.getZ(),
+                                hit.getFace().toString(),
+                                newState.get(ModBlockStateProperties.CONNECTION.getFromDirection(hit.getFace()))
+                        )
+                );
+            } else {
+                TileEntity tileEntity = worldIn.getTileEntity(pos);
+                if (tileEntity instanceof ModBatteryTile) {
+                    NetworkHooks.openGui((ServerPlayerEntity) player, this.CONTAINER_PROVIDER.apply(pos), pos);
+                }
             }
         }
         return ActionResultType.SUCCESS;
@@ -57,6 +79,30 @@ public abstract class ModBattery extends Block {
             }
         }
         super.onReplaced(state, worldIn, pos, newState, isMoving);
+    }
+
+    @Nullable
+    @Override
+    public BlockState getStateForPlacement(BlockItemUseContext context) {
+        return this.getDefaultState()
+                .with(ModBlockStateProperties.NORTH_CONNECTION, 0)
+                .with(ModBlockStateProperties.SOUTH_CONNECTION, 0)
+                .with(ModBlockStateProperties.UP_CONNECTION, 0)
+                .with(ModBlockStateProperties.DOWN_CONNECTION, 0)
+                .with(ModBlockStateProperties.EAST_CONNECTION, 0)
+                .with(ModBlockStateProperties.WEST_CONNECTION, 0);
+    }
+
+    @Override
+    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+        builder.add(
+                ModBlockStateProperties.NORTH_CONNECTION,
+                ModBlockStateProperties.SOUTH_CONNECTION,
+                ModBlockStateProperties.UP_CONNECTION,
+                ModBlockStateProperties.DOWN_CONNECTION,
+                ModBlockStateProperties.EAST_CONNECTION,
+                ModBlockStateProperties.WEST_CONNECTION
+        );
     }
 
     @SuppressWarnings("deprecation")

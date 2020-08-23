@@ -1,5 +1,6 @@
 package com.hds.yarcot.blocks.miners;
 
+import com.hds.yarcot.apis.IEnergeticTileEntity;
 import com.hds.yarcot.apis.ModEnergyStorage;
 import com.hds.yarcot.apis.TickTimer;
 import net.minecraft.block.Block;
@@ -24,7 +25,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class ModMinerTile extends TileEntity implements ITickableTileEntity {
+public abstract class ModMinerTile extends TileEntity implements ITickableTileEntity, IEnergeticTileEntity {
     private final ModEnergyStorage ENERGY_STORAGE;
     private final LazyOptional<ModEnergyStorage> LAZY_ENERGY_STORAGE;
     private final TickTimer ACTION_TIMER;
@@ -75,6 +76,11 @@ public abstract class ModMinerTile extends TileEntity implements ITickableTileEn
             }
         }
         return false;
+    }
+
+    @Override
+    public ModEnergyStorage getEnergyStorage() {
+        return this.ENERGY_STORAGE;
     }
 
     @Override

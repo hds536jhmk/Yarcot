@@ -1,6 +1,6 @@
 package com.hds.yarcot.blocks.conduits;
 
-import com.hds.yarcot.apis.DirectionToBlockStateProperty;
+import com.hds.yarcot.apis.ModBlockStateProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.BlockItemUseContext;
@@ -32,7 +32,7 @@ public abstract class ModConduit extends Block {
 
         ArrayList<VoxelShape> shapesToAdd = new ArrayList<>();
         for (Direction direction : Direction.values()) {
-            boolean hasConnection = state.get(DirectionToBlockStateProperty.getBooleanProperty(direction));
+            boolean hasConnection = state.get(ModBlockStateProperties.BOOLEAN_DIRECTION.getFromDirection(direction));
             if (!hasConnection)
                 continue;
 

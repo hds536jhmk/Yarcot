@@ -1,5 +1,6 @@
 package com.hds.yarcot.blocks.batteries;
 
+import com.hds.yarcot.apis.IEnergeticTileEntity;
 import com.hds.yarcot.util.ModLog;
 import com.hds.yarcot.apis.ModEnergyContainer;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,7 +20,7 @@ public abstract class ModBatteryContainer extends ModEnergyContainer {
     protected final ModBatteryTile BATTERY_TILE;
 
     public ModBatteryContainer(@Nullable ContainerType<?> type, int windowId, PlayerInventory playerInventory, BlockPos pos) {
-        super(type, windowId, playerInventory, playerInventory.player.world.getTileEntity(pos));
+        super(type, windowId, playerInventory, (IEnergeticTileEntity) playerInventory.player.world.getTileEntity(pos));
 
         TileEntity te = playerInventory.player.world.getTileEntity(pos);
         if (!(te instanceof ModBatteryTile))
