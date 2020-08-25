@@ -17,6 +17,7 @@ import net.minecraftforge.energy.CapabilityEnergy;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class ModConduitTile extends TileEntity implements ITickableTileEntity, IEnergeticTileEntity {
     private final int MAX_INPUT;
@@ -53,10 +54,19 @@ public abstract class ModConduitTile extends TileEntity implements ITickableTile
         BlockState thisBlockState = world.getBlockState(thisPos);
         for (Direction direction : Direction.values()) {
             TileEntity te = world.getTileEntity(thisPos.offset(direction));
+
             BooleanProperty property = ModBlockStateProperties.BOOLEAN_DIRECTION.getFromDirection(direction);
             thisBlockState = thisBlockState.with(property, false);
-            if (te != null)
-                thisBlockState = thisBlockState.with(property, te.getCapability(CapabilityEnergy.ENERGY, direction.getOpposite()).isPresent());
+            if (te == null)
+                continue;
+
+            AtomicBoolean hasConnection = new AtomicBoolean(false);
+            te.getCapability(CapabilityEnergy.ENERGY, direction.getOpposite()).ifPresent(
+                    handler -> {
+                        hasConnection.set(handler.canExtract() || handler.canReceive());
+                    }
+            );
+            thisBlockState = thisBlockState.with(property, hasConnection.get());
         }
 
         world.setBlockState(thisPos, thisBlockState);
