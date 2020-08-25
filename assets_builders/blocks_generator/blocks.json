@@ -14,13 +14,6 @@
     },
     "blocks": [
         {
-            "blockID": "yarcot:sapphire_battery",
-            "hasFacing": false,
-            "hasBooleanProperty": false,
-            "booleanProperty": "",
-            "booleanPropertyColor": ""
-        },
-        {
             "blockID": "yarcot:sapphire_furnace",
             "hasFacing": true,
             "hasBooleanProperty": true,

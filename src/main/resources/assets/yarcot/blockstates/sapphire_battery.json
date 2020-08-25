@@ -1,7 +1,168 @@
 {
-  "variants": {
-    "": {
-      "model": "yarcot:block/sapphire_battery"
+  "multipart": [
+    {
+      "apply": {
+        "model": "yarcot:block/sapphire_battery"
+      }
+    },
+    {
+      "when": {
+        "north_connection": 0
+      },
+      "apply": {
+        "model": "yarcot:block/sapphire_battery_connector_all"
+      }
+    },
+    {
+      "when": {
+        "north_connection": 1
+      },
+      "apply": {
+        "model": "yarcot:block/sapphire_battery_connector_input"
+      }
+    },
+    {
+      "when": {
+        "north_connection": 2
+      },
+      "apply": {
+        "model": "yarcot:block/sapphire_battery_connector_output"
+      }
+    },
+    {
+      "when": {
+        "east_connection": 0
+      },
+      "apply": {
+        "model": "yarcot:block/sapphire_battery_connector_all",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "east_connection": 1
+      },
+      "apply": {
+        "model": "yarcot:block/sapphire_battery_connector_input",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "east_connection": 2
+      },
+      "apply": {
+        "model": "yarcot:block/sapphire_battery_connector_output",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "south_connection": 0
+      },
+      "apply": {
+        "model": "yarcot:block/sapphire_battery_connector_all",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "south_connection": 1
+      },
+      "apply": {
+        "model": "yarcot:block/sapphire_battery_connector_input",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "south_connection": 2
+      },
+      "apply": {
+        "model": "yarcot:block/sapphire_battery_connector_output",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "west_connection": 0
+      },
+      "apply": {
+        "model": "yarcot:block/sapphire_battery_connector_all",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "west_connection": 1
+      },
+      "apply": {
+        "model": "yarcot:block/sapphire_battery_connector_input",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "west_connection": 2
+      },
+      "apply": {
+        "model": "yarcot:block/sapphire_battery_connector_output",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "up_connection": 0
+      },
+      "apply": {
+        "model": "yarcot:block/sapphire_battery_connector_all",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up_connection": 1
+      },
+      "apply": {
+        "model": "yarcot:block/sapphire_battery_connector_input",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up_connection": 2
+      },
+      "apply": {
+        "model": "yarcot:block/sapphire_battery_connector_output",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "down_connection": 0
+      },
+      "apply": {
+        "model": "yarcot:block/sapphire_battery_connector_all",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down_connection": 1
+      },
+      "apply": {
+        "model": "yarcot:block/sapphire_battery_connector_input",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down_connection": 2
+      },
+      "apply": {
+        "model": "yarcot:block/sapphire_battery_connector_output",
+        "x": 90
+      }
     }
-  }
+  ]
 }
