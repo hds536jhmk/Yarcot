@@ -100,6 +100,8 @@ public abstract class ModBatteryTile extends TileEntity implements ITickableTile
                         ModEnergyStorage.transferEnergy(this.ENERGY_STORAGE, handler, this.MAX_OUTPUT);
                     }
             );
+
+        ENERGY_STORAGE.transferToNeighbours(world, pos);
     }
 
     public ItemStackHandler getItemStorage() {
