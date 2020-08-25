@@ -1,7 +1,14 @@
 package com.hds.yarcot.apis;
 
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Direction;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
+
+import java.util.ArrayList;
 
 public class ModEnergyStorage implements IModEnergyStorage {
 
@@ -55,6 +62,42 @@ public class ModEnergyStorage implements IModEnergyStorage {
         int energyExtracted = to.receiveEnergy(extractableEnergy, false);
         from.extractEnergy(energyExtracted, false);
         return energyExtracted;
+    }
+
+    public int transferToNeighbours(World world, BlockPos pos) {
+        ArrayList<IEnergyStorage> connectedStorages = new ArrayList<>();
+        for (Direction direction : Direction.values()) {
+            if (this instanceof ISidedEnergyStorage)
+                if (!((ISidedEnergyStorage) this).canExtractFromSide(direction))
+                    continue;
+            else if (!this.canExtract())
+                continue;
+
+            BlockPos tePos = pos.offset(direction);
+            TileEntity tileEntity = world.getTileEntity(tePos);
+            if (tileEntity == null)
+                continue;
+
+            tileEntity.getCapability(CapabilityEnergy.ENERGY, direction.getOpposite()).ifPresent(
+                    handler -> {
+                        if (handler.canReceive())
+                            connectedStorages.add(handler);
+                    }
+            );
+        }
+
+        if (connectedStorages.size() <= 0)
+            return 0;
+
+        int energyToOutput = Math.min(this.getEnergyStored(), maxExtract * connectedStorages.size());
+        // Using Math.ceil because we don't really want to keep energy if we can't transfer it equally to all neighbours
+        //  The first ones in the array will be the "lucky" ones that get it.
+        int energyForEach = (int) Math.ceil((float) energyToOutput / (float) connectedStorages.size());
+        int transferredEnergy = 0;
+        for (int i = 0; i < connectedStorages.size(); i++) {
+            transferredEnergy += ModEnergyStorage.transferEnergy(this, connectedStorages.get(i), energyForEach);
+        }
+        return transferredEnergy;
     }
 
     public static void copyEnergy(IEnergyStorage from, IEnergyStorage to) {
