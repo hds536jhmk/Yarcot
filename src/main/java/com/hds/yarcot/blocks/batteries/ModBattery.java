@@ -64,11 +64,6 @@ public abstract class ModBattery extends Block {
         return ActionResultType.SUCCESS;
     }
 
-    @Override
-    public boolean propagatesSkylightDown(BlockState state, IBlockReader reader, BlockPos pos) {
-        return true;
-    }
-
     @SuppressWarnings("deprecation")
     @Override
     public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
