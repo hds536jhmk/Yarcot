@@ -10,7 +10,7 @@
         "north_connection": 0
       },
       "apply": {
-        "model": "yarcot:block/sapphire_battery_connector_all"
+        "model": "yarcot:block/battery_connector_all"
       }
     },
     {
@@ -18,7 +18,7 @@
         "north_connection": 1
       },
       "apply": {
-        "model": "yarcot:block/sapphire_battery_connector_input"
+        "model": "yarcot:block/battery_connector_input"
       }
     },
     {
@@ -26,7 +26,7 @@
         "north_connection": 2
       },
       "apply": {
-        "model": "yarcot:block/sapphire_battery_connector_output"
+        "model": "yarcot:block/battery_connector_output"
       }
     },
     {
@@ -34,7 +34,7 @@
         "east_connection": 0
       },
       "apply": {
-        "model": "yarcot:block/sapphire_battery_connector_all",
+        "model": "yarcot:block/battery_connector_all",
         "y": 90
       }
     },
@@ -43,7 +43,7 @@
         "east_connection": 1
       },
       "apply": {
-        "model": "yarcot:block/sapphire_battery_connector_input",
+        "model": "yarcot:block/battery_connector_input",
         "y": 90
       }
     },
@@ -52,7 +52,7 @@
         "east_connection": 2
       },
       "apply": {
-        "model": "yarcot:block/sapphire_battery_connector_output",
+        "model": "yarcot:block/battery_connector_output",
         "y": 90
       }
     },
@@ -61,7 +61,7 @@
         "south_connection": 0
       },
       "apply": {
-        "model": "yarcot:block/sapphire_battery_connector_all",
+        "model": "yarcot:block/battery_connector_all",
         "y": 180
       }
     },
@@ -70,7 +70,7 @@
         "south_connection": 1
       },
       "apply": {
-        "model": "yarcot:block/sapphire_battery_connector_input",
+        "model": "yarcot:block/battery_connector_input",
         "y": 180
       }
     },
@@ -79,7 +79,7 @@
         "south_connection": 2
       },
       "apply": {
-        "model": "yarcot:block/sapphire_battery_connector_output",
+        "model": "yarcot:block/battery_connector_output",
         "y": 180
       }
     },
@@ -88,7 +88,7 @@
         "west_connection": 0
       },
       "apply": {
-        "model": "yarcot:block/sapphire_battery_connector_all",
+        "model": "yarcot:block/battery_connector_all",
         "y": 270
       }
     },
@@ -97,7 +97,7 @@
         "west_connection": 1
       },
       "apply": {
-        "model": "yarcot:block/sapphire_battery_connector_input",
+        "model": "yarcot:block/battery_connector_input",
         "y": 270
       }
     },
@@ -106,7 +106,7 @@
         "west_connection": 2
       },
       "apply": {
-        "model": "yarcot:block/sapphire_battery_connector_output",
+        "model": "yarcot:block/battery_connector_output",
         "y": 270
       }
     },
@@ -115,7 +115,7 @@
         "up_connection": 0
       },
       "apply": {
-        "model": "yarcot:block/sapphire_battery_connector_all",
+        "model": "yarcot:block/battery_connector_all",
         "x": 270
       }
     },
@@ -124,7 +124,7 @@
         "up_connection": 1
       },
       "apply": {
-        "model": "yarcot:block/sapphire_battery_connector_input",
+        "model": "yarcot:block/battery_connector_input",
         "x": 270
       }
     },
@@ -133,7 +133,7 @@
         "up_connection": 2
       },
       "apply": {
-        "model": "yarcot:block/sapphire_battery_connector_output",
+        "model": "yarcot:block/battery_connector_output",
         "x": 270
       }
     },
@@ -142,7 +142,7 @@
         "down_connection": 0
       },
       "apply": {
-        "model": "yarcot:block/sapphire_battery_connector_all",
+        "model": "yarcot:block/battery_connector_all",
         "x": 90
       }
     },
@@ -151,7 +151,7 @@
         "down_connection": 1
       },
       "apply": {
-        "model": "yarcot:block/sapphire_battery_connector_input",
+        "model": "yarcot:block/battery_connector_input",
         "x": 90
       }
     },
@@ -160,7 +160,7 @@
         "down_connection": 2
       },
       "apply": {
-        "model": "yarcot:block/sapphire_battery_connector_output",
+        "model": "yarcot:block/battery_connector_output",
         "x": 90
       }
     }
