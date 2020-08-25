@@ -8,6 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
@@ -41,18 +42,23 @@ public abstract class ModBattery extends Block {
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         if (!worldIn.isRemote) {
             if (player.isSneaking()) {
+                IntegerProperty property = ModBlockStateProperties.CONNECTION.getFromDirection(hit.getFace());
                 BlockState newState = ModBlockStateProperties.incrementIntegerProperty(
-                        state, ModBlockStateProperties.CONNECTION.getFromDirection(hit.getFace()), 0, 3
+                        state, property, 0, 3
                 );
                 worldIn.setBlockState(pos, newState);
+
+                // TODO: Actually make a texture that displays what mode a side is on
+                int newStateValue = newState.get(property);
+                ModBlockStateProperties.CONNECTION_TYPE connectionType = ModBlockStateProperties.CONNECTION_TYPE.getByValue(newStateValue);
                 ModLog.debug(
                         String.format(
-                                "Battery (@%d,%d,%d)'s Connection on the '%s' side was changed to: %d",
+                                "Battery (@%d,%d,%d)'s Connection on the '%s' side was changed to: %s",
                                 pos.getX(),
                                 pos.getY(),
                                 pos.getZ(),
                                 hit.getFace().toString(),
-                                newState.get(ModBlockStateProperties.CONNECTION.getFromDirection(hit.getFace()))
+                                connectionType == null ? "UNKNOWN" : connectionType.getName()
                         )
                 );
             } else {
