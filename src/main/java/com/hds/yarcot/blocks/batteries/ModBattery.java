@@ -1,20 +1,20 @@
 package com.hds.yarcot.blocks.batteries;
 
 import com.hds.yarcot.apis.ModBlockStateProperties;
-import com.hds.yarcot.util.ModLog;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
@@ -31,6 +31,14 @@ public abstract class ModBattery extends Block {
         this.CONTAINER_PROVIDER = containerProvider;
     }
 
+    @SuppressWarnings("deprecation")
+    @Override
+    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+        VoxelShape conduitShape = Block.makeCuboidShape(1, 1, 1, 15, 15, 15);
+
+        return conduitShape.simplify();
+    }
+
     @Override
     public abstract boolean hasTileEntity(BlockState state);
 
@@ -42,25 +50,10 @@ public abstract class ModBattery extends Block {
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         if (!worldIn.isRemote) {
             if (player.isSneaking()) {
-                IntegerProperty property = ModBlockStateProperties.CONNECTION.getFromDirection(hit.getFace());
                 BlockState newState = ModBlockStateProperties.incrementIntegerProperty(
-                        state, property, 0, 3
+                        state, ModBlockStateProperties.CONNECTION.getFromDirection(hit.getFace()), 0, 3
                 );
                 worldIn.setBlockState(pos, newState);
-
-                // TODO: Actually make a texture that displays what mode a side is on
-                int newStateValue = newState.get(property);
-                ModBlockStateProperties.CONNECTION_TYPE connectionType = ModBlockStateProperties.CONNECTION_TYPE.getByValue(newStateValue);
-                ModLog.debug(
-                        String.format(
-                                "Battery (@%d,%d,%d)'s Connection on the '%s' side was changed to: %s",
-                                pos.getX(),
-                                pos.getY(),
-                                pos.getZ(),
-                                hit.getFace().toString(),
-                                connectionType == null ? "UNKNOWN" : connectionType.getName()
-                        )
-                );
             } else {
                 TileEntity tileEntity = worldIn.getTileEntity(pos);
                 if (tileEntity instanceof ModBatteryTile) {
@@ -69,6 +62,11 @@ public abstract class ModBattery extends Block {
             }
         }
         return ActionResultType.SUCCESS;
+    }
+
+    @Override
+    public boolean propagatesSkylightDown(BlockState state, IBlockReader reader, BlockPos pos) {
+        return true;
     }
 
     @SuppressWarnings("deprecation")
