@@ -9,6 +9,7 @@ import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 
 import java.util.ArrayList;
+import java.util.function.BiConsumer;
 
 public class ModEnergyStorage implements IModEnergyStorage {
 
@@ -57,6 +58,13 @@ public class ModEnergyStorage implements IModEnergyStorage {
         return extractedEnergy;
     }
 
+    /**
+     * Transfers energy from a block to the other
+     * @param from The block where the energy should be taken from
+     * @param to The block where the energy should be received
+     * @param energy The amount of energy to transfer
+     * @return How much energy was transferred
+     */
     public static int transferEnergy(IEnergyStorage from, IEnergyStorage to, int energy) {
         int extractableEnergy = from.extractEnergy(energy, true);
         int energyExtracted = to.receiveEnergy(extractableEnergy, false);
@@ -64,7 +72,21 @@ public class ModEnergyStorage implements IModEnergyStorage {
         return energyExtracted;
     }
 
+    /**
+     * Copies energy from a storage to the other
+     * @param from The storage where the energy should be copied from
+     * @param to The storage where the energy should be pasted to
+     */
+    public static void copyEnergy(IEnergyStorage from, IEnergyStorage to) {
+        ((ModEnergyStorage) to).setEnergy(from.getEnergyStored());
+    }
+
     public int transferToNeighbours(World world, BlockPos pos) {
+        return this.transferToNeighbours(world, pos, (h, d) -> {});
+    }
+
+    @Override
+    public int transferToNeighbours(World world, BlockPos pos, BiConsumer<IEnergyStorage, Direction> handleEnergyStorage) {
         ArrayList<IEnergyStorage> connectedStorages = new ArrayList<>();
         for (Direction direction : Direction.values()) {
             if (this instanceof ISidedEnergyStorage)
@@ -75,13 +97,16 @@ public class ModEnergyStorage implements IModEnergyStorage {
 
             BlockPos tePos = pos.offset(direction);
             TileEntity tileEntity = world.getTileEntity(tePos);
-            if (tileEntity == null)
+            if (tileEntity == null) {
+                handleEnergyStorage.accept(null, direction);
                 continue;
+            }
 
             tileEntity.getCapability(CapabilityEnergy.ENERGY, direction.getOpposite()).ifPresent(
                     handler -> {
                         if (handler.canReceive())
                             connectedStorages.add(handler);
+                        handleEnergyStorage.accept(handler, direction);
                     }
             );
         }
@@ -98,10 +123,6 @@ public class ModEnergyStorage implements IModEnergyStorage {
             transferredEnergy += ModEnergyStorage.transferEnergy(this, connectedStorages.get(i), energyForEach);
         }
         return transferredEnergy;
-    }
-
-    public static void copyEnergy(IEnergyStorage from, IEnergyStorage to) {
-        ((ModEnergyStorage) to).setEnergy(from.getEnergyStored());
     }
 
     @Override
