@@ -1,5 +1,5 @@
 {
-  "parent": "block/cube_all",
+  "parent": "yarcot:block/miner",
   "textures": {
     "all": "yarcot:blocks/sapphire_miner"
   }
