@@ -17,7 +17,6 @@ import net.minecraftforge.energy.CapabilityEnergy;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.concurrent.atomic.AtomicReference;
 
 public abstract class ModConduitTile extends TileEntity implements ITickableTileEntity, IEnergeticTileEntity {
     private final int MAX_INPUT;
@@ -47,29 +46,20 @@ public abstract class ModConduitTile extends TileEntity implements ITickableTile
     public void tick() {
         if (world.isRemote)
             return;
+
         BlockPos thisPos = this.getPos();
-        AtomicReference<BlockState> thisBlockState = new AtomicReference<>(world.getBlockState(thisPos));
+        this.CONDUIT_ENERGY_BUFFER.transferToNeighbours(world, thisPos);
+
+        BlockState thisBlockState = world.getBlockState(thisPos);
         for (Direction direction : Direction.values()) {
-            BooleanProperty attachedFace = ModBlockStateProperties.BOOLEAN_DIRECTION.getFromDirection(direction);
-            thisBlockState.set(thisBlockState.get().with(attachedFace, false));
-            TileEntity tileEntity = world.getTileEntity(thisPos.offset(direction));
-            if (tileEntity == null)
-                continue;
-            tileEntity.getCapability(CapabilityEnergy.ENERGY, direction.getOpposite()).ifPresent(
-                    energyHandler -> {
-                        thisBlockState.set(thisBlockState.get().with(attachedFace, true));
-
-                        if (energyHandler.canReceive() && (energyHandler.getEnergyStored() < CONDUIT_ENERGY_BUFFER.getEnergyStored() || !energyHandler.canExtract())) {
-                            ModEnergyStorage.transferEnergy(this.CONDUIT_ENERGY_BUFFER, energyHandler, this.MAX_OUTPUT);
-
-                        } else if (energyHandler.canExtract()) {
-                            ModEnergyStorage.transferEnergy(energyHandler, this.CONDUIT_ENERGY_BUFFER, this.MAX_INPUT);
-
-                        }
-                    }
-            );
+            TileEntity te = world.getTileEntity(thisPos.offset(direction));
+            BooleanProperty property = ModBlockStateProperties.BOOLEAN_DIRECTION.getFromDirection(direction);
+            thisBlockState = thisBlockState.with(property, false);
+            if (te != null)
+                thisBlockState = thisBlockState.with(property, te.getCapability(CapabilityEnergy.ENERGY, direction.getOpposite()).isPresent());
         }
-        world.setBlockState(thisPos, thisBlockState.get());
+
+        world.setBlockState(thisPos, thisBlockState);
     }
 
     @Override
