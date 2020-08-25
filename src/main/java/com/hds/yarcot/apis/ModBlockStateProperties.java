@@ -44,11 +44,13 @@ public class ModBlockStateProperties {
         CONNECTION_TYPE(int value, String name) { this.VALUE = value; this.NAME = name; }
 
         @Override
-        public Integer get() { return this.VALUE; }
+        public Integer get() {
+            return this.VALUE;
+        }
 
         @Override
         public String getName() {
-            return null;
+            return this.NAME;
         }
     }
 
