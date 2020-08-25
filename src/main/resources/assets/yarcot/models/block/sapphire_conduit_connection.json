@@ -1,71 +1,8 @@
 {
-  "parent": "block/block",
+  "parent": "yarcot:block/conduit_connection",
   "textures": {
     "0": "yarcot:blocks/sapphire_conduit_connection",
     "1": "yarcot:blocks/sapphire_conduit_block",
     "particle": "yarcot:blocks/sapphire_conduit_connection"
-  },
-  "elements": [
-    {
-      "from": [
-        7,
-        7,
-        0
-      ],
-      "to": [
-        9,
-        9,
-        7
-      ],
-      "faces": {
-        "north": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#1"
-        },
-        "east": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#0"
-        },
-        "west": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#0"
-        },
-        "up": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "rotation": 90,
-          "texture": "#0"
-        },
-        "down": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "rotation": 90,
-          "texture": "#0"
-        }
-      }
-    }
-  ]
+  }
 }
