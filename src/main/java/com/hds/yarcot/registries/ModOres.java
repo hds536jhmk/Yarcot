@@ -35,7 +35,7 @@ public class ModOres {
     private static final Biome.Category[] OVERWORLD_ONLY = { Biome.Category.THEEND, Biome.Category.NETHER };
 
     public static final ModOreGenConfig SAPPHIRE_ORE_GEN = new ModOreGenConfig(
-            () -> SAPPHIRE_ORE.get(),
+            SAPPHIRE_ORE::get,
             ModOreGenConfig.BIOME_MODE.BLACKLIST,
             null,
             OVERWORLD_ONLY,
@@ -47,7 +47,7 @@ public class ModOres {
     );
 
     public static final ModOreGenConfig RUBY_ORE_GEN = new ModOreGenConfig(
-            () -> RUBY_ORE.get(),
+            RUBY_ORE::get,
             ModOreGenConfig.BIOME_MODE.BLACKLIST,
             null,
             OVERWORLD_ONLY,
@@ -59,7 +59,7 @@ public class ModOres {
     );
 
     public static final ModOreGenConfig SULFUR_ORE_GEN = new ModOreGenConfig(
-            () -> SULFUR_ORE.get(),
+            SULFUR_ORE::get,
             ModOreGenConfig.BIOME_MODE.BLACKLIST,
             null,
             OVERWORLD_ONLY,
@@ -71,7 +71,7 @@ public class ModOres {
     );
 
     public static final ModOreGenConfig LITHIUM_ORE_GEN = new ModOreGenConfig(
-            () -> LITHIUM_ORE.get(),
+            LITHIUM_ORE::get,
             ModOreGenConfig.BIOME_MODE.BLACKLIST,
             null,
             OVERWORLD_ONLY,

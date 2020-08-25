@@ -6,12 +6,12 @@ import net.minecraftforge.common.util.LazyOptional;
 
 public class ModSidedEnergyWrapper implements IModEnergyStorage {
 
-    private ISidedEnergyStorage energyStorage;
-    private Direction side;
+    private final ISidedEnergyStorage ENERGY_STORAGE;
+    private final Direction SIDE;
 
     public ModSidedEnergyWrapper(ISidedEnergyStorage energyStorage, Direction side) {
-        this.energyStorage = energyStorage;
-        this.side = side;
+        this.ENERGY_STORAGE = energyStorage;
+        this.SIDE = side;
     }
 
     public static LazyOptional<IModEnergyStorage>[] create(ISidedEnergyStorage energyStorage, Direction... sides) {
@@ -25,60 +25,60 @@ public class ModSidedEnergyWrapper implements IModEnergyStorage {
 
     @Override
     public void onEnergyChanged(int energyAdded) {
-        this.energyStorage.onEnergyChanged(energyAdded);
+        this.ENERGY_STORAGE.onEnergyChanged(energyAdded);
     }
 
     @Override
     public void setEnergyRaw(int energy) {
-        energyStorage.setEnergyRaw(energy);
+        ENERGY_STORAGE.setEnergyRaw(energy);
     }
 
     @Override
     public int consumeEnergy(int maxExtract, boolean simulate) {
-        return energyStorage.consumeEnergy(maxExtract, simulate);
+        return ENERGY_STORAGE.consumeEnergy(maxExtract, simulate);
     }
 
     @Override
     public CompoundNBT serializeNBT() {
-        return energyStorage.serializeNBT();
+        return ENERGY_STORAGE.serializeNBT();
     }
 
     @Override
     public void deserializeNBT(CompoundNBT nbt) {
-        energyStorage.deserializeNBT(nbt);
+        ENERGY_STORAGE.deserializeNBT(nbt);
     }
 
     @Override
     public int receiveEnergy(int maxReceive, boolean simulate) {
         if (this.canReceive())
-            return energyStorage.receiveEnergy(maxReceive, simulate);
+            return ENERGY_STORAGE.receiveEnergy(maxReceive, simulate);
         return 0;
     }
 
     @Override
     public int extractEnergy(int maxExtract, boolean simulate) {
         if (this.canExtract())
-            return energyStorage.extractEnergy(maxExtract, simulate);
+            return ENERGY_STORAGE.extractEnergy(maxExtract, simulate);
         return 0;
     }
 
     @Override
     public int getEnergyStored() {
-        return this.energyStorage.getEnergyStored();
+        return this.ENERGY_STORAGE.getEnergyStored();
     }
 
     @Override
     public int getMaxEnergyStored() {
-        return this.energyStorage.getMaxEnergyStored();
+        return this.ENERGY_STORAGE.getMaxEnergyStored();
     }
 
     @Override
     public boolean canExtract() {
-        return this.energyStorage.canExtract() && this.energyStorage.canExtractFromSide(this.side);
+        return this.ENERGY_STORAGE.canExtract() && this.ENERGY_STORAGE.canExtractFromSide(this.SIDE);
     }
 
     @Override
     public boolean canReceive() {
-        return this.energyStorage.canReceive() && this.energyStorage.canReceiveFromSide(this.side);
+        return this.ENERGY_STORAGE.canReceive() && this.ENERGY_STORAGE.canReceiveFromSide(this.SIDE);
     }
 }
