@@ -18,12 +18,38 @@ public class ModBlockStateProperties {
     public static final IntegerProperty EAST_CONNECTION = IntegerProperty.create("east_connection" , 0, 3);
     public static final IntegerProperty WEST_CONNECTION = IntegerProperty.create("west_connection" , 0, 3);
 
-    public enum CONNECTION_TYPE {
-        ALL(0), INPUT(1), OUTPUT(2), NONE(3);
+    public enum CONNECTION_TYPE implements NamedTypeHolder<Integer> {
+        ALL(0, "all"),
+        INPUT(1, "input"),
+        OUTPUT(2, "output"),
+        NONE(3, "none");
+
+        public static CONNECTION_TYPE getByValue(int val) {
+            switch (val) {
+                case 0:
+                    return ALL;
+                case 1:
+                    return INPUT;
+                case 2:
+                    return OUTPUT;
+                case 3:
+                    return NONE;
+                default:
+                    return null;
+            }
+        }
 
         private final int VALUE;
-        CONNECTION_TYPE(int value) { this.VALUE = value; }
-        public int get() { return this.VALUE; }
+        private final String NAME;
+        CONNECTION_TYPE(int value, String name) { this.VALUE = value; this.NAME = name; }
+
+        @Override
+        public Integer get() { return this.VALUE; }
+
+        @Override
+        public String getName() {
+            return null;
+        }
     }
 
     public static class DirectionalProperty<T extends Property<PT>, PT extends Comparable<PT>> {
