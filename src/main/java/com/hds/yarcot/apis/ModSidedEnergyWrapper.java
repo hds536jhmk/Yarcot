@@ -2,7 +2,12 @@ package com.hds.yarcot.apis;
 
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Direction;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.energy.IEnergyStorage;
+
+import java.util.function.BiConsumer;
 
 public class ModSidedEnergyWrapper implements IModEnergyStorage {
 
@@ -36,6 +41,11 @@ public class ModSidedEnergyWrapper implements IModEnergyStorage {
     @Override
     public int consumeEnergy(int maxExtract, boolean simulate) {
         return ENERGY_STORAGE.consumeEnergy(maxExtract, simulate);
+    }
+
+    @Override
+    public int transferToNeighbours(World world, BlockPos pos, BiConsumer<IEnergyStorage, Direction> handleEnergyStorage) {
+        return ENERGY_STORAGE.transferToNeighbours(world, pos, handleEnergyStorage);
     }
 
     @Override
